@@ -1,46 +1,317 @@
-.progress-container {
-  position: relative;
-  margin-bottom: 2rem;
-}
-.progress {
-  height: 5px;
-}
-.progress-steps {
-  position: absolute;
-  top: -12px;
-  width: 100%;
-  padding: 0 10px;
-}
-.step {
-  width: 25px;
-  height: 25px;
-  background-color: #ccc;
-  border-radius: 50%;
+.element {
+  background-color: #fafafa;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.element .frame-wrapper {
+  background-color: var(--n-50);
+  width: 1536px;
+  height: 864px;
+}
+
+.element .frame {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  top: 72px;
+  left: 512px;
+}
+
+.element .div {
+  display: flex;
+  flex-direction: column;
+  width: 512px;
+  align-items: center;
+  gap: 48px;
+  position: relative;
+}
+
+.element .group {
+  position: relative;
+  width: 336px;
+  height: 36px;
+}
+
+.element .overlap {
+  position: relative;
+  height: 36px;
+}
+
+.element .line {
+  position: absolute;
+  width: 300px;
+  height: 2px;
+  top: 16px;
+  left: 18px;
+}
+
+.element .frame-2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 64px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.element .overlap-group-wrapper {
+  position: relative;
+  width: 38px;
+  height: 36px;
+}
+
+.element .overlap-group {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background-color: var(--main-green-2);
+  border-radius: 18px;
+  border-color: var(--main-green-2);
+}
+
+.element .text-wrapper {
+  position: absolute;
+  top: 8px;
+  left: 14px;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .div-wrapper {
+  width: 36px;
+  background-color: var(--n-50);
+  border-radius: 18px;
+  border: 2px solid;
+  border-color: var(--main-green-2);
+  position: relative;
+  height: 36px;
+}
+
+.element .text-wrapper-2 {
+  left: 11px;
+  position: absolute;
+  top: 6px;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--main-green-3);
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .text-wrapper-3 {
+  left: 10px;
+  text-align: center;
+  position: absolute;
+  top: 6px;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--main-green-3);
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .overlap-wrapper {
+  position: relative;
+  width: 38px;
+  height: 36px;
+  margin-right: -2px;
+}
+
+.element .text-wrapper-4 {
+  left: 10px;
+  position: absolute;
+  top: 6px;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--main-green-3);
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .frame-3 {
+  display: flex;
+  flex-direction: column;
+  height: 525px;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.element .frame-4 {
+  display: flex;
+  flex-direction: column;
+  height: 519px;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.element .text-wrapper-5 {
+  position: relative;
+  align-self: stretch;
+  height: 58px;
+  margin-top: -1px;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--n-800);
+  font-size: 24px;
+  letter-spacing: -0.24px;
+  line-height: normal;
+}
+
+.element .frame-5 {
+  display: flex;
+  flex-direction: column;
+  width: 512px;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .frame-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.element .text-wrapper-6 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Pretendard-Medium", Helvetica;
+  font-weight: 500;
+  color: var(--n-800);
+  font-size: 18px;
+  letter-spacing: -0.18px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .frame-7 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .group-2 {
+  position: relative;
+  width: 514px;
+  height: 51px;
+  margin-right: -2px;
+}
+
+.element .overlap-group-2 {
+  position: relative;
+  width: 512px;
+  height: 51px;
+  background-color: var(--white);
+  border-radius: 12px;
+  border: 1px solid;
+  border-color: var(--n-200);
+}
+
+.element .text-wrapper-7 {
+  position: absolute;
+  top: 15px;
+  left: 23px;
+  font-family: "Pretendard-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--n-300);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .frame-8 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .img {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.element .text-wrapper-8 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Pretendard-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--point-red);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .frame-9 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.element .frame-10 {
+  display: flex;
+  width: 512px;
+  height: 64px;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  gap: 10px;
+  padding: 20px 238px;
+  position: relative;
+  background-color: var(--main-green-2);
+  border-radius: 12px;
 }
-.completed {
-  background-color: #28a745;
-  color: white;
-}
-.btn-primary {
-  width: 100%;
-}
-.invalid-feedback {
-  display: block;
-}
-body {
-  background-color: #f8f9fa;
-}
-.container {
-  max-width: 600px;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-h2 {
-  margin-bottom: 1.5rem;
+
+.element .text-wrapper-9 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: -0.2px;
+  line-height: normal;
+  white-space: nowrap;
 }

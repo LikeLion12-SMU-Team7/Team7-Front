@@ -1,81 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signup Form</title>
-    <link
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link href="register1.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/register1.css" />
+    <link rel="stylesheet" href="css/color.css" />
+    <style>
+      .error {
+        color: var(--point-red);
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      .input-field {
+        width: 100%;
+        height: 100%;
+        border: none;
+        padding: 15px 23px;
+        border-radius: 12px;
+        background-color: var(--white);
+        font-size: 16px;
+        color: var(--n-800);
+      }
+
+      .input-field::placeholder {
+        color: var(--n-300);
+      }
+    </style>
   </head>
   <body>
-    <div class="container mt-5">
-      <div class="progress-container mb-4">
-        <div class="progress">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            style="width: 25%"
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-        <div class="progress-steps d-flex justify-content-between">
-          <div class="step completed">1</div>
-          <div class="step">2</div>
-          <div class="step">3</div>
-          <div class="step">4</div>
-        </div>
-      </div>
-      <h2>아이디와 비밀번호를 입력해주세요</h2>
-      <form id="signupForm">
-        <div class="form-group">
-          <label for="email">아이디</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            placeholder="이메일 형식으로 입력해주세요"
-            value="test@example.com"
-            required
-          />
-          <div class="invalid-feedback">이미 등록된 아이디입니다.</div>
-        </div>
-        <div class="form-group">
-          <label for="password">비밀번호</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="비밀번호 8자리 어쩌고"
-            value="Test0000!"
-            required
-          />
-          <div class="invalid-feedback">
-            비밀번호는 대소문자와 특수기호를 포함한 8자리 이상이어야 합니다.
+    <div class="element">
+      <div class="frame-wrapper">
+        <div class="frame">
+          <div class="div">
+            <div class="group">
+              <div class="overlap">
+                <img class="line" src="img/line-2.svg" />
+                <div class="frame-2">
+                  <div class="overlap-group-wrapper">
+                    <div class="overlap-group">
+                      <div class="text-wrapper">1</div>
+                    </div>
+                  </div>
+                  <div class="overlap-group-wrapper">
+                    <div class="div-wrapper">
+                      <div class="text-wrapper-2">2</div>
+                    </div>
+                  </div>
+                  <div class="overlap-group-wrapper">
+                    <div class="div-wrapper">
+                      <div class="text-wrapper-3">3</div>
+                    </div>
+                  </div>
+                  <div class="overlap-wrapper">
+                    <div class="div-wrapper">
+                      <div class="text-wrapper-4">4</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="frame-3">
+              <div class="frame-4">
+                <div class="text-wrapper-5">
+                  아이디와 비밀번호를<br />입력해주세요
+                </div>
+                <form id="registrationForm">
+                  <div class="frame-5">
+                    <div class="frame-6">
+                      <div class="text-wrapper-6">아이디</div>
+                      <div class="frame-7">
+                        <div class="group-2">
+                          <div class="overlap-group-2">
+                            <input
+                              type="text"
+                              id="username"
+                              class="input-field"
+                              placeholder="이메일 형식으로 입력해주세요"
+                            />
+                          </div>
+                        </div>
+                        <div id="usernameError" class="error"></div>
+                      </div>
+                    </div>
+                    <div class="frame-6">
+                      <div class="text-wrapper-6">비밀번호</div>
+                      <div class="frame-9">
+                        <div class="group-2">
+                          <div class="overlap-group-2">
+                            <input
+                              type="password"
+                              id="password"
+                              class="input-field"
+                              placeholder="비밀번호 8자리 어쩌고"
+                            />
+                          </div>
+                        </div>
+                        <div id="passwordError" class="error"></div>
+                      </div>
+                    </div>
+                    <div class="frame-6">
+                      <div class="text-wrapper-6">비밀번호 확인</div>
+                      <div class="frame-9">
+                        <div class="group-2">
+                          <div class="overlap-group-2">
+                            <input
+                              type="password"
+                              id="confirmPassword"
+                              class="input-field"
+                              placeholder="비밀번호 8자리 어쩌고"
+                            />
+                          </div>
+                        </div>
+                        <div id="confirmPasswordError" class="error"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="frame-10">
+                    <button type="submit" class="text-wrapper-9">다음</button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="confirm-password">비밀번호 확인</label>
-          <input
-            type="password"
-            class="form-control"
-            id="confirm-password"
-            placeholder="비밀번호 8자리 어쩌고"
-            value="Test0000!"
-            required
-          />
-          <div class="invalid-feedback">비밀번호가 일치하지 않습니다.</div>
-        </div>
-        <button type="submit" class="btn btn-primary">다음</button>
-      </form>
+      </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="js/register1.js"></script>
   </body>
 </html>
