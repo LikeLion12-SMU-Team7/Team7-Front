@@ -1,0 +1,95 @@
+.element {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.element .group-wrapper {
+  background-color: var(--n-50);
+  width: 1536px;
+  height: 864px;
+}
+.element .group {
+  position: relative;
+  width: 512px;
+  height: 263px;
+  top: 300px;
+  left: 512px;
+}
+.element .frame {
+  display: inline-flex;
+  align-items: center;
+  gap: 53px;
+  flex-direction: column;
+  position: relative;
+}
+.element .div {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  flex-direction: column;
+  position: relative;
+}
+.element .img {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.element .div-wrapper {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 0 0 auto;
+  flex-direction: column;
+  position: relative;
+}
+.element .p {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Pretendard-SemiBold", Helvetica;
+  font-weight: 600;
+  color: transparent;
+  font-size: 24px;
+  letter-spacing: -0.24px;
+  text-align: center;
+  line-height: normal;
+}
+.element .text-wrapper {
+  color: #262626;
+  letter-spacing: -0.06px;
+}
+.element .span {
+  color: #1abc9c;
+  letter-spacing: -0.06px;
+}
+.element .overlap-group-wrapper {
+  position: relative;
+  width: 514px;
+  height: 64px;
+  margin-right: -2px;
+}
+.element .overlap-group {
+  position: relative;
+  width: 512px;
+  height: 64px;
+  background-color: var(--main-green-2);
+  border-radius: 12px;
+}
+.element .text-wrapper-2 {
+  position: absolute;
+  top: 20px;
+  left: 222px;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 20px;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: normal;
+}

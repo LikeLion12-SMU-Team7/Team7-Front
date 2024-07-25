@@ -1,0 +1,261 @@
+.element {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.element .frame-wrapper {
+  background-color: var(--n-50);
+  width: 1536px;
+  height: 864px;
+}
+.element .frame {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  position: relative;
+  top: 72px;
+  left: 512px;
+}
+.element .div {
+  display: flex;
+  align-items: center;
+  gap: 76px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+.element .vector {
+  position: relative;
+  width: 12px;
+  height: 24px;
+}
+.element .group {
+  position: relative;
+  width: 336px;
+  height: 36px;
+}
+.element .overlap {
+  position: relative;
+  height: 36px;
+}
+.element .line {
+  position: absolute;
+  width: 300px;
+  height: 2px;
+  top: 16px;
+  left: 18px;
+}
+.element .frame-2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 64px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.element .overlap-group-wrapper {
+  position: relative;
+  width: 38px;
+  height: 36px;
+}
+.element .overlap-group {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background-color: var(--main-green-2);
+  border-radius: 18px;
+  border-color: var(--main-green-2);
+}
+.element .text-wrapper {
+  position: absolute;
+  top: 8px;
+  left: 14px;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  line-height: normal;
+  white-space: nowrap;
+}
+.element .text-wrapper-2 {
+  top: 8px;
+  left: 13px;
+  color: var(--white);
+  position: absolute;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  line-height: normal;
+  white-space: nowrap;
+}
+.element .div-wrapper {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background-color: var(--n-50);
+  border-radius: 18px;
+  border: 2px solid;
+  border-color: var(--main-green-2);
+}
+.element .text-wrapper-3 {
+  top: 6px;
+  left: 10px;
+  color: var(--main-green-3);
+  text-align: center;
+  position: absolute;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  line-height: normal;
+  white-space: nowrap;
+}
+.element .overlap-wrapper {
+  position: relative;
+  width: 38px;
+  height: 36px;
+  margin-right: -2px;
+}
+.element .text-wrapper-4 {
+  top: 6px;
+  left: 10px;
+  color: var(--main-green-3);
+  position: absolute;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  line-height: normal;
+  white-space: nowrap;
+}
+.element .frame-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+.element .frame-4 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  flex: 0 0 auto;
+}
+.element .p {
+  position: relative;
+  align-self: stretch;
+  height: 58px;
+  margin-top: -1px;
+  color: var(--n-800);
+  font-size: 24px;
+  letter-spacing: -0.24px;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  line-height: normal;
+}
+.element .frame-5 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+.element .frame-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+.element .text-wrapper-5 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Pretendard-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--n-600);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+.element .group-2 {
+  position: relative;
+  width: 512px;
+  height: 381px;
+}
+.element .lorem-ipsum-dolor-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  background-color: var(--white);
+  border-radius: 12px;
+  border: 1px solid;
+  border-color: var(--n-200);
+}
+.element .lorem-ipsum-dolor {
+  position: relative;
+  width: 464px;
+  margin-top: -1px;
+  font-family: "Pretendard-Medium", Helvetica;
+  font-weight: 500;
+  color: var(--n-700);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 25.6px;
+}
+.element .frame-7 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+.element .img {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+.element .group-3 {
+  position: relative;
+  width: 514px;
+  height: 64px;
+  margin-right: -2px;
+}
+.element .overlap-2 {
+  position: relative;
+  width: 512px;
+  height: 64px;
+  background-color: var(--main-green-2);
+  border-radius: 12px;
+}
+.element .text-wrapper-6 {
+  position: absolute;
+  top: 20px;
+  left: 239px;
+  color: var(--white);
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  line-height: normal;
+}
