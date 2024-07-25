@@ -31,14 +31,16 @@
         </div>
       </div>
       <h2>아이디와 비밀번호를 입력해주세요</h2>
-      <form>
+      <form id="signupForm">
         <div class="form-group">
           <label for="email">아이디</label>
           <input
             type="email"
-            class="form-control is-invalid"
+            class="form-control"
             id="email"
             placeholder="이메일 형식으로 입력해주세요"
+            value="test@example.com"
+            required
           />
           <div class="invalid-feedback">이미 등록된 아이디입니다.</div>
         </div>
@@ -46,30 +48,34 @@
           <label for="password">비밀번호</label>
           <input
             type="password"
-            class="form-control is-invalid"
+            class="form-control"
             id="password"
             placeholder="비밀번호 8자리 어쩌고"
+            value="Test0000!"
+            required
           />
           <div class="invalid-feedback">
-            비밀번호는 8자리 이상이어야 합니다.
+            비밀번호는 대소문자와 특수기호를 포함한 8자리 이상이어야 합니다.
           </div>
         </div>
         <div class="form-group">
           <label for="confirm-password">비밀번호 확인</label>
           <input
             type="password"
-            class="form-control is-invalid"
+            class="form-control"
             id="confirm-password"
             placeholder="비밀번호 8자리 어쩌고"
+            value="Test0000!"
+            required
           />
           <div class="invalid-feedback">비밀번호가 일치하지 않습니다.</div>
         </div>
         <button type="submit" class="btn btn-primary">다음</button>
       </form>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/register1.js"></script>
   </body>
 </html>
