@@ -1,0 +1,234 @@
+.element {
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.group-wrapper {
+  background-color: var(--n-50);
+  width: 100%;
+  max-width: 1536px;
+  height: 864px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.group {
+  width: 336px;
+  height: 36px;
+}
+.frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+.div {
+  display: flex;
+  align-items: center;
+  gap: 76px;
+  width: 100%;
+}
+.frame-2 {
+  display: flex;
+  align-items: center;
+  gap: 76px;
+  width: 100%;
+}
+.vector {
+  width: 12px;
+  height: 24px;
+}
+.overlap-wrapper {
+  width: 336px;
+  height: 36px;
+}
+.overlap {
+  height: 36px;
+}
+.line {
+  width: 336px;
+  height: 36px;
+  top: 16px;
+  left: 18px;
+}
+.frame-3 {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.overlap-group-wrapper {
+  width: 38px;
+  height: 36px;
+}
+.overlap-group {
+  width: 36px;
+  height: 36px;
+  background-color: var(--main-green-2);
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-wrapper {
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 16px;
+}
+.text-wrapper-2,
+.text-wrapper-3 {
+  color: var(--white);
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 16px;
+}
+.div-wrapper {
+  width: 38px;
+  height: 36px;
+  margin-right: -2px;
+}
+.overlap-2 {
+  width: 36px;
+  height: 36px;
+  background-color: var(--n-50);
+  border-radius: 18px;
+  border: 2px solid var(--main-green-2);
+}
+.text-wrapper-4 {
+  color: var(--main-green-3);
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 16px;
+}
+.frame-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+.frame-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.p {
+  color: var(--n-800);
+  font-size: 24px;
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+}
+.frame-5 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.frame-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+.text-wrapper-5 {
+  font-family: "Pretendard-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--n-600);
+  font-size: 16px;
+}
+.text-wrapper-6 {
+  font-family: "Pretendard-Medium", Helvetica;
+  font-weight: 500;
+  color: var(--n-800);
+  font-size: 18px;
+}
+.frame-7 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+.group-2 {
+  width: 514px;
+  height: 51px;
+  margin-right: -2px;
+}
+.overlap-group-2 {
+  width: 512px;
+  height: 51px;
+  background-color: var(--white);
+  border-radius: 12px;
+  border: 1px solid var(--n-200);
+  position: relative;
+}
+.text-wrapper-7 {
+  position: absolute;
+  top: 15px;
+  left: 23px;
+  font-family: "Pretendard-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--n-300);
+  font-size: 16px;
+}
+.frame-8,
+.frame-9,
+.frame-10 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.img {
+  width: 16px;
+  height: 16px;
+}
+.text-wrapper-8 {
+  font-family: "Pretendard-Medium", Helvetica;
+  font-weight: 500;
+  color: var(--n-600);
+  font-size: 18px;
+}
+.group-3 {
+  width: 514px;
+  height: 64px;
+  margin-right: -2px;
+}
+.overlap-3 {
+  width: 512px;
+  height: 64px;
+  background-color: var(--main-green-2);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-wrapper-9 {
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 20px;
+}
+.input-field {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 15px 23px;
+  border-radius: 12px;
+  background-color: var(--white);
+  font-size: 16px;
+  color: var(--n-800);
+}
+.input-field::placeholder {
+  color: var(--n-300);
+}
+label {
+  margin-bottom: 0px;
+}

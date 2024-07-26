@@ -1,15 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/register4.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/color.css" />
   </head>
   <body>
-    Hello world!
+    <div class="element">
+      <div class="group-wrapper">
+        <div class="group">
+          <div class="frame">
+            <div class="div">
+              <img class="vector" src="img/vector.svg" />
+              <div class="group">
+                <div class="overlap">
+                  <img class="line" src="img/group1.svg" />
+                </div>
+              </div>
+            </div>
+            <div class="frame-wrapper">
+              <div class="frame-3">
+                <p class="p">
+                  건강한 음주 생활의 시작이 얼마 남지 않았어요!<br />평소 주량을
+                  입력해 주세요
+                </p>
+                <div class="frame-4">
+                  <div class="frame-5">
+                    <p class="text-wrapper-5">
+                      소주 (16.5도) 기준, 0.5병 단위로 입력할 수 있어요.
+                    </p>
+                    <div class="frame-6">
+                      <div class="frame-7">
+                        <div class="text-wrapper-6">
+                          <img class="img" src="img/waterDrop.png" />
+                        </div>
+                        <div class="frame-8">
+                          <div class="vector-wrapper" id="decreaseButton">
+                            <img class="imgV" src="img/minusIcon.svg" />
+                          </div>
+                          <div class="group-2">
+                            <div class="overlap-group-2">
+                              <input
+                                type="number"
+                                id="bottleInput"
+                                class="input-field"
+                                step="0.5"
+                                min="0"
+                                value="1.5"
+                              />
+                            </div>
+                          </div>
+                          <div class="vector-wrapper" id="increaseButton">
+                            <img class="vector-2" src="img/plusIcon.svg" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="group-3">
+              <div class="overlap-2" id="nextButton">
+                <div class="text-wrapper-8">다음</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/register4.js"></script>
   </body>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
 </html>

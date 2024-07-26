@@ -1,15 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/color.css" />
+    <link rel="stylesheet" href="css/register3.css" />
   </head>
   <body>
-    Hello world!
+    <div class="element">
+      <div class="frame-wrapper">
+        <div class="frame">
+          <div class="div">
+            <img class="vector" src="img/vector.svg" />
+            <div class="group">
+              <div class="overlap">
+                <img class="line" src="img/group1.svg" />
+              </div>
+            </div>
+          </div>
+          <div class="frame-wrapper">
+            <div class="frame-4">
+              <p class="p">
+                서비스 이용을 위해<br />회원님의 정보를 입력해주세요
+              </p>
+              <div class="frame-5">
+                <div class="frame-6">
+                  <p class="text-wrapper-5">
+                    입력하신 데이터는 개인화 된 음주 데이터 분석 외 다른
+                    목적으로 활용되지 않아요
+                  </p>
+                  <div class="frame-5">
+                    <div class="frame-4">
+                      <div class="text-wrapper-6">닉네임</div>
+                      <div class="frame-7">
+                        <div class="group-2">
+                          <div class="overlap-group-2">
+                            <input
+                              type="text"
+                              id="nickname"
+                              class="input-field"
+                              placeholder="최대 7글자"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="frame-8">
+                      <div class="text-wrapper-6">성별</div>
+                      <div class="frame-9">
+                        <label class="frame-10">
+                          <input
+                            type="radio"
+                            name="gender"
+                            value="male"
+                            class="img"
+                          />
+                          <span class="text-wrapper-8">남성</span>
+                        </label>
+                        <label class="frame-10">
+                          <input
+                            type="radio"
+                            name="gender"
+                            value="female"
+                            class="img"
+                          />
+                          <span class="text-wrapper-8">여성</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="frame-4">
+                      <div class="text-wrapper-6">생년월일</div>
+                      <div class="frame-7">
+                        <div class="group-2">
+                          <div class="overlap-group-2">
+                            <input
+                              type="date"
+                              id="birthdate"
+                              class="input-field"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="frame-4">
+                      <div class="text-wrapper-6">체중</div>
+                      <div class="frame-7">
+                        <div class="group-2">
+                          <div class="overlap-group-2">
+                            <input
+                              type="number"
+                              id="weight"
+                              class="input-field"
+                              placeholder="kg"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="group-3">
+            <div class="overlap-3" id="nextButton">
+              <div class="text-wrapper-9">다음</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/register3.js"></script>
   </body>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
 </html>
