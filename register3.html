@@ -59,7 +59,12 @@
                           <div class="frame-7">
                             <div class="group-2">
                               <div class="overlap-group-2">
-                                <div class="text-wrapper-7">최대 7글자</div>
+                                <input
+                                  type="text"
+                                  id="nickname"
+                                  class="input-field"
+                                  placeholder="최대 7글자"
+                                />
                               </div>
                             </div>
                           </div>
@@ -67,14 +72,24 @@
                         <div class="frame-8">
                           <div class="text-wrapper-6">성별</div>
                           <div class="frame-9">
-                            <div class="frame-10">
-                              <img class="img" src="img/image.svg" />
-                              <div class="text-wrapper-8">남성</div>
-                            </div>
-                            <div class="frame-10">
-                              <img class="img" src="img/vector-2.svg" />
-                              <div class="text-wrapper-8">여성</div>
-                            </div>
+                            <label class="frame-10">
+                              <input
+                                type="radio"
+                                name="gender"
+                                value="male"
+                                class="img"
+                              />
+                              <span class="text-wrapper-8">남성</span>
+                            </label>
+                            <label class="frame-10">
+                              <input
+                                type="radio"
+                                name="gender"
+                                value="female"
+                                class="img"
+                              />
+                              <span class="text-wrapper-8">여성</span>
+                            </label>
                           </div>
                         </div>
                         <div class="frame-4">
@@ -82,7 +97,11 @@
                           <div class="frame-7">
                             <div class="group-2">
                               <div class="overlap-group-2">
-                                <div class="text-wrapper-7">YYYY/MM/DD</div>
+                                <input
+                                  type="date"
+                                  id="birthdate"
+                                  class="input-field"
+                                />
                               </div>
                             </div>
                           </div>
@@ -92,7 +111,12 @@
                           <div class="frame-7">
                             <div class="group-2">
                               <div class="overlap-group-2">
-                                <div class="text-wrapper-7">kg</div>
+                                <input
+                                  type="number"
+                                  id="weight"
+                                  class="input-field"
+                                  placeholder="kg"
+                                />
                               </div>
                             </div>
                           </div>
@@ -104,7 +128,7 @@
               </div>
             </div>
             <div class="group-3">
-              <div class="overlap-3">
+              <div class="overlap-3" id="nextButton">
                 <div class="text-wrapper-9">다음</div>
               </div>
             </div>
