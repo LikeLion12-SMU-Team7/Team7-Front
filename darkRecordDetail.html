@@ -3,13 +3,94 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>술 없는 나</title>
     <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/darkRecord.css" />
+    <link rel="stylesheet" href="/css/darkRecordDetail.css" />
+    <link rel="stylesheet" href="css/color.css" />
   </head>
   <body>
-    Hello world!
+    <div class="element">
+      <div class="frame-wrapper">
+        <div class="frame">
+          <div class="div">
+            <div class="group">
+              <div class="text-wrapper">
+                <div class="text-main">24년 7월 22일의 기록</div>
+                <div class="text-description">어제의 실수를 기록하고 오늘의 교훈으로 삼아요
+                  <img class="wink" src="img/wink.png" width="20px" height="20px"></div>
+              </div>
+              <div class="button-wrapper">
+                <button 
+                type="button" 
+                id="edit-btn"
+                class="btn">
+                수정
+                </button>
+                <button 
+                type="button"
+                id="delete-btn" 
+                class="btn">
+                삭제
+                </button>
+              </div>
+            </div>
+            <div class="form-wrapper">
+              <form class="form">
+                <div class="form-top">
+                  <div class="form-left">
+                    <div class="mb-4">
+                      <label for="when" class="form-label">언제?</label>
+                      <input type="text" class="form-control" id="when-content"
+                      value="밤 11시" disabled>
+                    </div>
+                    <div class="mb-4">
+                      <label for="where" class="form-label">어디서?</label>
+                      <input type="text" class="form-control" id="where-content"
+                      value="홍대 술집" disabled>
+                    </div>
+                    <div class="mb-4">
+                      <label for="who" class="form-label">누구와?</label>
+                      <input type="text" class="form-control" id="who-content"
+                      value="나와 친구 민수" disabled>
+                    </div>
+                  </div>
+                  
+                  <div class="form-right">
+                    <div class="mb-4">
+                      <label for="what" class="form-label">무엇을?</label>
+                      <textarea class="form-control" id="what-content" disabled>술을 너무 많이 마시고 민수에게 화를 냈음
+                      </textarea>
+                    </div>
+                    <div class="mb-4">
+                      <label for="how" class="form-label">어떻게?</label>
+                      <textarea class="form-control" id="how-content" disabled>계속 술을 마시다가 민수와 말다툼이 일어남
+                      </textarea>
+                    </div>
+                    <div class="mb-4">
+                      <label for="why" class="form-label">왜?</label>
+                      <textarea type="text" class="form-control" id="why-content" disabled>술기운에 감정이 격해져서 평소 쌓인 감정을 표출함
+                      </textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-bottom">
+                  <div class="mb-4">
+                    <label for="reflection" class="form-label">나의 반성과 다짐</label>
+                    <textarea type="text" class="form-control" id="reflection-content" disabled>민수에게 상처를 준 것 같아 반성된다. 다음부터는 술을 적당히 마시고, 감정이 격해질 때는 한 걸음 물러서기로 다짐한다.민수에게 상처를 준 것 같아 반성된다. 다음부터는 술을 적당히 마시고, 감정이 격해질 때는 한 걸음 물러서기로 다짐한다.민수에게 상처를 준 것 같아 반성된다. 다음부터는 술을 적당히 마시고, 감정이 격해질 때는 한 걸음 물러서기로 다짐한다.민수에게 상처를 준 것 같아 반성된다. 다음부터는 술을 적당히 마시고, 감정이 격해질 때는 한 걸음 물러서기로 다짐한다.민수에게 상처를 준 것 같아 반성된다. 다음부터는 술을 적당히 마시고, 감정이 격해질 때는 한 걸음 물러서기로 다짐한다.민수에게 상처를 준 것 같아 반성된다. 다음부터는 술을 적당히 마시고, 감정이 격해질 때는 한 걸음 물러서기로 다짐한다.
+                    </textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
   </body>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script src="/js/darkRecordDetail.js"></script>
 </html>
