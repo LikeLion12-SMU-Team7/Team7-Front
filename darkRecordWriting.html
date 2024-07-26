@@ -3,13 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>술 없는 나</title>
     <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/darkRecord.css" />
+    <link rel="stylesheet" href="/css/darkRecordDetail.css" />
+    <link rel="stylesheet" href="css/color.css" />
   </head>
   <body>
-    Hello world!
+    <div class="element">
+      <div class="frame-wrapper">
+        <div class="frame">
+          <div class="div">
+            <div class="group">
+              <div class="text-wrapper">
+                <div class="text-main">24년 7월 22일의 기록</div>
+                <div class="text-description">어제의 실수를 기록하고 오늘의 교훈으로 삼아요
+                  <img class="wink" src="img/wink.png" width="20px" height="20px"></div>
+              </div>
+            </div>
+            <div class="form-wrapper">
+              <form class="form">
+                <div class="form-top">
+                  <div class="form-left">
+                    <div class="mb-4">
+                      <label for="when" class="form-label">언제?</label>
+                      <input type="text" class="form-control" id="when-content"
+                      placeholder="이 사건은 언제 일어났나요? 시간을 입력해 주세요.">
+                    </div>
+                    <div class="mb-4">
+                      <label for="where" class="form-label">어디서?</label>
+                      <input type="text" class="form-control" id="where-content"
+                      placeholder="이 사건이 발생한 장소는 어디였나요?">
+                    </div>
+                    <div class="mb-4">
+                      <label for="who" class="form-label">누구와?</label>
+                      <input type="text" class="form-control" id="who-content"
+                      placeholder="함께한 사람 또는 당시 상황의 주요 인물은 누구였나요?">
+                    </div>
+                  </div>
+                  
+                  <div class="form-right">
+                    <div class="mb-4">
+                      <label for="what" class="form-label">무엇을?</label>
+                      <textarea class="form-control" id="what-content"
+                      placeholder="그날 어떤 일이 있었나요? 주요 사건이나 행동을 기록해보세요."></textarea>
+                    </div>
+                    <div class="mb-4">
+                      <label for="how" class="form-label">어떻게?</label>
+                      <textarea class="form-control" id="how-content"
+                      placeholder="그 일이 어떻게 진행되었나요? 당시 상황을 자세히 적어보세요."></textarea>
+                    </div>
+                    <div class="mb-4">
+                      <label for="why" class="form-label">왜?</label>
+                      <textarea type="text" class="form-control" id="why-content"
+                      placeholder="왜 그런 일이 발생했나요? 당시의 감정이나 상황을 설명해보세요."></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-bottom">
+                  <div class="mb-4">
+                    <label for="reflection" class="form-label">나의 반성과 다짐</label>
+                    <textarea type="text" class="form-control" id="reflection-content"
+                    placeholder="그 사건에 대해 어떤 점을 반성하고 있나요?, 이 경험을 통해 무엇을 배웠으며, 앞으로 어떻게 행동할 계획인가요?"></textarea>
+                  </div>
+                </div>
+              </form>
+              <button 
+              type="submit" 
+              class="btn btn-primary">
+              그날의 실수 남기기 🗑
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
   </body>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script src="js/darkRecordWriting.js"></script>
 </html>
