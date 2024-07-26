@@ -39,9 +39,8 @@
   height: 36px;
 }
 .line {
-  position: absolute;
-  width: 300px;
-  height: 2px;
+  width: 336px;
+  height: 36px;
   top: 16px;
   left: 18px;
 }
@@ -200,4 +199,7 @@
   letter-spacing: -0.2px;
   font-family: "Pretendard-Bold", Helvetica;
   font-weight: 700;
+}
+label {
+  margin-bottom: 0px;
 }
