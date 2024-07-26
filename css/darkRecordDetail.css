@@ -1,0 +1,144 @@
+.element .div{
+    width: 1046px;
+    margin-bottom: 64px;
+  }
+
+.element .group{
+    width: 1046px;
+  }
+
+.element .button-wrapper{
+    display: flex;
+    gap: 4px;
+}
+
+#delete-btn:hover{
+    color: var(--point-red);
+}
+
+.element .form-wrapper{
+    display: flex;
+    width: 1046px;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
+.element .form{
+    display: flex;
+    width: 1046px;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
+.element .form-top{
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 48px;
+    align-self: stretch;
+
+    border-radius: 12px;
+    border: 1px solid var(--n-200, #E5E5E5);
+    background: var(--white, #FFF);
+
+}
+
+.element .form-bottom{
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 48px;
+    align-self: stretch;
+
+    border-radius: 12px;
+    border: 1px solid var(--n-200, #E5E5E5);
+    background: var(--white, #FFF);
+}
+
+.element .form-left{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.element .form-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.element .form-label{
+    color: var(--n-800);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.16px;
+    margin-bottom: 12px;
+}
+
+.element .form-control{
+    display: flex;
+    width: 463px;
+    height: 51px;
+    padding: 16px;
+    align-items: flex-start;
+
+    border-radius: 12px;
+    border: 1px solid var(--n-200);
+    background: var(--white);
+}
+
+.element .form-right .form-control{
+    height: 102px;
+    resize: none;
+}
+
+.element .form-bottom .form-control{
+    width: 918px;
+    height: 153px;
+    resize: none;
+}
+
+.element .form-control::placeholder {
+    color: var(--n-300);
+    font-weight: 400;
+}
+
+.element .form-control::-webkit-input-placeholder{
+    color: var(--n-300);
+    font-weight: 400;
+}
+
+.element .form-control:-ms-input-placeholder{
+    color: var(--n-300);
+    font-weight: 400;
+}
+
+.form-wrapper .btn{
+    display: flex;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 12px;
+    border: none;
+    background: var(--main-green-2);
+
+    color: var(--white, #FFF);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.14px;
+}
+
+.form-wrapper .btn:hover{
+    background: linear-gradient(0deg, rgba(38, 38, 38, 0.10) 0%, rgba(38, 38, 38, 0.10) 100%), #1ABC9C;
+}
