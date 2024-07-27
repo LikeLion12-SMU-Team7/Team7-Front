@@ -1,0 +1,120 @@
+.element {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  height: 100vh;
+}
+.main-frame {
+  position: relative;
+  left: 100px;
+}
+.text-frame1 {
+  position: absolute;
+  top: 142px;
+  height: 66px;
+  width: 429px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.frame-container {
+  position: relative;
+  width: 1336px;
+  height: 640px;
+  margin-bottom: 140px;
+  margin-top: 244px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px #e5e5e5;
+}
+.frame1 {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  width: 345px;
+  height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+  top: 47px;
+  overflow: hidden;
+  z-index: -1;
+}
+.frame2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: #1abc9c;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p {
+  padding-top: 51.44px;
+  padding-left: 65px;
+  margin-bottom: -10px;
+  font-size: 80px;
+}
+.frame3 {
+  margin-left: 65px;
+  margin-right: 65px;
+  height: 250px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: #e5e5e5;
+}
+.text-frame2 {
+  padding-left: 40px;
+  padding-top: 30px;
+}
+.frame4 {
+  padding-left: 65px;
+}
+.text-frame3 {
+  text-align: right;
+  padding-right: 65px;
+  padding-top: 20px;
+  span {
+    display: block;
+  }
+}
+.text-frame3 span:first-child {
+  font-weight: 600;
+}
+.text-frame4 {
+  text-align: right;
+  padding-right: 65px;
+  padding-top: 30px;
+  color: #1abc9c;
+  span {
+    display: block;
+  }
+}
+.btn {
+  background-color: #1abc9c;
+  color: white;
+  border-radius: 10px;
+  position: absolute;
+  padding: 15px 20px;
+  top: 220px;
+  left: 580px;
+  z-index: 1;
+  font-size: 15px;
+}
+.button-frame p,
+.button-frame .frame3 {
+  opacity: 0.2;
+}
+.button-frame.active p,
+.button-frame.active .frame3 {
+  opacity: 1;
+}
+.button-frame.hidden .btn {
+  display: none;
+}
