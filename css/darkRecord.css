@@ -185,3 +185,67 @@
     height: 240px;
     margin-top: 36px;
 }
+
+.element .no-content-container{
+    width: 1336px;
+    display: flex;
+    padding: 36px 24px;
+    align-items: center;
+    align-self: stretch;
+
+    border-radius: 12px;
+    border: 1px solid var(--n-200);
+    background: var(--white);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.element .no-content-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.no-content-wrapper .garbage{
+    width: 48px; 
+    height: 48px;
+    margin: 0; 
+}
+
+.element .no-content-text-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.element .no-content-text-bold{
+    margin: 0;
+    color: var(--n-800);
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.element .no-content-text-regular{
+    margin: 0;
+    color: var(--n-600);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.element .write-btn{
+    border: none;
+    color: var(--white, #FFF);
+    background: var(--main-green-2);
+}
+
+.element .write-btn:hover{
+    background: linear-gradient(0deg, rgba(38, 38, 38, 0.10) 0%, rgba(38, 38, 38, 0.10) 100%), #1ABC9C;
+}
