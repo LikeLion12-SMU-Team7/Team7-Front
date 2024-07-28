@@ -83,7 +83,10 @@
     gap: 24px;
     align-self: stretch;
     box-sizing: none;
-    width: 1336px;
+    max-width: 1336px;
+    max-height: 687px;
+    overflow-x: visible;
+    overflow-y: scroll;
 }
 
 .element .row{
@@ -103,6 +106,7 @@
 
 .element .card{
     width: 429px;
+    height: 213px;
     padding: 24px;
     border-radius: 12px;
     border: 1px solid var(--n-200);
