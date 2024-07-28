@@ -1,0 +1,75 @@
+.element {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100vh;
+  width: 100%;
+}
+.main-frame {
+  position: absolute;
+  top: 142px;
+  left: 100px;
+  width: 543px;
+  height: 640px;
+  padding-left: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border: 1px;
+  border-color: #e5e5e5;
+}
+.frame1 {
+  padding-top: 30px;
+}
+
+.frame-wrap1 p {
+  padding-top: 20px;
+  margin-bottom: 7px;
+}
+.frame-wrap2 p,
+.frame-wrap4 p,
+.frame-wrap3 p,
+.frame-wrap5 p {
+  margin-bottom: 7px;
+}
+.frame2,
+.frame3,
+.frame5,
+.frame4,
+.frame6 {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.frame2 input {
+  background-color: gainsboro;
+}
+
+.frame2 input,
+.frame3 input,
+.frame5 input,
+.frame6 input {
+  width: 85%;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.text-wrap1 {
+  padding-right: 10px;
+}
+.frame7 button {
+  display: flex;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--main-green-2);
+  background-color: var(--main-green-2);
+  color: white;
+}
+.frame7 {
+  margin-left: 375px;
+  padding-top: 20px;
+  font-size: 15px;
+}

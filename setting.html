@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setting</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/setting.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  </head>
+  <body>
+    <div class="element">
+      <div class="main-frame">
+        <div class="frame1"><p>개인 정보 관리</p></div>
+        <div class="frame-wrap1">
+          <p>이메일</p>
+          <div class="frame2">
+            <input
+              type="text"
+              id="email"
+              class="email-fixed"
+              placeholder="1234"
+              size="48"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="frame-wrap2">
+          <p>닉네임</p>
+          <div class="frame3">
+            <input
+              type="text"
+              id="nickname"
+              class="nickname-input"
+              placeholder="1234"
+              size="48"
+            />
+          </div>
+        </div>
+        <div class="frame-wrap3">
+          <p>성별</p>
+          <div class="frame4">
+            <label class="frame-4-1">
+              <input type="radio" name="gender" value="male" class="img" />
+              <span class="text-wrap1">남성</span>
+            </label>
+            <label class="frame-4-1">
+              <input type="radio" name="gender" value="female" class="img" />
+              <span class="text-wrap1">여성</span>
+            </label>
+          </div>
+        </div>
+        <div class="frame-wrap4">
+          <p>생년월일</p>
+          <div class="frame5">
+            <input type="date" id="birth" class="birth-input" size="48" />
+          </div>
+        </div>
+        <div class="frame-wrap5">
+          <p>체중</p>
+          <div class="frame6">
+            <input
+              type="text"
+              id="weight"
+              class="weight-input"
+              placeholder="1234"
+              size="48"
+            />
+          </div>
+        </div>
+        <div class="frame7">
+          <button type="submit" class="setting-submit">저장</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+</html>
