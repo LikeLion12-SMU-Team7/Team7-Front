@@ -1,4 +1,4 @@
-*{
+* {
     font-family: Pretendard;
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@
     width: 100%;
 }
 
-.element .frame-wrapper{
+.frame-wrapper{
     background-color: var(--n-50);
     display: flex;
     justify-content: center;
@@ -21,32 +21,39 @@
     width: 100%;
 }
 
-.element .frame{
+.frame{
     display: flex;
-    width: 1536px;
+    width: 100%;
     padding-top: 142px;
     flex-direction: column;
     align-items: center;
 }
 
-.element .group{
+.group{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
 
-.element .text-wrapper{
+.text-btn-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-self: stretch;
+}
+
+.text-wrapper{
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.element .frame-4{
+.frame-4{
     display: inline-flex;
     gap: 12px;
 }
 
-.element .text-main{
+.text-main{
     margin: 0;
     color: var(--N-800);
     font-family: Pretendard;
@@ -56,7 +63,7 @@
     line-height: normal;
 }
 
-.element .text-description{
+.text-description{
     margin: 0;
     color: var(--N-800);
     font-family: Pretendard;
@@ -66,7 +73,7 @@
     line-height: normal;
 }
 
-.element .div{
+.div{
     display: flex;
     width: 1336px;
     flex-direction: column;
@@ -74,7 +81,7 @@
     gap: 36px;
 }
 
-.element .container{
+.container{
     margin: 0;
     padding: 0;
     display: flex;
@@ -85,11 +92,11 @@
     box-sizing: none;
     max-width: 1336px;
     max-height: 687px;
-    overflow-x: visible;
+    overflow-x: hidden;
     overflow-y: scroll;
 }
 
-.element .row{
+.row{
     width: 1336px;
     display: flex;
     align-items: center;
@@ -98,13 +105,13 @@
     margin: 0;
 }
 
-.element .col{
+.col{
     display: flex;
     width: 429px;
     padding: 0;
 }
 
-.element .card{
+.card{
     width: 429px;
     height: 213px;
     padding: 24px;
@@ -113,11 +120,11 @@
     background: #FFF;
 }
 
-.element .card:hover {
+.card:hover {
     background-color: var(--n-50)
 }
 
-.element .card-title-wrapper{
+.card-title-wrapper{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -125,26 +132,26 @@
     align-self: stretch;
 }
 
-.element .card-body{
+.card-body{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     align-items: flex-end;
     gap: 24px;
     padding: 0;
 }
 
 
-.element .card-title{
+.card-title{
     color: var(--N-800);
     font-family: Pretendard;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin: 0;
 }
 
-.element .card-text{
+.card-text{
     color: var(--n-600);
     font-family: Pretendard;
     font-size: 16px;
@@ -156,7 +163,7 @@
     text-overflow: ellipsis;
 }
 
-.element .btn{
+.btn{
     border-radius: 12px;
     border: 1px solid var(--n-200);
     background: var(--n-50);
@@ -176,17 +183,17 @@
     letter-spacing: -0.14px;
 }
 
-.element .btn:hover{
+.btn:hover{
     background: var(--n-200);
 }
 
-.element .garbage{
+.garbage{
     width: 240px;
     height: 240px;
     margin-top: 36px;
 }
 
-.element .no-content-container{
+.no-content-container{
     width: 1336px;
     display: flex;
     padding: 36px 24px;
@@ -202,7 +209,7 @@
     justify-content: center;
 }
 
-.element .no-content-wrapper{
+.no-content-wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -216,7 +223,7 @@
     margin: 0; 
 }
 
-.element .no-content-text-wrapper{
+.no-content-text-wrapper{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -224,7 +231,7 @@
     gap: 8px;
 }
 
-.element .no-content-text-bold{
+.no-content-text-bold{
     margin: 0;
     color: var(--n-800);
     font-size: 18px;
@@ -232,7 +239,7 @@
     text-align: center;
 }
 
-.element .no-content-text-regular{
+.no-content-text-regular{
     margin: 0;
     color: var(--n-600);
     text-align: center;
@@ -240,12 +247,13 @@
     font-weight: 400;
 }
 
-.element .write-btn{
+.write-btn{
     border: none;
-    color: var(--white, #FFF);
+    color: var(--white);
     background: var(--main-green-2);
 }
 
-.element .write-btn:hover{
+.write-btn:hover{
     background: linear-gradient(0deg, rgba(38, 38, 38, 0.10) 0%, rgba(38, 38, 38, 0.10) 100%), #1ABC9C;
+    color: var(--white);
 }
