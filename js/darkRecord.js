@@ -116,21 +116,22 @@ for (let i = 0; i < darkRecords.length; i++) {
         }
     }
 
-        // 상세 버튼 클릭
+    // 상세 버튼 클릭
     document.querySelectorAll('.detail-btn').forEach(button => {
+        button.addEventListener('click', function() {
+        // const date = this.getAttribute('data-date');
+        // window.location.href = `darkRecordDetail.html?date=${encodeURIComponent(date)}`;
+        window.location.href = `darkRecordDetail.html`;
+        });
+    });
+
+    // 쓰기 버튼 클릭
+    const writeButtons = document.querySelectorAll('.write-btn');
+        writeButtons.forEach(button => {
             button.addEventListener('click', function() {
-                // const date = this.getAttribute('data-date');
-                // window.location.href = `darkRecordDetail.html?date=${encodeURIComponent(date)}`;
-                window.location.href = `darkRecordDetail.html`;
+            // const currentDate = new Date().toISOString().split('T')[0]; // 현재 날짜를 'YYYY-MM-DD' 형식으로 가져오기
+            // window.location.href = `darkRecordWriting.html?date=${encodeURIComponent(currentDate)}`;
+            window.location.href = `darkRecordWriting.html`;
             });
         });
-
-        // 쓰기 버튼 클릭
-        const writeButton = document.querySelectorAll('.write-btn');
-        if (writeButton) {
-            writeButton.addEventListener('click', function() {
-                const currentDate = new Date().toISOString().split('T')[0]; // 현재 날짜를 'YYYY-MM-DD' 형식으로 가져오기
-                window.location.href = `darkRecordWriting.html?date=${encodeURIComponent(currentDate)}`;
-            });
-        }
     }
