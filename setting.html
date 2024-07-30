@@ -12,6 +12,21 @@
     <div class="element">
       <div class="main-frame">
         <div class="frame1"><p>개인 정보 관리</p></div>
+        <div class="fix-frame">
+          <button type="submit" class="fix-submit" onclick="enableEdit();">
+            수정
+          </button>
+        </div>
+        <div class="frame7">
+          <button
+            type="submit"
+            class="setting-submit"
+            onclick="saveChanges();"
+            style="display: none"
+          >
+            저장
+          </button>
+        </div>
         <div class="frame-wrap1">
           <p>이메일</p>
           <div class="frame2">
@@ -50,6 +65,29 @@
             </label>
           </div>
         </div>
+        <div class="drink-wrap">
+          <div class="drink-text">
+            <span>주량</span>
+            <span style="font-weight: 150"
+              >(소주 (16.5도) 기준, 0.5병 단위로 입력할 수 있어요.)</span
+            >
+          </div>
+          <div class="drink-num">
+            <button type="button" class="minus" onclick="calCount('m', this);">
+              -
+            </button>
+            <input
+              type="text"
+              name="pop_out"
+              value="0병"
+              readonly="readonly"
+              style="text-align: center"
+            />
+            <button type="button" class="plus" onclick="calCount('p',this);">
+              +
+            </button>
+          </div>
+        </div>
         <div class="frame-wrap4">
           <p>생년월일</p>
           <div class="frame5">
@@ -68,13 +106,14 @@
             />
           </div>
         </div>
-        <div class="frame7">
-          <button type="submit" class="setting-submit">저장</button>
-        </div>
+      </div>
+      <div class="logout-text">
+        <a href="#" id="logout-link">로그아웃</a>
       </div>
     </div>
   </body>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script src="/js/setting.js"></script>
 </html>
