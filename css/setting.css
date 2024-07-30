@@ -41,11 +41,6 @@
   width: 100%;
   margin-bottom: 20px;
 }
-.frame2 input {
-  background-color: var(--n-300);
-  pointer-events: none;
-}
-
 .frame2 input,
 .frame3 input,
 .frame5 input,
@@ -54,7 +49,7 @@
   height: 40px;
   padding: 0 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--n-300);
   box-sizing: border-box;
 }
 .text-wrap1 {
@@ -121,4 +116,29 @@
 #logout-link {
   color: black;
   text-decoration: underline;
+}
+[type="radio"] {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--n-300);
+  border-radius: 50%;
+  background-color: var(--n-300);
+  content: "✓";
+  color: white;
+}
+
+[type="radio"]:checked {
+  border: 1px solid var(--main-green-2);
+  background-color: var(--main-green-2);
+}
+.frame-4-1 p {
+  position: absolute;
+  margin-top: -24px;
+  margin-left: 2px;
+  font-size: 13px;
+  color: white;
+}
+.drink-num p {
+  margin-top: -3px;
 }
