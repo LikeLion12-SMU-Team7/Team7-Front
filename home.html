@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/color.css" />
+    <script src="js/home.js"></script>
   </head>
   <body>
     <div class="screen">
@@ -28,10 +29,9 @@
           <div class="frame-3">
             <div class="frame-wrapper">
               <div class="div-wrapper">
-                <p>함께 만들어요</p>
                 <div class="frame-4">
                   <div class="frame-5">
-                    <div class="text-wrapper-4">7월</div>
+                    <div id="month-label" class="text-wrapper-4">7월</div>
                   </div>
                   <div class="frame-6">
                     <div class="frame-7">
@@ -43,115 +43,7 @@
                       <div class="text-wrapper-5">금</div>
                       <div class="text-wrapper-5">토</div>
                     </div>
-                    <div class="frame-4">
-                      <div class="frame-8">
-                        <img class="group" src="img/group-21.svg" />
-                        <div class="element-wrapper">
-                          <div class="text-wrapper-6">1</div>
-                        </div>
-                        <div class="group-2">
-                          <div class="text-wrapper-6">2</div>
-                        </div>
-                        <div class="group-3">
-                          <div class="text-wrapper-6">3</div>
-                        </div>
-                        <div class="group-4">
-                          <div class="text-wrapper-6">4</div>
-                        </div>
-                        <div class="group-5">
-                          <div class="text-wrapper-6">5</div>
-                        </div>
-                        <div class="group-6">
-                          <div class="text-wrapper-6">6</div>
-                        </div>
-                      </div>
-                      <div class="frame-8">
-                        <div class="group-7">
-                          <div class="text-wrapper-6">7</div>
-                        </div>
-                        <div class="group-8">
-                          <div class="text-wrapper-6">8</div>
-                        </div>
-                        <div class="group-9">
-                          <div class="text-wrapper-6">9</div>
-                        </div>
-                        <div class="group-10">
-                          <div class="text-wrapper-6">10</div>
-                        </div>
-                        <div class="group-11">
-                          <div class="text-wrapper-6">11</div>
-                        </div>
-                        <div class="group-12">
-                          <div class="text-wrapper-6">12</div>
-                        </div>
-                        <div class="group-13">
-                          <div class="text-wrapper-6">13</div>
-                        </div>
-                      </div>
-                      <div class="frame-8">
-                        <div class="group-14">
-                          <div class="text-wrapper-6">14</div>
-                        </div>
-                        <div class="group-15">
-                          <div class="text-wrapper-6">15</div>
-                        </div>
-                        <div class="group-16">
-                          <div class="text-wrapper-6">16</div>
-                        </div>
-                        <div class="group-17">
-                          <div class="text-wrapper-6">17</div>
-                        </div>
-                        <div class="group-18">
-                          <div class="text-wrapper-6">18</div>
-                        </div>
-                        <div class="group-19">
-                          <div class="text-wrapper-6">19</div>
-                        </div>
-                        <div class="group-20">
-                          <div class="text-wrapper-6">20</div>
-                        </div>
-                      </div>
-                      <div class="frame-8">
-                        <div class="group-21">
-                          <div class="text-wrapper-6">21</div>
-                        </div>
-                        <div class="group-22">
-                          <div class="text-wrapper-6">22</div>
-                        </div>
-                        <div class="group-23">
-                          <div class="text-wrapper-6">23</div>
-                        </div>
-                        <div class="group-24">
-                          <div class="text-wrapper-6">24</div>
-                        </div>
-                        <div class="group-25">
-                          <div class="text-wrapper-6">25</div>
-                        </div>
-                        <div class="group-26">
-                          <div class="text-wrapper-6">26</div>
-                        </div>
-                        <div class="group-27">
-                          <div class="text-wrapper-6">27</div>
-                        </div>
-                      </div>
-                      <div class="frame-8">
-                        <div class="group-28">
-                          <div class="text-wrapper-6">28</div>
-                        </div>
-                        <div class="group-29">
-                          <div class="text-wrapper-6">29</div>
-                        </div>
-                        <div class="group-30">
-                          <div class="text-wrapper-6">30</div>
-                        </div>
-                        <div class="group-31">
-                          <div class="text-wrapper-6">31</div>
-                        </div>
-                        <img class="group" src="img/group-27.svg" />
-                        <img class="group" src="img/group-27.svg" />
-                        <img class="group" src="img/group-27.svg" />
-                      </div>
-                    </div>
+                    <div class="frame-4" id="calendar-days"></div>
                   </div>
                 </div>
               </div>
@@ -163,7 +55,9 @@
                     <div class="frame-13">
                       <div class="overlap-group-wrapper">
                         <div class="overlap-group">
-                          <div class="ellipse"></div>
+                          <div class="ellipse">
+                            <img src="img/womanCrown.png" class="woman-crown" />
+                          </div>
                           <div class="text-wrapper-7"></div>
                         </div>
                       </div>
@@ -171,6 +65,7 @@
                     </div>
                     <div class="frame-14">
                       <div class="text-wrapper-9">나의 성별 적정량</div>
+
                       <div class="text-wrapper-10">100병</div>
                     </div>
                   </div>
@@ -230,72 +125,78 @@
                   </div>
                 </div>
               </div>
-              <div class="frame-25">
-                <div class="frame-26">
-                  <div class="frame-27">
-                    <div class="text-wrapper-18">나의 포인트</div>
-                    <div class="frame-28">
-                      <p class="p">포인트를 사용해서 어쩌고 할 수 있어요</p>
-                      <div class="frame-29">
-                        <div class="text-wrapper-19"></div>
-                        <div class="frame-30">
-                          <div class="text-wrapper-20">8888</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="group-32"></div>
-                <div class="frame-31">
-                  <div class="frame-32">
-                    <div class="frame-33">
-                      <div class="text-wrapper-21">포인트 적립 기준</div>
-                      <p class="text-wrapper-22">
-                        음주 목표를 달성하면 포인트가 적립돼요
-                      </p>
-                    </div>
-                    <div class="frame-34">
-                      <div class="frame-35">
-                        <div class="frame-8">
-                          <div class="text-wrapper-23">조건</div>
-                          <div class="text-wrapper-24">포인트</div>
-                        </div>
-                      </div>
-                      <div class="frame-36">
-                        <div class="frame-8">
-                          <div class="frame-37">
-                            <div class="text-wrapper-25"></div>
-                            <div class="text-wrapper-26">기본 포인트</div>
-                          </div>
-                          <div class="text-wrapper-27">10 포인트</div>
-                        </div>
-                      </div>
-                      <div class="frame-36">
-                        <div class="frame-8">
-                          <div class="frame-37">
-                            <div class="text-wrapper-25"></div>
-                            <div class="text-wrapper-26">7일 연속 기록</div>
-                          </div>
-                          <div class="text-wrapper-27">5 포인트</div>
-                        </div>
-                      </div>
-                      <div class="frame-36">
-                        <div class="frame-8">
-                          <div class="frame-37">
-                            <div class="text-wrapper-25"></div>
-                            <div class="text-wrapper-26">포인트 충전</div>
-                          </div>
-                          <div class="text-wrapper-27">추후 지원</div>
-                        </div>
-                      </div>
+            </div>
+          </div>
+          <div class="frame-25">
+            <div class="frame-26">
+              <div class="frame-27">
+                <div class="text-wrapper-18">나의 포인트</div>
+                <div class="frame-28">
+                  <p class="p">포인트를 사용해서 어쩌고 할 수 있어요</p>
+                  <div class="frame-29">
+                    <div class="text-wrapper-19"></div>
+                    <div class="frame-30">
+                      <div class="text-wrapper-20">8888</div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div class="frame-31">
+              <div class="frame-32">
+                <div class="frame-33">
+                  <div class="text-wrapper-21">포인트 적립 기준</div>
+                  <p class="text-wrapper-22">
+                    음주 목표를 달성하면 포인트가 적립돼요
+                  </p>
+                </div>
+                <div class="frame-34">
+                  <div class="frame-35">
+                    <div class="frame-8">
+                      <div class="text-wrapper-23">조건</div>
+                      <div class="text-wrapper-24">포인트</div>
+                    </div>
+                  </div>
+                  <div class="frame-36">
+                    <div class="frame-8">
+                      <div class="frame-37">
+                        <div class="text-wrapper-25"></div>
+                        <div class="text-wrapper-26">기본 포인트</div>
+                      </div>
+                      <div class="text-wrapper-27">10 포인트</div>
+                    </div>
+                  </div>
+                  <div class="frame-36">
+                    <div class="frame-8">
+                      <div class="frame-37">
+                        <div class="text-wrapper-25"></div>
+                        <div class="text-wrapper-26">7일 연속 기록</div>
+                      </div>
+                      <div class="text-wrapper-27">5 포인트</div>
+                    </div>
+                  </div>
+                  <div class="frame-36">
+                    <div class="frame-8">
+                      <div class="frame-37">
+                        <div class="text-wrapper-25"></div>
+                        <div class="text-wrapper-26">포인트 충전</div>
+                      </div>
+                      <div class="text-wrapper-27">추후 지원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="group-32">
+              <img src="img/commercial.png" />
             </div>
           </div>
         </div>
       </div>
     </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </html>
