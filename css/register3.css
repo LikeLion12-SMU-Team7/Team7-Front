@@ -1,10 +1,15 @@
+*{
+  font-family: Pretendard;
+}
+p{
+  margin: 0;
+}
 .element {
-  background-color: #fafafa;
+  background-color: var(--n-50);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
 }
 .group-wrapper {
   background-color: var(--n-50);
@@ -24,6 +29,8 @@
   flex-direction: column;
   align-items: center;
   gap: 48px;
+  top: 72px;
+  height: 721px;
 }
 .div {
   display: flex;
@@ -40,6 +47,7 @@
 .vector {
   width: 12px;
   height: 24px;
+  cursor: pointer;
 }
 .overlap-wrapper {
   width: 336px;
@@ -88,11 +96,6 @@
   font-weight: 700;
   font-size: 16px;
 }
-.div-wrapper {
-  width: 38px;
-  height: 36px;
-  margin-right: -2px;
-}
 .overlap-2 {
   width: 36px;
   height: 36px;
@@ -102,16 +105,20 @@
 }
 .text-wrapper-4 {
   color: var(--main-green-3);
-  font-family: "Pretendard-Bold", Helvetica;
   font-weight: 700;
   font-size: 16px;
 }
 .frame-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
+  background-color: var(--n-50);
   width: 100%;
+  max-width: 1536px;
+  height: 864px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.div-wrapper{
+
 }
 .frame-4 {
   display: flex;
@@ -119,10 +126,9 @@
   align-items: flex-start;
   gap: 16px;
 }
-.p {
+.title {
   color: var(--n-800);
   font-size: 24px;
-  font-family: "Pretendard-Bold", Helvetica;
   font-weight: 700;
 }
 .frame-5 {
@@ -139,13 +145,11 @@
   width: 100%;
 }
 .text-wrapper-5 {
-  font-family: "Pretendard-Regular", Helvetica;
   font-weight: 400;
   color: var(--n-600);
   font-size: 16px;
 }
 .text-wrapper-6 {
-  font-family: "Pretendard-Medium", Helvetica;
   font-weight: 500;
   color: var(--n-800);
   font-size: 18px;

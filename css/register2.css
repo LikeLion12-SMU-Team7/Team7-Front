@@ -1,10 +1,15 @@
+*{
+  font-family: Pretendard;
+}
+p {
+  margin: 0;
+}
 .element {
-  background-color: #fafafa;
+  background-color: var(--n-50);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
 }
 .frame-wrapper {
   background-color: var(--n-50);
@@ -20,6 +25,8 @@
   flex-direction: column;
   align-items: center;
   gap: 48px;
+  top: 72px;
+  height: 721px;
 }
 .div {
   display: flex;
@@ -30,6 +37,7 @@
 .vector {
   width: 12px;
   height: 24px;
+  cursor: pointer;
 }
 .group {
   width: 336px;
@@ -150,7 +158,6 @@
 }
 .group-2 {
   width: 512px;
-  height: 381px;
 }
 .lorem-ipsum-dolor-wrapper {
   display: flex;
@@ -160,12 +167,16 @@
   background-color: var(--white);
   border-radius: 12px;
   border: 1px solid var(--n-200);
+
+  height: 333px;
+  overflow-y: scroll;
+  margin: 0;
 }
 .lorem-ipsum-dolor {
+  margin-top: 1080px;
   width: 464px;
-  font-family: "Pretendard-Medium", Helvetica;
-  font-weight: 500;
   color: var(--n-700);
+  font-style: normal;
   font-size: 16px;
   line-height: 25.6px;
 }

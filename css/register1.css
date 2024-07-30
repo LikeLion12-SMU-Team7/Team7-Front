@@ -19,21 +19,15 @@
   color: var(--n-300);
 }
 
-.frame-wrapper {
-  padding: 20px;
-  border-radius: 12px;
-}
-
 .element {
   background-color: #fafafa;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
 }
 
-.element .frame-wrapper {
+.frame-wrapper {
   background-color: var(--n-50);
   width: 100%;
   max-width: 1536px;
@@ -43,33 +37,39 @@
   align-items: center;
 }
 
-.element .frame {
+.frame {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
 }
 
-.element .div {
+.div {
   display: flex;
   flex-direction: column;
   width: 512px;
   align-items: center;
   gap: 48px;
+  top: 72px;
+  height: 721px;
+}
+
+.group-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 76px;
+  width: 100%;
+  justify-content: center;
 }
 
 .element .group {
-  position: relative;
   width: 336px;
   height: 36px;
 }
 
 .element .overlap {
-  position: relative;
   height: 36px;
 }
 
 .element .line {
-  position: absolute;
   width: 336px;
   height: 36px;
   top: 16px;
@@ -170,10 +170,7 @@
 .element .frame-4 {
   display: flex;
   flex-direction: column;
-  height: 519px;
-  align-items: flex-start;
   gap: 24px;
-  align-self: stretch;
   width: 100%;
 }
 
@@ -313,4 +310,26 @@
   letter-spacing: -0.2px;
   line-height: normal;
   white-space: nowrap;
+}
+
+.group-3 {
+  width: 514px;
+  height: 64px;
+  margin-right: -2px;
+}
+.overlap-3 {
+  width: 512px;
+  height: 64px;
+  background-color: var(--main-green-2);
+  border: none;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-wrapper-9 {
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 20px;
 }
