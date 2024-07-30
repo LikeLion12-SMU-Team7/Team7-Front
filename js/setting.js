@@ -5,6 +5,14 @@ document
     window.location.href = "/logout";
   });
 
+function validateWeightInput(input) {
+  let value = input.value.replace(/\D/g, "");
+  if (value.length > 3) {
+    value = value.slice(0, 3);
+  }
+
+  input.value = value;
+}
 function calCount(action, element) {
   const inputField = element.parentElement.querySelector(
     'input[name="pop_out"]'
@@ -59,4 +67,5 @@ function saveChanges() {
 
   disableFields();
 }
+
 window.onload = disableFields;
