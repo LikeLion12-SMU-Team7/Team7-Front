@@ -1,3 +1,7 @@
+p{
+  margin: 0;
+}
+
 .element {
   background-color: #fafafa;
   display: flex;
@@ -10,7 +14,6 @@
   background-color: var(--n-50);
   width: 100%;
   max-width: 1536px;
-  height: 864px;
   display: flex;
   justify-content: center;
   align-items: center;
