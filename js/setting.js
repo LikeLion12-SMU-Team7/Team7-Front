@@ -11,7 +11,7 @@ function validateWeightInput(input) {
     value = value.slice(0, 3);
   }
 
-  input.value = value;
+  input.value = value + "kg";
 }
 function calCount(action, element) {
   const inputField = element.parentElement.querySelector(
