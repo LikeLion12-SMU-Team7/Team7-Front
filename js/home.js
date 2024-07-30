@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const monthLabel = document.getElementById("month-label");
   const calendarDays = document.getElementById("calendar-days");
   const currentDate = new Date();
+  const noDrinkButton = document.getElementById("no-drink-button");
+  noDrinkButton.addEventListener("click", () => {
+    alert("오늘 술을 안마셨군요! 축하드려요!");
+  });
   let currentMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
 
