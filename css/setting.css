@@ -10,7 +10,7 @@
   top: 142px;
   left: 100px;
   width: 543px;
-  height: 640px;
+  height: 700px;
   padding-left: 50px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -41,10 +41,6 @@
   width: 100%;
   margin-bottom: 20px;
 }
-.frame2 input {
-  background-color: gainsboro;
-}
-
 .frame2 input,
 .frame3 input,
 .frame5 input,
@@ -53,7 +49,7 @@
   height: 40px;
   padding: 0 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--n-300);
   box-sizing: border-box;
 }
 .text-wrap1 {
@@ -68,8 +64,81 @@
   background-color: var(--main-green-2);
   color: white;
 }
-.frame7 {
+.fix-frame button {
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--n-300);
+  background-color: var(--n-300);
+  color: black;
+  margin-bottom: 30px;
+}
+.frame7,
+.fix-frame {
   margin-left: 375px;
-  padding-top: 20px;
   font-size: 15px;
+  margin-top: -30px;
+}
+.drink-wrap {
+  margin-bottom: 10px;
+}
+.drink-text {
+  span {
+    display: block;
+  }
+}
+.drink-num {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.drink-num input {
+  width: 15%;
+  height: 40px;
+  padding: 0 7px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.drink-num button {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background-color: var(--main-green-2);
+  border: 1px solid var(--main-green-2);
+  color: white;
+}
+.logout-text {
+  position: absolute;
+  top: 900px;
+  left: 321.5px;
+}
+#logout-link {
+  color: black;
+  text-decoration: underline;
+}
+[type="radio"] {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--n-300);
+  border-radius: 50%;
+  background-color: var(--n-300);
+  content: "✓";
+  color: white;
+}
+
+[type="radio"]:checked {
+  border: 1px solid var(--main-green-2);
+  background-color: var(--main-green-2);
+}
+.frame-4-1 p {
+  position: absolute;
+  margin-top: -24px;
+  margin-left: 2px;
+  font-size: 13px;
+  color: white;
+}
+.drink-num p {
+  margin-top: -3px;
 }

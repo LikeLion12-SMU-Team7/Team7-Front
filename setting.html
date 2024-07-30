@@ -12,6 +12,21 @@
     <div class="element">
       <div class="main-frame">
         <div class="frame1"><p>개인 정보 관리</p></div>
+        <div class="fix-frame">
+          <button type="submit" class="fix-submit" onclick="enableEdit();">
+            수정
+          </button>
+        </div>
+        <div class="frame7">
+          <button
+            type="submit"
+            class="setting-submit"
+            onclick="saveChanges();"
+            style="display: none"
+          >
+            저장
+          </button>
+        </div>
         <div class="frame-wrap1">
           <p>이메일</p>
           <div class="frame2">
@@ -21,7 +36,7 @@
               class="email-fixed"
               placeholder="1234"
               size="48"
-              readonly
+              disabled
             />
           </div>
         </div>
@@ -32,7 +47,7 @@
               type="text"
               id="nickname"
               class="nickname-input"
-              placeholder="1234"
+              placeholder=""
               size="48"
             />
           </div>
@@ -41,13 +56,50 @@
           <p>성별</p>
           <div class="frame4">
             <label class="frame-4-1">
-              <input type="radio" name="gender" value="male" class="img" />
-              <span class="text-wrap1">남성</span>
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                class="img"
+                id="check"
+              />
+              <p>✓</p>
+              <span class="text-wrap1">남성🤴🏻</span>
             </label>
             <label class="frame-4-1">
-              <input type="radio" name="gender" value="female" class="img" />
-              <span class="text-wrap1">여성</span>
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                class="img"
+                id="check"
+              />
+              <p>✓</p>
+              <span class="text-wrap1">여성👸🏻</span>
             </label>
+          </div>
+        </div>
+        <div class="drink-wrap">
+          <div class="drink-text">
+            <span>주량</span>
+            <span style="font-weight: 150"
+              >(소주 (16.5도) 기준, 0.5병 단위로 입력할 수 있어요.)</span
+            >
+          </div>
+          <div class="drink-num">
+            <button type="button" class="minus" onclick="calCount('m', this);">
+              <p>-</p>
+            </button>
+            <input
+              type="text"
+              name="pop_out"
+              value="0병"
+              readonly="readonly"
+              style="text-align: center"
+            />
+            <button type="button" class="plus" onclick="calCount('p',this);">
+              <p>+</p>
+            </button>
           </div>
         </div>
         <div class="frame-wrap4">
@@ -63,18 +115,20 @@
               type="text"
               id="weight"
               class="weight-input"
-              placeholder="1234"
+              placeholder=""
               size="48"
+              oninput="validateWeightInput(this)"
             />
           </div>
         </div>
-        <div class="frame7">
-          <button type="submit" class="setting-submit">저장</button>
-        </div>
+      </div>
+      <div class="logout-text">
+        <a href="#" id="logout-link">로그아웃</a>
       </div>
     </div>
   </body>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script src="/js/setting.js"></script>
 </html>
