@@ -20,13 +20,31 @@ function calCount(action, element) {
   }
   inputField.value = currentValue + "병";
 }
+function disableFields() {
+  document.querySelectorAll("input").forEach((input) => {
+    if (input.id !== "email") {
+      input.setAttribute("readonly", "readonly");
+      input.disabled = true;
+    }
+  });
+  document
+    .querySelectorAll('input[type="radio"]')
+    .forEach((input) => (input.disabled = true));
+  document
+    .querySelectorAll(".plus, .minus")
+    .forEach((button) => (button.disabled = true));
+}
+
 function enableEdit() {
   document.querySelector(".fix-submit").style.display = "none";
   document.querySelector(".setting-submit").style.display = "inline-block";
 
-  document
-    .querySelectorAll("input")
-    .forEach((input) => input.removeAttribute("readonly"));
+  document.querySelectorAll("input").forEach((input) => {
+    if (input.id !== "email") {
+      input.removeAttribute("readonly");
+      input.disabled = false;
+    }
+  });
   document
     .querySelectorAll('input[type="radio"]')
     .forEach((input) => (input.disabled = false));
@@ -39,13 +57,6 @@ function saveChanges() {
   document.querySelector(".setting-submit").style.display = "none";
   document.querySelector(".fix-submit").style.display = "inline-block";
 
-  document
-    .querySelectorAll("input")
-    .forEach((input) => input.setAttribute("readonly", "readonly"));
-  document
-    .querySelectorAll('input[type="radio"]')
-    .forEach((input) => (input.disabled = true));
-  document
-    .querySelectorAll(".plus, .minus")
-    .forEach((button) => (button.disabled = true));
+  disableFields();
 }
+window.onload = disableFields;

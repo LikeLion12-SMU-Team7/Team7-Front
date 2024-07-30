@@ -36,7 +36,7 @@
               class="email-fixed"
               placeholder="1234"
               size="48"
-              readonly
+              disabled
             />
           </div>
         </div>
@@ -56,12 +56,26 @@
           <p>성별</p>
           <div class="frame4">
             <label class="frame-4-1">
-              <input type="radio" name="gender" value="male" class="img" />
-              <span class="text-wrap1">남성</span>
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                class="img"
+                id="check"
+              />
+              <p>✓</p>
+              <span class="text-wrap1">남성🤴🏻</span>
             </label>
             <label class="frame-4-1">
-              <input type="radio" name="gender" value="female" class="img" />
-              <span class="text-wrap1">여성</span>
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                class="img"
+                id="check"
+              />
+              <p>✓</p>
+              <span class="text-wrap1">여성👸🏻</span>
             </label>
           </div>
         </div>
@@ -74,7 +88,7 @@
           </div>
           <div class="drink-num">
             <button type="button" class="minus" onclick="calCount('m', this);">
-              -
+              <p>-</p>
             </button>
             <input
               type="text"
@@ -84,7 +98,7 @@
               style="text-align: center"
             />
             <button type="button" class="plus" onclick="calCount('p',this);">
-              +
+              <p>+</p>
             </button>
           </div>
         </div>
