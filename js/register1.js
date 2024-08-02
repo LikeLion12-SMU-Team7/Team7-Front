@@ -46,6 +46,11 @@ function validateForm() {
 
   if (isValid) {
     alert("Validation Passed. Form submitted!");
+    localStorage.setItem("email", username);
+    localStorage.setItem("password", password);
     // You can submit the form or perform other actions here
+    console.log("Email:", localStorage.getItem("email"));
+    console.log("Password:", localStorage.getItem("password"));
+    window.location.href = "register2.html";
   }
 }

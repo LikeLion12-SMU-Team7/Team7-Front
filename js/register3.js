@@ -28,6 +28,16 @@ document
       alert("체중을 입력해주세요.");
       return;
     }
+    localStorage.setItem("nickname", nickname);
+    localStorage.setItem("gender", gender.value);
+    localStorage.setItem("birthdate", birthdate);
+    localStorage.setItem("weight", weight);
+
+    // Log saved values to console
+    console.log("Nickname:", localStorage.getItem("nickname"));
+    console.log("Gender:", localStorage.getItem("gender"));
+    console.log("Birthdate:", localStorage.getItem("birthdate"));
+    console.log("Weight:", localStorage.getItem("weight"));
     // 유효성 검사가 모두 통과되면 다음 페이지로 이동
     window.location.href = "register4.html";
   });
