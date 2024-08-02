@@ -45,12 +45,49 @@ function validateForm() {
   }
 
   if (isValid) {
+    checkEmailUniqueness(username)
+      .then((isUnique) => {
+        console.log("Is email unique:", !isUnique);
+        if (isUnique) {
+          localStorage.setItem("email", username);
+          localStorage.setItem("password", password);
+          console.log("Email:", localStorage.getItem("email"));
+          console.log("Password:", localStorage.getItem("password"));
+        } else {
+          document.getElementById("usernameError").textContent =
+            "이미 등록된 이메일입니다.";
+        }
+      })
+      .catch((error) => {
+        console.error("Error checking email uniqueness:", error);
+        alert("이메일 중복 검사를 수행하는 도중 오류가 발생했습니다.");
+      });
+  }
+  if (isValid) {
     alert("Validation Passed. Form submitted!");
     localStorage.setItem("email", username);
     localStorage.setItem("password", password);
-    // You can submit the form or perform other actions here
     console.log("Email:", localStorage.getItem("email"));
     console.log("Password:", localStorage.getItem("password"));
     window.location.href = "register2.html";
   }
+}
+function checkEmailUniqueness(email) {
+  const token = "token";
+  return fetch(
+    `http://3.37.23.33:8080/api/v1/auth/join/email-check/${encodeURIComponent(
+      email
+    )}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("API Response:", data);
+      return !data;
+    });
 }
