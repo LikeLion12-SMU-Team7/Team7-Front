@@ -1,10 +1,14 @@
+Updated HTML with Bootstrap dropdown fix
+Preview
+Code
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>술 없는 나</title>
-    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/darkRecord.css" />
     <link rel="stylesheet" href="/css/darkRecordDetail.css" />
     <link rel="stylesheet" href="css/color.css" />
@@ -15,14 +19,28 @@
         <div class="frame">
           <div class="div">
             <div class="group">
-              <div class="text-wrapper">
-                <div class="text-main">24년 7월 22일의 기록</div>
-                <div class="text-description">어제의 실수를 기록하고 오늘의 교훈으로 삼아요
-                  <img class="wink" src="img/wink.png" width="20px" height="20px"></div>
+              <div class="text-container">
+                <div class="text-wrapper">
+                  <div class="dropdown-wrapper">
+                    <div class="dropdown">
+                      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        날짜를 선택해 주세요
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="date-dropdown">
+                      </ul>
+                    </div>
+                    <p class="text-main">의 기록</p>
+                  </div>
+                  <div class="title-wrapper">
+                    <p class="text-description">어제의 실수를 기록하고 오늘의 교훈으로 삼아요</p>
+                    <img class="wink" src="img/wink.png" width="20" height="20" alt="Wink emoji">
+                  </div>
+                </div>
+                <p class="text-description-2"> 최근 일주일 내의 기록만 작성할 수 있어요</p>
               </div>
             </div>
             <div class="form-wrapper">
-              <form class="form">
+              <form class="form" id="record-form">
                 <div class="form-top">
                   <div class="form-left">
                     <div class="mb-4">
@@ -80,9 +98,8 @@
         </div>
     </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="js/darkRecordWriting.js"></script>
   </body>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
-  <script src="js/darkRecordWriting.js"></script>
 </html>
