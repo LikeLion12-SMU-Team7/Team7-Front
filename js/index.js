@@ -58,3 +58,38 @@ function getCookie(name) {
   }
   return null;
 }
+function refreshToken() {
+  // 쿠키에서 리프레시 토큰 가져오기
+  const refreshToken = getCookie("refreshToken");
+
+  if (!refreshToken) {
+    console.error("리프레시 토큰이 없습니다.");
+    return;
+  }
+
+  // 서버에 리프레시 토큰 요청 보내기
+  fetch("http://3.37.23.33:8080/api/v1/auth/refresh-token", {
+    method: "POST",
+    headers: {
+      Accept: "*/*",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${refreshToken}`,
+    },
+    body: JSON.stringify({}),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.accessToken) {
+        setCookie("accessToken", data.accessToken, 1);
+        console.log("액세스 토큰이 갱신되었습니다:", getCookie("accessToken"));
+      } else {
+        console.error("새로운 액세스 토큰을 발급받지 못했습니다.");
+      }
+    })
+    .catch((error) => {
+      console.error("리프레시 토큰 요청 중 오류 발생:", error);
+    });
+}
+
+// 페이지 로드 시 자동으로 토큰 갱신 시도
+document.addEventListener("DOMContentLoaded", refreshToken);
