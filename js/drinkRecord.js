@@ -97,3 +97,19 @@ document
     }
     this.value = parseInt(inputValue) + "잔";
   });
+
+function updateDate() {
+  const dayElement = document.querySelector(".day");
+  const currentDate = new Date();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+  const formattedDate = `${month}월 ${day}일`;
+
+  dayElement.textContent = `${formattedDate} 나의 음주 기록`;
+}
+
+updateDate();
+
+document.getElementById("record-btn").addEventListener("click", function () {
+  window.location.href = "darkRecord.html";
+});
