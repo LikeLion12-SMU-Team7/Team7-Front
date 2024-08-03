@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const dropdownMenuButton = document.getElementById('dropdownMenuButton');
     const dateDropdown = document.getElementById('date-dropdown');
-    const selectedDateInput = document.getElementById('selected-date');
+    const selectedDateInput = document.createElement('input');
+    selectedDateInput.type = 'hidden';
+    selectedDateInput.id = 'selected-date';
+    document.body.appendChild(selectedDateInput);
 
     // 최근 7일의 날짜를 계산하여 드롭다운 리스트에 추가
     const today = new Date();
@@ -22,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         linkItem.addEventListener('click', function(event) {
             event.preventDefault();
             dropdownMenuButton.textContent = dateString;
-            selectedDateInput.value = dateString;
+            selectedDateInput.value = date.toISOString().split('T')[0]; // LocalDate 형식으로 저장
         });
 
         listItem.appendChild(linkItem);
@@ -31,6 +34,20 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.getElementById('submit-btn').addEventListener('click', function(event) {
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) === " ") c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+    
+    const accessToken = getCookie("accessToken");
+
+
     event.preventDefault(); // 폼 제출 기본 동작 방지
 
     const whenContent = document.getElementById('when-content').value.trim();
@@ -48,6 +65,7 @@ document.getElementById('submit-btn').addEventListener('click', function(event) 
         alert('날짜를 선택해 주세요!');
     } else {
         const data = {
+            createdAt: selectedDate,
             when: whenContent,
             where: whereContent,
             withWho: whoContent,
@@ -57,17 +75,27 @@ document.getElementById('submit-btn').addEventListener('click', function(event) 
             content: reflectionContent
         };
 
-        fetch('/api/v1/memory', {
+        fetch('http://3.37.23.33:8080/api/v1/memory', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`,
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            alert('기록이 저장되었습니다');
-            window.location.href = 'darkRecord.html';
+            if (data.isSuccess) {
+                alert('기록이 저장되었습니다');
+                window.location.href = 'darkRecord.html';
+            } else {
+                alert('기록 저장에 실패했습니다.');
+            }
         })
         .catch((error) => {
             console.error('Error:', error);
