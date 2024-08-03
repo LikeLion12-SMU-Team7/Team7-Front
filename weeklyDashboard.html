@@ -73,7 +73,7 @@
                               <img class="size48" src="img/vomit.png" />
                             </div>
                           </div>
-                          <p class="text-wrapper-11">
+                          <p class="text-wrapper-11 drink-count-diff">
                             지난 주보다 100회 더 마셨어요
                           </p>
                         </div>
@@ -91,7 +91,7 @@
                               <img class="size48" src="img/vomit.png" />
                             </div>
                           </div>
-                          <p class="text-wrapper-11">
+                          <p class="text-wrapper-11 total-alcohol-diff">
                             총 알콜(g) 기준, 지난 주보다 123,456g 더 마셨어요
                           </p>
                         </div>
@@ -107,12 +107,13 @@
                             <img class="size48" src="img/waterDrop.png" />
                           </div>
                           <div class="text-wrapper-13">
-                            소주 100병 (36000ml)
+                            소주
+                            <span class="soju-weekly">Loading...</span>
                           </div>
                           <p class="element">
-                            <span class="text-wrapper-14">지난 주보다 </span>
-                            <span class="text-wrapper-15">100병</span>
-                            <span class="text-wrapper-14"> 더 마셨어요</span>
+                            <span class="text-wrapper-14 soju-difference"
+                              >지난 주보다
+                            </span>
                           </p>
                         </div>
                       </div>
@@ -121,8 +122,13 @@
                           <div class="text-wrapper-12">
                             <img class="size48" src="img/beer.png" />
                           </div>
-                          <div class="text-wrapper-13">맥주 0병 (0ml)</div>
-                          <div class="text-wrapper-16">지난 주랑 비슷해요</div>
+                          <div class="text-wrapper-13">
+                            맥주
+                            <span class="beer-weekly">Loading...</span>
+                          </div>
+                          <div class="text-wrapper-16 beer-difference">
+                            지난 주
+                          </div>
                         </div>
                       </div>
                       <div class="frame-20">
@@ -130,8 +136,13 @@
                           <div class="text-wrapper-12">
                             <img class="size48" src="img/wine.png" />
                           </div>
-                          <div class="text-wrapper-13">와인 0병 (0ml)</div>
-                          <div class="text-wrapper-16">지난 주랑 비슷해요</div>
+                          <div class="text-wrapper-13">
+                            와인
+                            <span class="wine-weekly">Loading...</span>
+                          </div>
+                          <div class="text-wrapper-16 wine-difference">
+                            지난 주
+                          </div>
                         </div>
                       </div>
                       <div class="frame-20">
@@ -139,11 +150,14 @@
                           <div class="text-wrapper-12">
                             <img class="size48" src="img/whiteAlcohol.png" />
                           </div>
-                          <div class="text-wrapper-13">막걸리 0병 (0ml)</div>
+                          <div class="text-wrapper-13">
+                            막걸리
+                            <span class="makgeolli-weekly">Loading...</span>
+                          </div>
                           <p class="element">
-                            <span class="text-wrapper-14">지난 주보다 </span>
-                            <span class="text-wrapper-17">1병</span>
-                            <span class="text-wrapper-14"> 덜 마셨어요</span>
+                            <span class="text-wrapper-14 makgeolli-difference"
+                              >지난 주보다
+                            </span>
                           </p>
                         </div>
                       </div>
@@ -165,10 +179,12 @@
                             <div class="text-wrapper-18">이번 주 음주 빈도</div>
                             <p class="element-2">
                               <span class="text-wrapper-19"
-                                >적정 음주 빈도보다
-                              </span>
-                              <span class="text-wrapper-20">일주일에 </span>
-                              <span class="text-wrapper-21">1회</span>
+                                >적정 음주 빈도보다</span
+                              >
+                              <span class="text-wrapper-20">일주일에</span>
+                              <span class="text-wrapper-21 drink-count"
+                                >Loading...</span
+                              >
                               <span class="text-wrapper-20"> 덜 마셔요</span>
                             </p>
                           </div>
@@ -177,7 +193,10 @@
                               <div class="text-wrapper-22 drink-count">
                                 100회
                               </div>
-                              <div class="rectangle"></div>
+                              <div
+                                class="rectangle"
+                                id="drink-count-rectangle"
+                              ></div>
                               <div class="text-wrapper-23">
                                 이번 주 음주 빈도
                               </div>
@@ -197,19 +216,19 @@
                             <div class="text-wrapper-18">이번 주 음주량</div>
                             <div class="frame-31">
                               <div class="frame-32">
-                                <div class="rectangle-3"></div>
+                                <div class="rectangle-soju"></div>
                                 <div class="text-wrapper-25">소주</div>
                               </div>
                               <div class="frame-32">
-                                <div class="rectangle-4"></div>
+                                <div class="rectangle-beer"></div>
                                 <div class="text-wrapper-25">맥주</div>
                               </div>
                               <div class="frame-32">
-                                <div class="rectangle-5"></div>
+                                <div class="rectangle-wine"></div>
                                 <div class="text-wrapper-25">와인</div>
                               </div>
                               <div class="frame-32">
-                                <div class="rectangle-6"></div>
+                                <div class="rectangle-makgeolli"></div>
                                 <div class="text-wrapper-25">막걸리</div>
                               </div>
                             </div>
@@ -258,7 +277,9 @@
                             <div class="frame-15">
                               <div class="frame-16">
                                 <div class="text-wrapper-9">일주일 평균</div>
-                                <div class="text-wrapper-30">1.5회</div>
+                                <div class="text-wrapper-30 average-frequency">
+                                  1.5회
+                                </div>
                               </div>
                               <div class="text-wrapper-10">
                                 <img class="size48" src="img/weekSmile.png" />
@@ -287,7 +308,7 @@
                               <div class="text-wrapper-12">
                                 <img class="size48" src="img/waterDrop.png" />
                               </div>
-                              <div class="text-wrapper-13">
+                              <div class="text-wrapper-13 soju-average">
                                 소주 100병 (36000ml)
                               </div>
                             </div>
@@ -297,7 +318,9 @@
                               <div class="text-wrapper-12">
                                 <img class="size48" src="img/beer.png" />
                               </div>
-                              <div class="text-wrapper-13">맥주 0병 (0ml)</div>
+                              <div class="text-wrapper-13 beer-average">
+                                맥주 0병 (0ml)
+                              </div>
                             </div>
                           </div>
                           <div class="frame-20">
@@ -305,7 +328,9 @@
                               <div class="text-wrapper-12">
                                 <img class="size48" src="img/wine.png" />
                               </div>
-                              <div class="text-wrapper-13">와인 0병 (0ml)</div>
+                              <div class="text-wrapper-13 wine-average">
+                                와인 0병 (0ml)
+                              </div>
                             </div>
                           </div>
                           <div class="frame-20">
@@ -316,7 +341,7 @@
                                   src="img/whiteAlcohol.png"
                                 />
                               </div>
-                              <div class="text-wrapper-13">
+                              <div class="text-wrapper-13 makgeolli-average">
                                 막걸리 0병 (0ml)
                               </div>
                             </div>
