@@ -3,9 +3,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const calendarDays = document.getElementById("calendar-days");
   const currentDate = new Date();
   const noDrinkButton = document.getElementById("no-drink-button");
+  const foodDropdown = document.getElementById("food-dropdown");
+  const foodContainers = document.querySelectorAll(".food-container");
+
   noDrinkButton.addEventListener("click", () => {
     alert("오늘 술을 안마셨군요! 축하드려요!");
   });
+
+  foodDropdown.addEventListener("click", (event) => {
+    if (event.target.classList.contains("dropdown-item")) {
+      const selectedFood = event.target.getAttribute("data-food");
+      foodContainers.forEach(container => {
+        if (container.getAttribute("data-food") === selectedFood) {
+          container.style.display = "flex";
+        } else {
+          container.style.display = "none";
+        }
+      });
+    }
+  });
+
   let currentMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
 
