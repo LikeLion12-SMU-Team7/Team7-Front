@@ -1,3 +1,8 @@
+// vector 클래스를 클릭하면 register1.html로 이동
+document.querySelector('.vector').addEventListener('click', function() {
+  window.location.href = 'register3.html';
+});
+
 document
   .getElementById("decreaseButton")
   .addEventListener("click", function () {

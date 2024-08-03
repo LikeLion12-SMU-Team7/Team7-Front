@@ -142,3 +142,60 @@
 .form-wrapper .btn:hover{
     background: linear-gradient(0deg, rgba(38, 38, 38, 0.10) 0%, rgba(38, 38, 38, 0.10) 100%), #1ABC9C;
 }
+
+.text-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.title-wrapper {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.text-description-2{
+    margin: 0;
+    color: var(--n-600);
+    font-size: 14px;
+    font-style: regular;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.dropdown-wrapper{
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    position: relative;
+}
+
+
+#dropdownMenuButton{
+    width: 264px;
+}
+
+.dropdown .btn{
+    margin: 0;
+    color: var(--N-800);
+    font-family: Pretendard;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.dropdown .dropdown-menu{
+    width: 100%;
+}
