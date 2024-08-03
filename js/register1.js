@@ -65,7 +65,7 @@ function validateForm() {
     localStorage.setItem("password", password);
     console.log("Email:", localStorage.getItem("email"));
     console.log("Password:", localStorage.getItem("password"));
-    //window.location.href = "register2.html";
+    window.location.href = "register2.html";
   }
 }
 function checkEmailUniqueness(email) {
