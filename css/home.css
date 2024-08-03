@@ -849,11 +849,6 @@ p{
   object-fit: contain;
 }
 
-.rice {
-  width: 48px;
-  height: 48px;
-}
-
 .running {
   width: 48px;
   height: 48px;
@@ -876,4 +871,20 @@ p{
 
 .dotButton {
   cursor: pointer;
+}
+
+.dropdown .btn{
+  padding: 0;
+}
+
+.food-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.food-container img{
+  width: 48px;
+  height: 48px;
 }

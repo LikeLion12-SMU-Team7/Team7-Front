@@ -131,8 +131,58 @@ function enableEdit() {
 
 // 변경 사항 저장 함수
 function saveChanges() {
-  document.querySelector(".setting-submit").style.display = "none";
-  document.querySelector(".fix-submit").style.display = "inline-block";
+  const accessToken = getCookie("accessToken");
 
-  disableFields();
+  if (!accessToken) {
+    console.error("액세스 토큰이 없습니다.");
+    return;
+  }
+
+  // 폼 필드에서 값 가져오기
+  const nickname = document.getElementById("nickname").value;
+  const gender = document.querySelector('input[name="gender"]:checked').value;
+  const sojuAmount = parseFloat(document.getElementById("sojuAmount").value);
+  const birthDate = document.getElementById("birth").value;
+  const weight = parseFloat(document.getElementById("weight").value);
+
+  // 요청 본문 생성
+  const requestBody = {
+    nickname: nickname,
+    gender: gender.toUpperCase(),
+    sojuAmount: sojuAmount,
+    birthDate: birthDate,
+    weight: weight,
+  };
+
+  // 변경 사항 저장을 위한 API 요청
+  fetch("http://3.37.23.33:8080/api/v1/user", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(requestBody),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.isSuccess) {
+        console.log("정보가 성공적으로 저장되었습니다.");
+        const updatedUserInfo = data.result;
+        console.log("Email:", updatedUserInfo.email);
+        console.log("Nickname:", updatedUserInfo.nickname);
+        console.log("Gender:", updatedUserInfo.gender);
+        console.log("Birthdate:", updatedUserInfo.birthDate);
+        console.log("Weight:", updatedUserInfo.weight);
+        console.log("Soju Amount:", updatedUserInfo.sojuAmount);
+
+        disableFields(); // 저장 후 필드 비활성화
+        document.querySelector(".setting-submit").style.display = "none"; // 저장 버튼 숨기기
+        document.querySelector(".fix-submit").style.display = "inline-block"; // 수정 버튼 보이기
+      } else {
+        console.error("정보 저장에 실패했습니다: ", data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("정보 저장 중 오류 발생:", error);
+    });
 }
