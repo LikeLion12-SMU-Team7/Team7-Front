@@ -1,15 +1,294 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/drinkRecord.css" />
+    <link rel="stylesheet" href="css/color.css" />
   </head>
   <body>
-    Hello world!
+    <div class="screen">
+      <div class="div">
+        <p class="text-wrapper">
+          상천이삼촌님,<br />오늘의 음주를 기록해주세요😎
+        </p>
+        <div class="navigation">
+          <div class="frame">
+            <img class="img" src="img/logo.svg" />
+            <div class="text-wrapper-2">술 없는 나</div>
+          </div>
+          <div class="navbar">
+            <div class="text-wrapper-3">홈</div>
+            <div class="text-wrapper-3">음주 분석</div>
+            <div class="text-wrapper-3">음주 기록</div>
+            <div class="text-wrapper-3">설정</div>
+          </div>
+        </div>
+        <div class="frame-2">
+          <div class="frame-3">
+            <div class="frame-wrapper">
+              <div class="div-wrapper">
+                <div class="frame-4">
+                  <div class="frame-5">
+                    <div id="month-label" class="text-wrapper-4">7월</div>
+                  </div>
+                  <div class="frame-6">
+                    <div class="frame-7">
+                      <div class="text-wrapper-5">일</div>
+                      <div class="text-wrapper-5">월</div>
+                      <div class="text-wrapper-5">화</div>
+                      <div class="text-wrapper-5">수</div>
+                      <div class="text-wrapper-5">목</div>
+                      <div class="text-wrapper-5">금</div>
+                      <div class="text-wrapper-5">토</div>
+                    </div>
+                    <div class="frame-4" id="calendar-days"></div>
+                  </div>
+                </div>
+                <div class="drink-wrap">
+                  <div class="color-drink">
+                    <span class="red"></span>
+                    <span>주량 초과</span>
+                    <span class="yellow"></span>
+                    <span>주량 적정 </span>
+                    <span class="green"></span>
+                    <span>주량 미만</span>
+                  </div>
+                  <div class="drink-check" id="no-drink-button">
+                    <span>오늘은 안 마셨어요😎</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="frame-9">
+              <span class="day">7월 18일 나의 음주 기록</span>
+              <div class="frame-10">
+                <div class="frame-11">
+                  <div class="frame-12">
+                    <div class="frame-13">
+                      <div class="ellipse" style="text-align: center">
+                        <img src="img/waterDrop.png" class="waterDrop" />
+                      </div>
+                      <div class="text-wrapper-8">소주 100잔 (36000ml)</div>
+                      <div class="drink-num-wrap">
+                        <div class="drink-num">
+                          <button
+                            type="button"
+                            class="minus"
+                            onclick="calCount('m', this);"
+                          >
+                            <div class="minus-text"><p>-</p></div>
+                          </button>
+                          <input
+                            type="text"
+                            name="pop_out"
+                            value="0잔"
+                            style="text-align: center"
+                          />
+                          <button
+                            type="button"
+                            class="plus"
+                            onclick="calCount('p',this);"
+                          >
+                            <div class="plus-text"><p>+</p></div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="frame-14"></div>
+                  </div>
+                </div>
+                <div class="frame-11">
+                  <div class="frame-12">
+                    <div class="frame-13">
+                      <div class="ellipse" style="text-align: center">
+                        <img src="img/beer.png" class="beer" />
+                      </div>
+                      <div class="text-wrapper-8">맥주 0잔 (0ml)</div>
+                      <div class="drink-num-wrap">
+                        <div class="drink-num">
+                          <button
+                            type="button"
+                            class="minus"
+                            onclick="calCount('m', this);"
+                          >
+                            <div class="minus-text"><p>-</p></div>
+                          </button>
+                          <input
+                            type="text"
+                            name="pop_out"
+                            value="0잔"
+                            style="text-align: center"
+                          />
+                          <button
+                            type="button"
+                            class="plus"
+                            onclick="calCount('p',this);"
+                          >
+                            <div class="plus-text"><p>+</p></div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="frame-10">
+                <div class="frame-11">
+                  <div class="frame-12">
+                    <div class="frame-13">
+                      <div class="ellipse" style="text-align: center">
+                        <img src="img/wine.png" class="wine" />
+                      </div>
+                      <div class="text-wrapper-8">와인 0잔 (0ml)</div>
+                      <div class="drink-num-wrap">
+                        <div class="drink-num">
+                          <button
+                            type="button"
+                            class="minus"
+                            onclick="calCount('m', this);"
+                          >
+                            <div class="minus-text"><p>-</p></div>
+                          </button>
+                          <input
+                            type="text"
+                            name="pop_out"
+                            value="0잔"
+                            style="text-align: center"
+                          />
+                          <button
+                            type="button"
+                            class="plus"
+                            onclick="calCount('p',this);"
+                          >
+                            <div class="plus-text"><p>+</p></div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="frame-11">
+                  <div class="frame-12">
+                    <div class="frame-13">
+                      <div class="ellipse" style="text-align: center">
+                        <img src="img/sake.png" class="sake" />
+                      </div>
+                      <div class="text-wrapper-7"></div>
+                      <div class="text-wrapper-8">막걸리 0잔 (0ml)</div>
+                      <div class="drink-num-wrap">
+                        <div class="drink-num">
+                          <button
+                            type="button"
+                            class="minus"
+                            onclick="calCount('m', this);"
+                          >
+                            <div class="minus-text"><p>-</p></div>
+                          </button>
+                          <input
+                            type="text"
+                            name="pop_out"
+                            value="0잔"
+                            style="text-align: center"
+                          />
+                          <button
+                            type="button"
+                            class="plus"
+                            onclick="calCount('p',this);"
+                          >
+                            <div class="plus-text"><p>+</p></div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="standard-frame">
+          <div class="frame-14">
+            <div class="textwrap-14-1">
+              <span>주종별 상세 기준</span>
+            </div>
+            <div class="textwrap-14-2">
+              <span>술 없는 나에서 사용하는 알코올 도수와 용량</span>
+            </div>
+            <div class="drinkData-frame">
+              <div class="dataFrame-1">
+                <div class="dataText-frame1">
+                  <span>주종</span>
+                  <span>도수</span>
+                  <span>1잔 당 용량</span>
+                  <span>1병 당 잔수</span>
+                </div>
+                <div class="dataText-frame2">
+                  <span><img src="/img/waterDrop.png" />소주</span>
+                  <span>17%</span>
+                  <span>50ml</span>
+                  <span>7잔</span>
+                </div>
+                <div class="dataText-frame2">
+                  <span><img src="/img/beer.png" />맥주</span>
+                  <span>4.5%</span>
+                  <span>500ml</span>
+                  <span>1잔</span>
+                </div>
+                <div class="dataText-frame2">
+                  <span><img src="/img/wine.png" />와인</span>
+                  <span>12%</span>
+                  <span>120ml</span>
+                  <span>6잔</span>
+                </div>
+                <div class="dataText-frame2">
+                  <span><img src="/img/sake.png" />막걸리</span>
+                  <span>6%</span>
+                  <span>250ml</span>
+                  <span>3잔</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="trash-Mainframe">
+          <div class="trash-frame">
+            <div class="trash-img"><img src="/img/garbage.png" /></div>
+            <div class="trash-textFrame">
+              <div class="text1">어제의 흑역사, 오늘의 추억</div>
+              <div class="text2">부끄러운 흑역사도 잊지 않고 기록하세요</div>
+            </div>
+            <div class="trashbtn-frame">
+              <div class="trash-btn" id="record-btn">
+                <span>흑역사 기록하기</span>
+              </div>
+            </div>
+          </div>
+          <!--<div class="after-trashFrame">
+            <div class="after-textFrame">
+              <div class="after-text1">어제의 흑역사, 오늘의 추억</div>
+              <div class="after-text2">
+                부끄러운 흑역사도 잊지 않고 기록하세요
+              </div>
+            </div>
+            <div class="afterbtn-frame">
+              <div class="after-btn" id="record-btn">
+                <span>흑역사 기록장<img src="/img/garbage.png" /></span>
+              </div>
+            </div>
+            <div class="after-text2Frame">
+              <div class="trash-text">탕후루 냠</div>
+              <div class="look-trash">
+                <span>무슨 일이 있었을까? 👀</span>
+              </div>
+            </div>
+          </div>-->
+        </div>
+      </div>
+    </div>
   </body>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="/js/drinkRecord.js"></script>
 </html>
