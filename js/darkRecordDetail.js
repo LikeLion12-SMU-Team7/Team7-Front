@@ -75,13 +75,69 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('submit-btn').addEventListener('click', function(event) {
         event.preventDefault(); // 폼 제출 기본 동작 방지
 
-        document.querySelector('form').submit();
-        alert('기록이 저장되었습니다.');
+        const updatedData = {
+            createdAt: new Date().toISOString().split('T')[0], // 현재 날짜로 설정
+            when: document.getElementById('when-content').value,
+            where: document.getElementById('where-content').value,
+            withWho: document.getElementById('who-content').value,
+            what: document.getElementById('what-content').value,
+            how: document.getElementById('how-content').value,
+            why: document.getElementById('why-content').value,
+            content: document.getElementById('reflection-content').value
+        };
+
+        fetch(`http://3.37.23.33:8080/api/v1/memory/${memoryId}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify(updatedData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.isSuccess) {
+                alert('기록이 저장되었습니다.');
+                location.reload(); // 페이지 새로고침
+            } else {
+                console.error('Failed to update memory details:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     });
 
     document.getElementById('delete-btn').addEventListener('click', function() {
         if (confirm('기록을 정말 삭제하시겠습니까?')) {
-            alert('기록이 삭제되었습니다.');
+            fetch(`http://3.37.23.33:8080/api/v1/memory/${memoryId}`, {
+                method: "DELETE",
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.isSuccess) {
+                    alert('기록이 삭제되었습니다.');
+                    window.location.href = '/darkRecord.html';
+                } else {
+                    console.error('Failed to delete memory:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
     });
 });
