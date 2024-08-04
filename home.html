@@ -22,16 +22,19 @@
             </div>
           </div>
           <div class="container">
-            <p class="text-wrapper">
-              상천이삼촌님,<br />술 없는 날을 함께 만들어요
-            </p>
+            <div class="text-wrapper">
+              <p class="text-wrapper">
+                <p id="user-nickname" class="text-wrapper"></p>
+                술 없는 날을 함께 만들어요!
+              </p>
+            </div>
             <div class="frame-2">
               <div class="frame-3">
                 <div class="frame-wrapper">
                   <div class="div-wrapper">
                     <div class="frame-4">
                       <div class="frame-5">
-                        <div id="month-label" class="text-wrapper-4">7월</div>
+                        <div id="month-label" class="text-wrapper-4"></div>
                       </div>
                       <div class="frame-6">
                         <div class="frame-7">
@@ -53,13 +56,13 @@
                     <div class="frame-11-1">
                       <div class="frame-23">
                         <div class="frame-24">
-                          <div class="text-wrapper-15">연속 333일째 기록 완료</div>
+                          <div id="user-continuousRecordDay" class="text-wrapper-15"></div>
                           <div class="text-wrapper-12">
                             <img src="img/running.png" class="running" />
                           </div>
                           <p class="element-text-wrapper">
-                            <span class="span">이번 달 나의 </span>
-                            <span class="text-wrapper-16">술 없는 날 15일 </span>
+                            <span class="span">이번 달 나의</span>
+                            <span id="user-alcoholFreeDay" class="text-wrapper-16"></span>
                           </p>
                         </div>
                         <div class="button-small-green" id="no-drink-button">
@@ -69,23 +72,15 @@
                     </div>
                     <div class="frame-11">
                       <div class="frame-12">
-                        <div class="frame-13">
-                          <div class="overlap-group-wrapper">
-                            <div class="overlap-group">
-                              <div class="ellipse">
-                                <img src="img/womanCrown.png" class="woman-crown" />
-                              </div>
-                              <div class="text-wrapper-7"></div>
+                          <div class="frame-13">
+                            <div id="emoji" class="overlap-group-wrapper">
                             </div>
+                            <div id="user-monthly-drink-count" class="text-wrapper-8"></div>
                           </div>
-                          <div class="text-wrapper-8">100%</div>
+                          <div class="frame-14">
+                            <div id="user-monthly-drink-count-difference" class="text-wrapper-9"></div>
+                          </div>
                         </div>
-                        <div class="frame-14">
-                          <div class="text-wrapper-9">나의 성별 적정량</div>
-    
-                          <div class="text-wrapper-10">100병</div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                   <div class="frame-15">
@@ -99,7 +94,7 @@
                           </div>
                           <div class="frame-21-1">
                             <p class="text-wrapper-9">이번 달 음주로 섭취한 칼로리</p>
-                            <div class="text-wrapper-14">1,238kcal</div>
+                            <p id="user-calorie" class="text-wrapper-14"></p>
                           </div>
                         </div>
                     </div>
@@ -113,38 +108,39 @@
                               </div>
                             </div>
                             <div class="">
+
                               <div class="food-container" data-food="rice">
                                 <div class="text-wrapper-12">
                                   <img src="img/rice.png" class="rice" />
                                 </div>
-                                <div class="text-wrapper-13">국밥 1000그릇</div>
+                                <div class="text-wrapper-13">국밥<p class="food-count"></p></div>
                               </div>
                               <div class="food-container" data-food="tanghulu" style="display: none;">
                                 <div class="text-wrapper-12">
                                   <img src="img/tanghulu.png" class="tanghulu" />
                                 </div>
-                                <div class="text-wrapper-13">탕후루 100개</div>
+                                <div class="text-wrapper-13">탕후루<p class="food-count"></p></div>
                               </div>
                               <div class="food-container" data-food="chicken" style="display: none;">
                                 <div class="text-wrapper-12">
                                   <img src="img/chicken.png" class="chicken" />
                                 </div>
-                                <div class="text-wrapper-13">치킨 100마리</div>
+                                <div class="text-wrapper-13">치킨<p class="food-count"></p></div>
                               </div>
                             </div>
                           </div>
                           <div class="frame-21">
                             <p class="text-wrapper-9">이번 달 예상 음주 지출</p>
-                            <div class="text-wrapper-14">123,456원</div>
+                            <p id="user-expectedCost"class="text-wrapper-14"></p>
                           </div>
                         </div>
                         <div class="dropdown">
                           <a class="dotButton btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img class="img" src="img/dot3.svg" />
                           </a>
-                          <ul class="dropdown-menu" id="food-dropdown">
-                            <li><a class="dropdown-item" href="#" data-food="tanghulu">탕후루</a></li>
+                          <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#" data-food="rice">국밥</a></li>
+                            <li><a class="dropdown-item" href="#" data-food="tanghulu">탕후루</a></li>
                             <li><a class="dropdown-item" href="#" data-food="chicken">치킨</a></li>
                           </ul>
                         </div>
@@ -157,15 +153,18 @@
               <div class="frame-25">
                 <div class="frame-26">
                   <div class="frame-27">
-                    <div class="text-wrapper-18">나의 포인트</div>
+                    <div class="frame-33">
+                      <div class="text-wrapper-21">나의 포인트</div>
+                      <p class="text-wrapper-22">포인트를 사용해서 AI 분석 보고서를 열람할 수 있어요</p>
+                    </div>
+
                     <div class="frame-28">
-                      <p class="p">포인트를 사용해서 AI 분석 보고서를 열람할 수 있어요</p>
                       <div class="frame-29">
                         <div class="text-wrapper-19">
                           <img src="img/money.png" class="money" />
                         </div>
                         <div class="frame-30">
-                          <div class="text-wrapper-20">8888</div>
+                          <p id="user-point" class="text-wrapper-20"></p>
                         </div>
                       </div>
                     </div>
@@ -224,7 +223,18 @@
                   </div>
                 </div>
                 <div class="group-32">
-                  <img src="img/commercial.png" />
+                  <div class="slider">
+                    <div class="slides">
+                        <div class="slide"><img src="./img/commercial1.png" alt="Image 1"></div>
+                        <div class="slide"><img src="./img/commercial2.png" alt="Image 2"></div>
+                        <div class="slide"><img src="./img/commercial3.png" alt="Image 3"></div>
+                    </div>
+                    <div class="dots">
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
                 </div>
               </div>
             </div>
