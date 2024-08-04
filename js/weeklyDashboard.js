@@ -273,7 +273,7 @@ function updateAverageDrinkAmounts() {
         // Update soju average
         const sojuAverageElements = document.querySelectorAll(".soju-average");
         sojuAverageElements.forEach((element) => {
-          element.textContent = `${sojuAverage.toFixed(1)}병 (${(
+          element.textContent = `소주 ${sojuAverage.toFixed(1)}병 (${(
             sojuAverage * SOJU_VOLUME
           ).toLocaleString()}ml)`;
         });
@@ -281,7 +281,7 @@ function updateAverageDrinkAmounts() {
         // Update wine average
         const wineAverageElements = document.querySelectorAll(".wine-average");
         wineAverageElements.forEach((element) => {
-          element.textContent = `${wineAverage.toFixed(1)}병 (${(
+          element.textContent = `와인 ${wineAverage.toFixed(1)}병 (${(
             wineAverage * WINE_VOLUME
           ).toLocaleString()}ml)`;
         });
@@ -289,7 +289,7 @@ function updateAverageDrinkAmounts() {
         // Update beer average
         const beerAverageElements = document.querySelectorAll(".beer-average");
         beerAverageElements.forEach((element) => {
-          element.textContent = `${beerAverage.toFixed(1)}병 (${(
+          element.textContent = `맥주 ${beerAverage.toFixed(1)}병 (${(
             beerAverage * BEER_VOLUME
           ).toLocaleString()}ml)`;
         });
@@ -298,7 +298,7 @@ function updateAverageDrinkAmounts() {
         const makgeolliAverageElements =
           document.querySelectorAll(".makgeolli-average");
         makgeolliAverageElements.forEach((element) => {
-          element.textContent = `${makgeolliAverage.toFixed(1)}병 (${(
+          element.textContent = `막걸리 ${makgeolliAverage.toFixed(1)}병 (${(
             makgeolliAverage * MAKGGEOLLI_VOLUME
           ).toLocaleString()}ml)`;
         });
@@ -381,10 +381,10 @@ function updateGenderBasedStats() {
 
     const { gender } = userData;
 
-    const MALE_FREQUENCY = 5;
-    const FEMALE_FREQUENCY = 3;
-    const MALE_AMOUNT = 15;
-    const FEMALE_AMOUNT = 10;
+    const MALE_FREQUENCY = 2;
+    const FEMALE_FREQUENCY = 2;
+    const MALE_AMOUNT = 28;
+    const FEMALE_AMOUNT = 14;
 
     const recommendedFrequency =
       gender === "MALE" ? MALE_FREQUENCY : FEMALE_FREQUENCY;
@@ -462,9 +462,9 @@ function updateGenderBasedStats() {
           } else if (averageAmountDifference < 0) {
             amountMessageElement.innerHTML = `성별 적정 음주량보다 일주일에 <span class="text-wrapper-17">${Math.abs(
               averageAmountDifference.toFixed(1)
-            )}잔</span> 덜 마셔요 (${(
-              Math.abs(averageAmountDifference) * 50
-            ).toLocaleString()}ml)`;
+            )}잔</span> 덜 마셔요 (${(Math.abs(averageAmountDifference) * 50)
+              .toFixed(1)
+              .toLocaleString()}ml)`;
           } else {
             amountMessageElement.textContent = "성별 적정 음주량입니다.";
           }
