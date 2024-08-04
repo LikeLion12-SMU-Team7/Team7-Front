@@ -38,6 +38,31 @@ function getCookie(name) {
 function fetchUserData() {
   const accessToken = getCookie("accessToken");
 
+  fetch("http://3.37.23.33:8080/api/v1/user", {
+    method: "GET",
+    headers: {
+      accept: "*/*",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.isSuccess && data.result) {
+        const { nickname } = data.result;
+        const textWrapperElement = document.querySelector(".text-wrapper");
+        if (textWrapperElement) {
+          textWrapperElement.innerHTML = `${nickname}님의<br />음주 습관 분석`;
+        } else {
+          console.error("Text wrapper element not found");
+        }
+      } else {
+        console.error("Failed to fetch user data from the API:", data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching user data from the API:", error);
+    });
+
   return fetch("http://3.37.23.33:8080/api/v1/user", {
     method: "GET",
     headers: {
