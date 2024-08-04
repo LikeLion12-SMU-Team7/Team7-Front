@@ -113,7 +113,7 @@ function validateForm() {
     window.location.href = "register2.html";
   }
 }
-function checkEmailUniqueness(email) {
+/*function checkEmailUniqueness(email) {
   const token = "token";
   return fetch(
     `http://3.37.23.33:8080/api/v1/auth/join/email-check/${encodeURIComponent(
@@ -131,4 +131,4 @@ function checkEmailUniqueness(email) {
       console.log("API Response:", data);
       return !data;
     });
-}
+}*/
