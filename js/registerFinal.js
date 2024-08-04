@@ -42,5 +42,5 @@ document.getElementById("startButton").addEventListener("click", function () {
       alert("회원가입 실패");
     });
 
-  window.location.href = "home.html";
+  window.location.href = "index.html";
 });
