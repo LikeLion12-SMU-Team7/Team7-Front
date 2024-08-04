@@ -27,6 +27,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", (event) => {
+  const monthlyStatsElement = document.querySelector(".monthly-dashboard");
+  if (monthlyStatsElement) {
+    monthlyStatsElement.addEventListener("click", () => {
+      window.location.href = "/monthlyDashboard.html";
+    });
+  } else {
+    console.error("Monthly statistics element not found");
+  }
+});
+
 // Function to get a cookie by name
 function getCookie(name) {
   const value = `; ${document.cookie}`;
