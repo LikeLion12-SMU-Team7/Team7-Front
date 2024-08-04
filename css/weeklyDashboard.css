@@ -588,7 +588,6 @@ p {
   align-self: stretch;
   font-family: "Pretendard-Regular", Helvetica;
   font-weight: 400;
-  color: transparent;
   font-size: 16px;
   letter-spacing: 0;
   position: relative;
@@ -678,7 +677,7 @@ p {
 .div-wrapper .rectangle-2 {
   position: relative;
   width: 32px;
-  height: 20px;
+  height: 50px;
   background-color: var(--n-200);
   border-radius: 4px;
 }
