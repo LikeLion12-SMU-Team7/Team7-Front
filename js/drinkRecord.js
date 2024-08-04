@@ -4,38 +4,65 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentDate = new Date();
   const noDrinkButton = document.getElementById("no-drink-button");
 
+  let currentMonth = currentDate.getMonth();
+  let currentYear = currentDate.getFullYear();
+
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
-  noDrinkButton.addEventListener("click", () => {
+  function fetchDrinkRecord() {
     const date = currentDate.toISOString().split("T")[0];
     const token = getCookie("accessToken");
 
-    fetch("http://3.37.23.33:8080/api/v1/history/none-drink", {
-      method: "POST",
+    return fetch(`http://3.37.23.33:8080/api/v1/history?date=${date}`, {
+      method: "GET",
       headers: {
         accept: "*/*",
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ date }),
     })
       .then((response) => response.json())
       .then((data) => {
-        alert("오늘 술을 안마셨군요! 축하드려요!");
-        console.log("Success:", data);
+        return data;
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("기록에 실패했습니다.");
+        return {};
       });
-  });
+  }
 
-  let currentMonth = currentDate.getMonth();
-  let currentYear = currentDate.getFullYear();
+  function updateDrinkRecordDisplay(record) {
+    const sojuInput = document.querySelector('input[data-drink="soju"]');
+    const beerInput = document.querySelector('input[data-drink="beer"]');
+    const wineInput = document.querySelector('input[data-drink="wine"]');
+    const makgeolliInput = document.querySelector(
+      'input[data-drink="makgeolli"]'
+    );
+
+    sojuInput.value = `${record.sojuConsumption || 0}잔`;
+    beerInput.value = `${record.beerConsumption || 0}잔`;
+    wineInput.value = `${record.wineConsumption || 0}잔`;
+    makgeolliInput.value = `${record.makgeolliConsumption || 0}잔`;
+  }
+
+  function getCurrentDrinkCounts() {
+    const sojuInput = document.querySelector('input[data-drink="soju"]');
+    const beerInput = document.querySelector('input[data-drink="beer"]');
+    const wineInput = document.querySelector('input[data-drink="wine"]');
+    const makgeolliInput = document.querySelector(
+      'input[data-drink="makgeolli"]'
+    );
+
+    return {
+      soju: parseInt(sojuInput.value) || 0,
+      beer: parseInt(beerInput.value) || 0,
+      wine: parseInt(wineInput.value) || 0,
+      makgeolli: parseInt(makgeolliInput.value) || 0,
+    };
+  }
 
   function updateCalendar(month, year) {
     const monthNames = [
@@ -96,8 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  updateCalendar(currentMonth, currentYear);
-
   function calCount(action, element) {
     const inputField = element.parentElement.querySelector(
       'input[name="pop_out"]'
@@ -112,6 +137,42 @@ document.addEventListener("DOMContentLoaded", () => {
       currentValue -= 1;
     }
     inputField.value = currentValue + "잔";
+    updateDrinkRecord(element.dataset.drink, currentValue);
+  }
+
+  function updateDrinkRecord(drinkType, count) {
+    const date = currentDate.toISOString().split("T")[0];
+    const token = getCookie("accessToken");
+
+    const currentCounts = getCurrentDrinkCounts();
+
+    if (drinkType === "soju") currentCounts.soju = count;
+    else if (drinkType === "beer") currentCounts.beer = count;
+    else if (drinkType === "wine") currentCounts.wine = count;
+    else if (drinkType === "makgeolli") currentCounts.makgeolli = count;
+
+    fetch("http://3.37.23.33:8080/api/v1/history", {
+      method: "POST",
+      headers: {
+        accept: "*/*",
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        date,
+        sojuConsumption: currentCounts.soju,
+        wineConsumption: currentCounts.wine,
+        beerConsumption: currentCounts.beer,
+        makgeolliConsumption: currentCounts.makgeolli,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   document
@@ -139,4 +200,42 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("record-btn").addEventListener("click", function () {
     window.location.href = "darkRecord.html";
   });
+
+  noDrinkButton.addEventListener("click", () => {
+    const date = currentDate.toISOString().split("T")[0];
+    const token = getCookie("accessToken");
+
+    fetch("http://3.37.23.33:8080/api/v1/history/none-drink", {
+      method: "POST",
+      headers: {
+        accept: "*/*",
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ date }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        alert("오늘 술을 안마셨군요! 축하드려요!");
+        updateDrinkRecordDisplay({
+          sojuConsumption: 0,
+          beerConsumption: 0,
+          wineConsumption: 0,
+          makgeolliConsumption: 0,
+        });
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("기록에 실패했습니다.");
+      });
+  });
+
+  // Fetch and display the initial drink record
+  fetchDrinkRecord().then(updateDrinkRecordDisplay);
+
+  // Make sure the calCount function is globally accessible
+  window.calCount = calCount;
+
+  updateCalendar(currentMonth, currentYear);
 });
