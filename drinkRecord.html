@@ -5,25 +5,27 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/drinkRecord.css" />
     <link rel="stylesheet" href="css/color.css" />
+    <link rel="stylesheet" href="css/navigation.css" />
   </head>
   <body>
+    <nav class="navigation">
+      <div class="nav-div">
+        <div class="nav-frame">
+          <img id="logo" class="logo-img" src="img/logo.svg" />
+        </div>
+        <div class="navbar-list">
+          <a href="./home.html" class="navbar-items">홈</a>
+          <a href="./weeklyDashboard.html"  class="navbar-items">음주 분석</a>
+          <a href="./drinkRecord.html" class="navbar-items">음주 기록</a>
+          <a href="./setting.html" class="navbar-items">설정</a>
+        </div>
+      </div>
+    </nav>
     <div class="screen">
       <div class="div">
         <p class="text-wrapper">
           상천이삼촌님,<br />오늘의 음주를 기록해주세요😎
         </p>
-        <div class="navigation">
-          <div class="frame">
-            <img class="img" src="img/logo.svg" />
-            <div class="text-wrapper-2">술 없는 나</div>
-          </div>
-          <div class="navbar">
-            <div class="text-wrapper-3">홈</div>
-            <div class="text-wrapper-3">음주 분석</div>
-            <div class="text-wrapper-3">음주 기록</div>
-            <div class="text-wrapper-3">설정</div>
-          </div>
-        </div>
         <div class="frame-2">
           <div class="frame-3">
             <div class="frame-wrapper">
@@ -279,6 +281,11 @@
         </div>
       </div>
     </div>
+    <script>
+      document.getElementById("logo").addEventListener("click", function() {
+        window.location.href = "./home.html";
+      });
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
