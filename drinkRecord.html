@@ -69,12 +69,13 @@
                       <div class="ellipse" style="text-align: center">
                         <img src="img/waterDrop.png" class="waterDrop" />
                       </div>
-                      <div class="text-wrapper-8">소주 100잔 (36000ml)</div>
+                      <div class="text-wrapper-8">소주 0잔 (0ml)</div>
                       <div class="drink-num-wrap">
                         <div class="drink-num">
                           <button
                             type="button"
                             class="minus"
+                            data-drink="soju"
                             onclick="calCount('m', this);"
                           >
                             <div class="minus-text"><p>-</p></div>
@@ -84,11 +85,13 @@
                             name="pop_out"
                             value="0잔"
                             style="text-align: center"
+                            data-drink="soju"
                           />
                           <button
                             type="button"
                             class="plus"
-                            onclick="calCount('p',this);"
+                            data-drink="soju"
+                            onclick="calCount('p', this);"
                           >
                             <div class="plus-text"><p>+</p></div>
                           </button>
@@ -110,6 +113,7 @@
                           <button
                             type="button"
                             class="minus"
+                            data-drink="beer"
                             onclick="calCount('m', this);"
                           >
                             <div class="minus-text"><p>-</p></div>
@@ -119,11 +123,13 @@
                             name="pop_out"
                             value="0잔"
                             style="text-align: center"
+                            data-drink="beer"
                           />
                           <button
                             type="button"
                             class="plus"
-                            onclick="calCount('p',this);"
+                            data-drink="beer"
+                            onclick="calCount('p', this);"
                           >
                             <div class="plus-text"><p>+</p></div>
                           </button>
@@ -146,6 +152,7 @@
                           <button
                             type="button"
                             class="minus"
+                            data-drink="wine"
                             onclick="calCount('m', this);"
                           >
                             <div class="minus-text"><p>-</p></div>
@@ -155,11 +162,13 @@
                             name="pop_out"
                             value="0잔"
                             style="text-align: center"
+                            data-drink="wine"
                           />
                           <button
                             type="button"
                             class="plus"
-                            onclick="calCount('p',this);"
+                            data-drink="wine"
+                            onclick="calCount('p', this);"
                           >
                             <div class="plus-text"><p>+</p></div>
                           </button>
@@ -181,6 +190,7 @@
                           <button
                             type="button"
                             class="minus"
+                            data-drink="makgeolli"
                             onclick="calCount('m', this);"
                           >
                             <div class="minus-text"><p>-</p></div>
@@ -190,11 +200,13 @@
                             name="pop_out"
                             value="0잔"
                             style="text-align: center"
+                            data-drink="makgeolli"
                           />
                           <button
                             type="button"
                             class="plus"
-                            onclick="calCount('p',this);"
+                            data-drink="makgeolli"
+                            onclick="calCount('p', this);"
                           >
                             <div class="plus-text"><p>+</p></div>
                           </button>
@@ -264,31 +276,12 @@
               </div>
             </div>
           </div>
-          <!--<div class="after-trashFrame">
-            <div class="after-textFrame">
-              <div class="after-text1">어제의 흑역사, 오늘의 추억</div>
-              <div class="after-text2">
-                부끄러운 흑역사도 잊지 않고 기록하세요
-              </div>
-            </div>
-            <div class="afterbtn-frame">
-              <div class="after-btn" id="record-btn">
-                <span>흑역사 기록장<img src="/img/garbage.png" /></span>
-              </div>
-            </div>
-            <div class="after-text2Frame">
-              <div class="trash-text">탕후루 냠</div>
-              <div class="look-trash">
-                <span>무슨 일이 있었을까? 👀</span>
-              </div>
-            </div>
-          </div>-->
         </div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="/js/drinkRecord.js"></script>
   </body>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="/js/drinkRecord.js"></script>
 </html>
