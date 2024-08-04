@@ -3,9 +3,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const calendarDays = document.getElementById("calendar-days");
   const currentDate = new Date();
   const noDrinkButton = document.getElementById("no-drink-button");
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
   noDrinkButton.addEventListener("click", () => {
-    alert("오늘 술을 안마셨군요! 축하드려요!");
+    const date = currentDate.toISOString().split("T")[0];
+    const token = getCookie("accessToken");
+
+    fetch("http://3.37.23.33:8080/api/v1/history/none-drink", {
+      method: "POST",
+      headers: {
+        accept: "*/*",
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ date }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        alert("오늘 술을 안마셨군요! 축하드려요!");
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("기록에 실패했습니다.");
+      });
   });
+
   let currentMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
 
@@ -70,46 +98,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCalendar(currentMonth, currentYear);
 
-  // You can add event listeners for buttons to navigate between months if needed
-});
-function calCount(action, element) {
-  const inputField = element.parentElement.querySelector(
-    'input[name="pop_out"]'
-  );
-  let currentValue = parseInt(inputField.value);
-  if (isNaN(currentValue)) {
-    currentValue = 0;
-  }
-  if (action === "p") {
-    currentValue += 1;
-  } else if (action === "m" && currentValue > 0) {
-    currentValue -= 1;
-  }
-  inputField.value = currentValue + "잔";
-}
-
-document
-  .querySelector('input[name="pop_out"]')
-  .addEventListener("input", function () {
-    let inputValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-    if (inputValue === "") {
-      inputValue = 0;
+  function calCount(action, element) {
+    const inputField = element.parentElement.querySelector(
+      'input[name="pop_out"]'
+    );
+    let currentValue = parseInt(inputField.value);
+    if (isNaN(currentValue)) {
+      currentValue = 0;
     }
-    this.value = parseInt(inputValue) + "잔";
+    if (action === "p") {
+      currentValue += 1;
+    } else if (action === "m" && currentValue > 0) {
+      currentValue -= 1;
+    }
+    inputField.value = currentValue + "잔";
+  }
+
+  document
+    .querySelector('input[name="pop_out"]')
+    .addEventListener("input", function () {
+      let inputValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+      if (inputValue === "") {
+        inputValue = 0;
+      }
+      this.value = parseInt(inputValue) + "잔";
+    });
+
+  function updateDate() {
+    const dayElement = document.querySelector(".day");
+    const currentDate = new Date();
+    const month = currentDate.getMonth() + 1;
+    const day = currentDate.getDate();
+    const formattedDate = `${month}월 ${day}일`;
+
+    dayElement.textContent = `${formattedDate} 나의 음주 기록`;
+  }
+
+  updateDate();
+
+  document.getElementById("record-btn").addEventListener("click", function () {
+    window.location.href = "darkRecord.html";
   });
-
-function updateDate() {
-  const dayElement = document.querySelector(".day");
-  const currentDate = new Date();
-  const month = currentDate.getMonth() + 1;
-  const day = currentDate.getDate();
-  const formattedDate = `${month}월 ${day}일`;
-
-  dayElement.textContent = `${formattedDate} 나의 음주 기록`;
-}
-
-updateDate();
-
-document.getElementById("record-btn").addEventListener("click", function () {
-  window.location.href = "darkRecord.html";
 });
