@@ -208,6 +208,7 @@ p {
   display: flex;
   width: 238px;
   align-items: center;
+  justify-content: center;
   gap: 24px;
   position: relative;
   flex: 0 0 auto;

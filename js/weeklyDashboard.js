@@ -1,3 +1,32 @@
+document.addEventListener("DOMContentLoaded", (event) => {
+  // Get the current date
+  const currentDate = new Date();
+
+  // Get the start and end date of the current week
+  const startOfWeek = new Date(currentDate);
+  startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
+  const endOfWeek = new Date(currentDate);
+  endOfWeek.setDate(currentDate.getDate() - currentDate.getDay() + 6);
+
+  // Format the dates to "MM월 DD일"
+  const formatDate = (date) => {
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return `${month}월 ${day}일`;
+  };
+
+  const startOfWeekFormatted = formatDate(startOfWeek);
+  const endOfWeekFormatted = formatDate(endOfWeek);
+
+  // Update the date range in the HTML
+  const dateRangeElement = document.querySelector(".weeks");
+  if (dateRangeElement) {
+    dateRangeElement.textContent = `${startOfWeekFormatted} ~ ${endOfWeekFormatted}`;
+  } else {
+    console.error("Date range element not found");
+  }
+});
+
 // Function to get a cookie by name
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -8,11 +37,6 @@ function getCookie(name) {
 // Fetch user data to get gender
 function fetchUserData() {
   const accessToken = getCookie("accessToken");
-
-  if (!accessToken) {
-    console.error("Access token not found in cookies");
-    return;
-  }
 
   return fetch("http://3.37.23.33:8080/api/v1/user", {
     method: "GET",
