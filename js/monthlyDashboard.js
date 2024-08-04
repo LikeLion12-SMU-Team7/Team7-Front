@@ -130,16 +130,16 @@ function updateDrinkStatistics() {
         const drinkCountDiffElement =
           document.querySelector(".drink-count-diff");
         if (drinkCountDiff === 0) {
-          drinkCountDiffElement.textContent = "지난 주랑 비슷해요";
+          drinkCountDiffElement.textContent = "지난 달과 비슷해요";
         } else if (drinkCountDiff > 0) {
-          drinkCountDiffElement.innerHTML = `지난 주보다 <span class="text-wrapper-15">${drinkCountDiff}회</span> 더 마셨어요`;
+          drinkCountDiffElement.innerHTML = `지난 달보다 <span class="text-wrapper-15">${drinkCountDiff}회</span> 더 마셨어요`;
           drinkCountDiffElement.parentElement.parentElement.style.backgroundColor =
             "var(--point-redw50)";
           document
             .querySelector(".drink-count-diff")
             .parentElement.querySelector(".size48").src = "img/vomit.png";
         } else {
-          drinkCountDiffElement.innerHTML = `지난 주보다 <span class="text-wrapper-17">${Math.abs(
+          drinkCountDiffElement.innerHTML = `지난 달보다 <span class="text-wrapper-17">${Math.abs(
             drinkCountDiff
           )}회</span> 덜 마셨어요`;
           drinkCountDiffElement.parentElement.parentElement.style.backgroundColor =
@@ -161,9 +161,9 @@ function updateDrinkStatistics() {
           ".total-alcohol-diff"
         );
         if (totalAlcoholDiff === 0) {
-          totalAlcoholDiffElement.textContent = "지난 주랑 비슷해요";
+          totalAlcoholDiffElement.textContent = "지난 달과 비슷해요";
         } else if (totalAlcoholDiff > 0) {
-          totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 주보다 <span class="text-wrapper-15">${totalAlcoholDiff.toFixed(
+          totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 달보다 <span class="text-wrapper-15">${totalAlcoholDiff.toFixed(
             1
           )}g</span> 더 마셨어요`;
           totalAlcoholDiffElement.parentElement.parentElement.style.backgroundColor =
@@ -172,7 +172,7 @@ function updateDrinkStatistics() {
             .querySelector(".total-alcohol-diff")
             .parentElement.querySelector(".size48").src = "img/vomit.png";
         } else {
-          totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 주보다 <span class="text-wrapper-17">${Math.abs(
+          totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 달보다 <span class="text-wrapper-17">${Math.abs(
             totalAlcoholDiff.toFixed(1)
           )}g</span> 덜 마셨어요`;
           totalAlcoholDiffElement.parentElement.parentElement.style.backgroundColor =
@@ -232,11 +232,11 @@ function updateDrinkDifferences() {
         ).toLocaleString()}ml)`;
         const sojuDiffElement = document.querySelector(".soju-difference");
         if (sojuDifference === 0) {
-          sojuDiffElement.textContent = "지난 주랑 비슷해요";
+          sojuDiffElement.textContent = "지난 달과 비슷해요";
         } else if (sojuDifference > 0) {
-          sojuDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-15">${sojuDifference}병</span> 만큼 더 마셨어요`;
+          sojuDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-15">${sojuDifference}병</span> 만큼 더 마셨어요`;
         } else {
-          sojuDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-17">${Math.abs(
+          sojuDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-17">${Math.abs(
             sojuDifference
           )}병</span> 만큼 덜 마셨어요`;
         }
@@ -248,11 +248,11 @@ function updateDrinkDifferences() {
         ).toLocaleString()}ml)`;
         const wineDiffElement = document.querySelector(".wine-difference");
         if (wineDifference === 0) {
-          wineDiffElement.textContent = "지난 주랑 비슷해요";
+          wineDiffElement.textContent = "지난 달과 비슷해요";
         } else if (wineDifference > 0) {
-          wineDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-15">${wineDifference}병</span> 만큼 더 마셨어요`;
+          wineDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-15">${wineDifference}병</span> 만큼 더 마셨어요`;
         } else {
-          wineDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-17">${Math.abs(
+          wineDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-17">${Math.abs(
             wineDifference
           )}병</span> 만큼 덜 마셨어요`;
         }
@@ -264,11 +264,11 @@ function updateDrinkDifferences() {
         ).toLocaleString()}ml)`;
         const beerDiffElement = document.querySelector(".beer-difference");
         if (beerDifference === 0) {
-          beerDiffElement.textContent = "지난 주랑 비슷해요";
+          beerDiffElement.textContent = "지난 달과 비슷해요";
         } else if (beerDifference > 0) {
-          beerDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-15">${beerDifference}병</span> 만큼 더 마셨어요`;
+          beerDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-15">${beerDifference}병</span> 만큼 더 마셨어요`;
         } else {
-          beerDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-17">${Math.abs(
+          beerDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-17">${Math.abs(
             beerDifference
           )}병</span> 만큼 덜 마셨어요`;
         }
@@ -283,11 +283,11 @@ function updateDrinkDifferences() {
           ".makgeolli-difference"
         );
         if (makgeolliDifference === 0) {
-          makgeolliDiffElement.textContent = "지난 주랑 비슷해요";
+          makgeolliDiffElement.textContent = "지난 달과 비슷해요";
         } else if (makgeolliDifference > 0) {
-          makgeolliDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-15">${makgeolliDifference}병</span> 만큼 더 마셨어요`;
+          makgeolliDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-15">${makgeolliDifference}병</span> 만큼 더 마셨어요`;
         } else {
-          makgeolliDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-17">${Math.abs(
+          makgeolliDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-17">${Math.abs(
             makgeolliDifference
           )}병</span> 만큼 덜 마셨어요`;
         }
@@ -434,11 +434,11 @@ function updatemonthlyDrinkFrequency() {
 
         // Update the message based on drink frequency
         if (drinkCount > 2) {
-          messageElement.innerHTML = `적정 음주 빈도보다 일주일에 <span class="text-wrapper-15">${
+          messageElement.innerHTML = `적정 음주 빈도보다 한 달에 <span class="text-wrapper-15">${
             drinkCount - 2
           }회</span> 더 마셔요`;
         } else if (drinkCount < 2) {
-          messageElement.innerHTML = `적정 음주 빈도보다 일주일에 <span class="text-wrapper-17">${
+          messageElement.innerHTML = `적정 음주 빈도보다 한 달에 <span class="text-wrapper-17">${
             2 - drinkCount
           }회</span> 덜 마셔요`;
         } else {
@@ -516,7 +516,7 @@ function updateGenderBasedStats() {
             ".frequency-comparison"
           );
           if (drinkCount > recommendedFrequency) {
-            frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 일주일에 <span class="text-wrapper-15">${
+            frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 한 달에 <span class="text-wrapper-15">${
               drinkCount - recommendedFrequency
             }회</span> 더 마셔요`;
 
@@ -524,7 +524,7 @@ function updateGenderBasedStats() {
             rectangle11.style.backgroundColor = "var(--point-red)";
             drinkFrequencyRectangle.style.backgroundColor = "var(--point-red)";
           } else if (drinkCount < recommendedFrequency) {
-            frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 일주일에 <span class="text-wrapper-17">${
+            frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 한 달에 <span class="text-wrapper-17">${
               recommendedFrequency - drinkCount
             }회</span> 덜 마셔요`;
 
@@ -569,13 +569,13 @@ function updateGenderBasedStats() {
           const amountMessageElement =
             document.querySelector(".amount-comparison");
           if (averageAmountDifference > 0) {
-            amountMessageElement.innerHTML = `성별 적정 음주량보다 일주일에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
+            amountMessageElement.innerHTML = `성별 적정 음주량보다 한 달에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
               1
             )}잔</span> 더 마셔요 (${(
               averageAmountDifference * 50
             ).toLocaleString()}ml)`;
           } else if (averageAmountDifference < 0) {
-            amountMessageElement.innerHTML = `성별 적정 음주량보다 일주일에 <span class="text-wrapper-17">${Math.abs(
+            amountMessageElement.innerHTML = `성별 적정 음주량보다 한 달에 <span class="text-wrapper-17">${Math.abs(
               averageAmountDifference.toFixed(1)
             )}잔</span> 덜 마셔요 (${(Math.abs(averageAmountDifference) * 50)
               .toFixed(1)
@@ -658,11 +658,11 @@ function updateAgeBasedStats() {
             ".frequency-age-comparison"
           );
           if (drinkCount > RECOMMENDED_AGE_FREQUENCY) {
-            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 일주일에 <span class="text-wrapper-15">${
+            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 한 달에 <span class="text-wrapper-15">${
               drinkCount - RECOMMENDED_AGE_FREQUENCY
             }회</span> 더 마셔요`;
           } else if (drinkCount < RECOMMENDED_AGE_FREQUENCY) {
-            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 일주일에 <span class="text-wrapper-17">${
+            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 한 달에 <span class="text-wrapper-17">${
               RECOMMENDED_AGE_FREQUENCY - drinkCount
             }회</span> 덜 마셔요`;
           } else {
@@ -698,13 +698,13 @@ function updateAgeBasedStats() {
             ".amount-age-comparison"
           );
           if (averageAmountDifference > 0) {
-            amountMessageElement.innerHTML = `연령 적정 음주량보다 일주일에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
+            amountMessageElement.innerHTML = `연령 적정 음주량보다 한 달에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
               1
             )}잔</span> 더 마셔요 (${(
               averageAmountDifference * 50
             ).toLocaleString()}ml)`;
           } else if (averageAmountDifference < 0) {
-            amountMessageElement.innerHTML = `연령 적정 음주량보다 일주일에 <span class="text-wrapper-17">${Math.abs(
+            amountMessageElement.innerHTML = `연령 적정 음주량보다 한 달에 <span class="text-wrapper-17">${Math.abs(
               averageAmountDifference.toFixed(1)
             )}잔</span> 덜 마셔요 (${(Math.abs(averageAmountDifference) * 50)
               .toFixed(1)
