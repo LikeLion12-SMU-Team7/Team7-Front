@@ -48,6 +48,7 @@ function getCookie(name) {
 // Fetch user data to get gender
 function fetchUserData() {
   const accessToken = getCookie("accessToken");
+  console.log(accessToken);
 
   fetch("http://3.37.23.33:8080/api/v1/user", {
     method: "GET",
@@ -106,7 +107,7 @@ function updateDrinkStatistics() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
+  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -197,7 +198,7 @@ function updateDrinkDifferences() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/compared", {
+  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/compared", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -208,10 +209,10 @@ function updateDrinkDifferences() {
     .then((data) => {
       if (data.isSuccess && data.result) {
         const {
-          weeklySojuCount,
-          weeklyWineCount,
-          weeklyBeerCount,
-          weeklyMakgeolliCount,
+          monthlySojuCount,
+          monthlyWineCount,
+          monthlyBeerCount,
+          monthlyMakgeolliCount,
           sojuDifference,
           wineDifference,
           beerDifference,
@@ -224,10 +225,10 @@ function updateDrinkDifferences() {
         const WINE_VOLUME = 750;
         const MAKGGEOLLI_VOLUME = 750;
 
-        // Update soju weekly count and difference
-        const sojuCountElement = document.querySelector(".soju-weekly");
-        sojuCountElement.textContent = `${weeklySojuCount}병 (${(
-          weeklySojuCount * SOJU_VOLUME
+        // Update soju monthly count and difference
+        const sojuCountElement = document.querySelector(".soju-monthly");
+        sojuCountElement.textContent = `${monthlySojuCount}병 (${(
+          monthlySojuCount * SOJU_VOLUME
         ).toLocaleString()}ml)`;
         const sojuDiffElement = document.querySelector(".soju-difference");
         if (sojuDifference === 0) {
@@ -240,10 +241,10 @@ function updateDrinkDifferences() {
           )}병</span> 만큼 덜 마셨어요`;
         }
 
-        // Update wine weekly count and difference
-        const wineCountElement = document.querySelector(".wine-weekly");
-        wineCountElement.textContent = `${weeklyWineCount}병 (${(
-          weeklyWineCount * WINE_VOLUME
+        // Update wine monthly count and difference
+        const wineCountElement = document.querySelector(".wine-monthly");
+        wineCountElement.textContent = `${monthlyWineCount}병 (${(
+          monthlyWineCount * WINE_VOLUME
         ).toLocaleString()}ml)`;
         const wineDiffElement = document.querySelector(".wine-difference");
         if (wineDifference === 0) {
@@ -256,10 +257,10 @@ function updateDrinkDifferences() {
           )}병</span> 만큼 덜 마셨어요`;
         }
 
-        // Update beer weekly count and difference
-        const beerCountElement = document.querySelector(".beer-weekly");
-        beerCountElement.textContent = `${weeklyBeerCount}병 (${(
-          weeklyBeerCount * BEER_VOLUME
+        // Update beer monthly count and difference
+        const beerCountElement = document.querySelector(".beer-monthly");
+        beerCountElement.textContent = `${monthlyBeerCount}병 (${(
+          monthlyBeerCount * BEER_VOLUME
         ).toLocaleString()}ml)`;
         const beerDiffElement = document.querySelector(".beer-difference");
         if (beerDifference === 0) {
@@ -272,11 +273,11 @@ function updateDrinkDifferences() {
           )}병</span> 만큼 덜 마셨어요`;
         }
 
-        // Update makgeolli weekly count and difference
+        // Update makgeolli monthly count and difference
         const makgeolliCountElement =
-          document.querySelector(".makgeolli-weekly");
-        makgeolliCountElement.textContent = `${weeklyMakgeolliCount}병 (${(
-          weeklyMakgeolliCount * MAKGGEOLLI_VOLUME
+          document.querySelector(".makgeolli-monthly");
+        makgeolliCountElement.textContent = `${monthlyMakgeolliCount}병 (${(
+          monthlyMakgeolliCount * MAKGGEOLLI_VOLUME
         ).toLocaleString()}ml)`;
         const makgeolliDiffElement = document.querySelector(
           ".makgeolli-difference"
@@ -293,20 +294,20 @@ function updateDrinkDifferences() {
 
         // Calculate the total volume
         const totalVolume =
-          weeklySojuCount * SOJU_VOLUME +
-          weeklyBeerCount * BEER_VOLUME +
-          weeklyWineCount * WINE_VOLUME +
-          weeklyMakgeolliCount * MAKGGEOLLI_VOLUME;
+          monthlySojuCount * SOJU_VOLUME +
+          monthlyBeerCount * BEER_VOLUME +
+          monthlyWineCount * WINE_VOLUME +
+          monthlyMakgeolliCount * MAKGGEOLLI_VOLUME;
 
         // Update the heights of the rectangles
         const sojuHeight =
-          ((weeklySojuCount * SOJU_VOLUME) / totalVolume) * 100;
+          ((monthlySojuCount * SOJU_VOLUME) / totalVolume) * 100;
         const beerHeight =
-          ((weeklyBeerCount * BEER_VOLUME) / totalVolume) * 100;
+          ((monthlyBeerCount * BEER_VOLUME) / totalVolume) * 100;
         const wineHeight =
-          ((weeklyWineCount * WINE_VOLUME) / totalVolume) * 100;
+          ((monthlyWineCount * WINE_VOLUME) / totalVolume) * 100;
         const makgeolliHeight =
-          ((weeklyMakgeolliCount * MAKGGEOLLI_VOLUME) / totalVolume) * 100;
+          ((monthlyMakgeolliCount * MAKGGEOLLI_VOLUME) / totalVolume) * 100;
 
         // document.querySelector(".rectangle-3").style.height = `${sojuHeight}px`;
         // document.querySelector(".rectangle-4").style.height = `${beerHeight}px`;
@@ -331,7 +332,7 @@ function updateAverageDrinkAmounts() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/average", {
+  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/average", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -402,7 +403,7 @@ function updateAverageDrinkAmounts() {
     });
 }
 
-function updateWeeklyDrinkFrequency() {
+function updatemonthlyDrinkFrequency() {
   const accessToken = getCookie("accessToken");
 
   if (!accessToken) {
@@ -410,7 +411,7 @@ function updateWeeklyDrinkFrequency() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
+  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -481,7 +482,7 @@ function updateGenderBasedStats() {
       gender === "MALE" ? MALE_FREQUENCY : FEMALE_FREQUENCY;
     const recommendedAmount = gender === "MALE" ? MALE_AMOUNT : FEMALE_AMOUNT;
 
-    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
+    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -547,7 +548,7 @@ function updateGenderBasedStats() {
         console.error("Error fetching data from the API:", error);
       });
 
-    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/average", {
+    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/average", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -641,7 +642,7 @@ function updateAgeBasedStats() {
     const RECOMMENDED_AGE_FREQUENCY = 2; // Replace with the actual recommended frequency for the age
     const RECOMMENDED_AGE_AMOUNT = 28; // Replace with the actual recommended amount for the age
 
-    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
+    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -675,7 +676,7 @@ function updateAgeBasedStats() {
         console.error("Error fetching data from the API:", error);
       });
 
-    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/average", {
+    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/average", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -757,6 +758,6 @@ function updateAgeBasedStats() {
 updateDrinkStatistics();
 updateDrinkDifferences();
 updateAverageDrinkAmounts();
-updateWeeklyDrinkFrequency();
+updatemonthlyDrinkFrequency();
 updateGenderBasedStats();
 updateAgeBasedStats();
