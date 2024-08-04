@@ -208,6 +208,7 @@ p {
   display: flex;
   width: 238px;
   align-items: center;
+  justify-content: center;
   gap: 24px;
   position: relative;
   flex: 0 0 auto;
@@ -608,7 +609,7 @@ p {
 }
 .div-wrapper .frame-27 {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 44px;
   padding: 0px 24px;
   position: relative;
@@ -623,7 +624,7 @@ p {
   position: relative;
 }
 .div-wrapper .text-wrapper-22 {
-  width: 41px;
+  width: 50px;
   margin-top: -1px;
   font-family: "Pretendard-Medium", Helvetica;
   font-weight: 500;
@@ -918,4 +919,36 @@ p {
 .size48 {
   width: 48px;
   height: 48px;
+}
+.rectangle-drink-count {
+  position: relative;
+
+  width: 32px;
+  background-color: var(--main-green-2);
+  border-radius: 4px;
+}
+
+.div-wrapper .rectangle-3 {
+  position: relative;
+  align-self: stretch;
+  background-color: var(--afua-XJ);
+  border-radius: 4px 4px;
+}
+.div-wrapper .rectangle-4 {
+  position: relative;
+  align-self: stretch;
+  background-color: var(--dzn-q-og);
+  border-radius: 4px 4px;
+}
+.div-wrapper .rectangle-5 {
+  position: relative;
+  align-self: stretch;
+  background-color: var(--zcu-6wx);
+  border-radius: 4px 4px;
+}
+.div-wrapper .rectangle-6 {
+  position: relative;
+  align-self: stretch;
+  background-color: var(--k-OO-cn-n);
+  border-radius: 4px 4px;
 }

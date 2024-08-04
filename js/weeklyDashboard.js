@@ -1,3 +1,43 @@
+document.addEventListener("DOMContentLoaded", (event) => {
+  // Get the current date
+  const currentDate = new Date();
+
+  // Get the start and end date of the current week
+  const startOfWeek = new Date(currentDate);
+  startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
+  const endOfWeek = new Date(currentDate);
+  endOfWeek.setDate(currentDate.getDate() - currentDate.getDay() + 6);
+
+  // Format the dates to "MM월 DD일"
+  const formatDate = (date) => {
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return `${month}월 ${day}일`;
+  };
+
+  const startOfWeekFormatted = formatDate(startOfWeek);
+  const endOfWeekFormatted = formatDate(endOfWeek);
+
+  // Update the date range in the HTML
+  const dateRangeElement = document.querySelector(".weeks");
+  if (dateRangeElement) {
+    dateRangeElement.textContent = `${startOfWeekFormatted} ~ ${endOfWeekFormatted}`;
+  } else {
+    console.error("Date range element not found");
+  }
+});
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  const monthlyStatsElement = document.querySelector(".monthly-dashboard");
+  if (monthlyStatsElement) {
+    monthlyStatsElement.addEventListener("click", () => {
+      window.location.href = "/monthlyDashboard.html";
+    });
+  } else {
+    console.error("Monthly statistics element not found");
+  }
+});
+
 // Function to get a cookie by name
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -9,10 +49,30 @@ function getCookie(name) {
 function fetchUserData() {
   const accessToken = getCookie("accessToken");
 
-  if (!accessToken) {
-    console.error("Access token not found in cookies");
-    return;
-  }
+  fetch("http://3.37.23.33:8080/api/v1/user", {
+    method: "GET",
+    headers: {
+      accept: "*/*",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.isSuccess && data.result) {
+        const { nickname } = data.result;
+        const textWrapperElement = document.querySelector(".text-wrapper");
+        if (textWrapperElement) {
+          textWrapperElement.innerHTML = `${nickname}님의<br />음주 습관 분석`;
+        } else {
+          console.error("Text wrapper element not found");
+        }
+      } else {
+        console.error("Failed to fetch user data from the API:", data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching user data from the API:", error);
+    });
 
   return fetch("http://3.37.23.33:8080/api/v1/user", {
     method: "GET",
@@ -72,10 +132,20 @@ function updateDrinkStatistics() {
           drinkCountDiffElement.textContent = "지난 주랑 비슷해요";
         } else if (drinkCountDiff > 0) {
           drinkCountDiffElement.innerHTML = `지난 주보다 <span class="text-wrapper-15">${drinkCountDiff}회</span> 더 마셨어요`;
+          drinkCountDiffElement.parentElement.parentElement.style.backgroundColor =
+            "var(--point-redw50)";
+          document
+            .querySelector(".drink-count-diff")
+            .parentElement.querySelector(".size48").src = "img/vomit.png";
         } else {
           drinkCountDiffElement.innerHTML = `지난 주보다 <span class="text-wrapper-17">${Math.abs(
             drinkCountDiff
           )}회</span> 덜 마셨어요`;
+          drinkCountDiffElement.parentElement.parentElement.style.backgroundColor =
+            "var(--point-greenw-50)";
+          document
+            .querySelector(".drink-count-diff")
+            .parentElement.querySelector(".size48").src = "img/starface.png";
         }
 
         // Update the total alcohol
@@ -95,10 +165,20 @@ function updateDrinkStatistics() {
           totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 주보다 <span class="text-wrapper-15">${totalAlcoholDiff.toFixed(
             1
           )}g</span> 더 마셨어요`;
+          totalAlcoholDiffElement.parentElement.parentElement.style.backgroundColor =
+            "var(--point-redw50)";
+          document
+            .querySelector(".total-alcohol-diff")
+            .parentElement.querySelector(".size48").src = "img/vomit.png";
         } else {
           totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 주보다 <span class="text-wrapper-17">${Math.abs(
             totalAlcoholDiff.toFixed(1)
           )}g</span> 덜 마셨어요`;
+          totalAlcoholDiffElement.parentElement.parentElement.style.backgroundColor =
+            "var(--point-greenw-50)";
+          document
+            .querySelector(".total-alcohol-diff")
+            .parentElement.querySelector(".size48").src = "img/starface.png";
         }
       } else {
         console.error("Failed to fetch data from the API:", data.message);
@@ -228,12 +308,12 @@ function updateDrinkDifferences() {
         const makgeolliHeight =
           ((weeklyMakgeolliCount * MAKGGEOLLI_VOLUME) / totalVolume) * 100;
 
-        document.querySelector(".rectangle-3").style.height = `${sojuHeight}px`;
-        document.querySelector(".rectangle-4").style.height = `${beerHeight}px`;
-        document.querySelector(".rectangle-5").style.height = `${wineHeight}px`;
-        document.querySelector(
-          ".rectangle-6"
-        ).style.height = `${makgeolliHeight}px`;
+        // document.querySelector(".rectangle-3").style.height = `${sojuHeight}px`;
+        // document.querySelector(".rectangle-4").style.height = `${beerHeight}px`;
+        // document.querySelector(".rectangle-5").style.height = `${wineHeight}px`;
+        // document.querySelector(
+        //   ".rectangle-6"
+        // ).style.height = `${makgeolliHeight}px`;
       } else {
         console.error("Failed to fetch data from the API:", data.message);
       }
@@ -261,8 +341,13 @@ function updateAverageDrinkAmounts() {
     .then((response) => response.json())
     .then((data) => {
       if (data.isSuccess && data.result) {
-        const { sojuAverage, wineAverage, beerAverage, makgeolliAverage } =
-          data.result;
+        const {
+          averageFrequency,
+          sojuAverage,
+          wineAverage,
+          beerAverage,
+          makgeolliAverage,
+        } = data.result;
 
         // Bottle volumes
         const SOJU_VOLUME = 360;
@@ -270,10 +355,16 @@ function updateAverageDrinkAmounts() {
         const WINE_VOLUME = 750;
         const MAKGGEOLLI_VOLUME = 750;
 
+        const averageFrequencyElements =
+          document.querySelectorAll(".average-frequency");
+        averageFrequencyElements.forEach((element) => {
+          element.textContent = `${averageFrequency.toFixed(2)} 회`;
+        });
+
         // Update soju average
         const sojuAverageElements = document.querySelectorAll(".soju-average");
         sojuAverageElements.forEach((element) => {
-          element.textContent = `${sojuAverage.toFixed(1)}병 (${(
+          element.textContent = `소주 ${sojuAverage.toFixed(1)}병 (${(
             sojuAverage * SOJU_VOLUME
           ).toLocaleString()}ml)`;
         });
@@ -281,7 +372,7 @@ function updateAverageDrinkAmounts() {
         // Update wine average
         const wineAverageElements = document.querySelectorAll(".wine-average");
         wineAverageElements.forEach((element) => {
-          element.textContent = `${wineAverage.toFixed(1)}병 (${(
+          element.textContent = `와인 ${wineAverage.toFixed(1)}병 (${(
             wineAverage * WINE_VOLUME
           ).toLocaleString()}ml)`;
         });
@@ -289,7 +380,7 @@ function updateAverageDrinkAmounts() {
         // Update beer average
         const beerAverageElements = document.querySelectorAll(".beer-average");
         beerAverageElements.forEach((element) => {
-          element.textContent = `${beerAverage.toFixed(1)}병 (${(
+          element.textContent = `맥주 ${beerAverage.toFixed(1)}병 (${(
             beerAverage * BEER_VOLUME
           ).toLocaleString()}ml)`;
         });
@@ -298,7 +389,7 @@ function updateAverageDrinkAmounts() {
         const makgeolliAverageElements =
           document.querySelectorAll(".makgeolli-average");
         makgeolliAverageElements.forEach((element) => {
-          element.textContent = `${makgeolliAverage.toFixed(1)}병 (${(
+          element.textContent = `막걸리 ${makgeolliAverage.toFixed(1)}병 (${(
             makgeolliAverage * MAKGGEOLLI_VOLUME
           ).toLocaleString()}ml)`;
         });
@@ -381,10 +472,10 @@ function updateGenderBasedStats() {
 
     const { gender } = userData;
 
-    const MALE_FREQUENCY = 5;
-    const FEMALE_FREQUENCY = 3;
-    const MALE_AMOUNT = 15;
-    const FEMALE_AMOUNT = 10;
+    const MALE_FREQUENCY = 2;
+    const FEMALE_FREQUENCY = 2;
+    const MALE_AMOUNT = 28;
+    const FEMALE_AMOUNT = 14;
 
     const recommendedFrequency =
       gender === "MALE" ? MALE_FREQUENCY : FEMALE_FREQUENCY;
@@ -402,6 +493,24 @@ function updateGenderBasedStats() {
         if (data.isSuccess && data.result) {
           const { drinkCount } = data.result;
 
+          // Update the height of the rectangle-11
+          let heights = drinkCount * 25;
+          if (heights > 100) {
+            heights = 100;
+          }
+          const rectangle11 = document.querySelector(".rectangle-11");
+          rectangle11.style.height = `${heights}px`;
+
+          // Update the height of the drink-frequency-rectangle
+          let height = drinkCount * 25;
+          if (height > 100) {
+            height = 100;
+          }
+          const drinkFrequencyRectangle = document.querySelector(
+            ".drink-frequency-rectangle"
+          );
+          drinkFrequencyRectangle.style.height = `${height}px`;
+
           const frequencyMessageElement = document.querySelector(
             ".frequency-comparison"
           );
@@ -409,22 +518,27 @@ function updateGenderBasedStats() {
             frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 일주일에 <span class="text-wrapper-15">${
               drinkCount - recommendedFrequency
             }회</span> 더 마셔요`;
+
+            // Change color to red
+            rectangle11.style.backgroundColor = "var(--point-red)";
+            drinkFrequencyRectangle.style.backgroundColor = "var(--point-red)";
           } else if (drinkCount < recommendedFrequency) {
             frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 일주일에 <span class="text-wrapper-17">${
               recommendedFrequency - drinkCount
             }회</span> 덜 마셔요`;
+
+            // Change color to green
+            rectangle11.style.backgroundColor = "var(--main-green-2)";
+            drinkFrequencyRectangle.style.backgroundColor =
+              "var(--main-green-2)";
           } else {
             frequencyMessageElement.textContent = "성별 적정 음주 빈도입니다.";
-          }
 
-          // Update the height of the rectangle
-          let height = drinkCount * 25;
-          if (height > 100) {
-            height = 100;
+            // Change color to green
+            rectangle11.style.backgroundColor = "var(--main-green-2)";
+            drinkFrequencyRectangle.style.backgroundColor =
+              "var(--main-green-2)";
           }
-          document.querySelector(
-            ".drink-frequency-rectangle"
-          ).style.height = `${height}px`;
         } else {
           console.error("Failed to fetch data from the API:", data.message);
         }
@@ -462,12 +576,25 @@ function updateGenderBasedStats() {
           } else if (averageAmountDifference < 0) {
             amountMessageElement.innerHTML = `성별 적정 음주량보다 일주일에 <span class="text-wrapper-17">${Math.abs(
               averageAmountDifference.toFixed(1)
-            )}잔</span> 덜 마셔요 (${(
-              Math.abs(averageAmountDifference) * 50
-            ).toLocaleString()}ml)`;
+            )}잔</span> 덜 마셔요 (${(Math.abs(averageAmountDifference) * 50)
+              .toFixed(1)
+              .toLocaleString()}ml)`;
           } else {
             amountMessageElement.textContent = "성별 적정 음주량입니다.";
           }
+
+          const myDrinkAmountElements =
+            document.querySelectorAll(".my-drink-amount");
+          myDrinkAmountElements.forEach((element) => {
+            element.textContent = `${totalAverageAmount.toFixed(1)}잔`;
+          });
+
+          const recommendDrinkAmountElements = document.querySelectorAll(
+            ".recommend-drink-amount"
+          );
+          recommendDrinkAmountElements.forEach((element) => {
+            element.textContent = `${recommendedAmount}잔`;
+          });
 
           // Update the height of the rectangles based on average amounts
           const sojuHeight = (sojuAverage / totalAverageAmount) * 100;
@@ -476,16 +603,145 @@ function updateGenderBasedStats() {
           const makgeolliHeight = (makgeolliAverage / totalAverageAmount) * 100;
 
           document.querySelector(
-            ".rectangle-3"
+            ".rectangle-7"
           ).style.height = `${sojuHeight}px`;
           document.querySelector(
-            ".rectangle-4"
+            ".rectangle-8"
           ).style.height = `${beerHeight}px`;
           document.querySelector(
-            ".rectangle-5"
+            ".rectangle-9"
           ).style.height = `${wineHeight}px`;
           document.querySelector(
-            ".rectangle-6"
+            ".rectangle-10"
+          ).style.height = `${makgeolliHeight}px`;
+        } else {
+          console.error("Failed to fetch data from the API:", data.message);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data from the API:", error);
+      });
+  });
+}
+
+function updateAgeBasedStats() {
+  const accessToken = getCookie("accessToken");
+
+  if (!accessToken) {
+    console.error("Access token not found in cookies");
+    return;
+  }
+
+  // Assuming you have the age information in the userData
+  fetchUserData().then((userData) => {
+    if (!userData) return;
+
+    const { age } = userData;
+
+    const RECOMMENDED_AGE_FREQUENCY = 2; // Replace with the actual recommended frequency for the age
+    const RECOMMENDED_AGE_AMOUNT = 28; // Replace with the actual recommended amount for the age
+
+    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
+      method: "GET",
+      headers: {
+        accept: "*/*",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isSuccess && data.result) {
+          const { drinkCount } = data.result;
+
+          const frequencyMessageElement = document.querySelector(
+            ".frequency-age-comparison"
+          );
+          if (drinkCount > RECOMMENDED_AGE_FREQUENCY) {
+            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 일주일에 <span class="text-wrapper-15">${
+              drinkCount - RECOMMENDED_AGE_FREQUENCY
+            }회</span> 더 마셔요`;
+          } else if (drinkCount < RECOMMENDED_AGE_FREQUENCY) {
+            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 일주일에 <span class="text-wrapper-17">${
+              RECOMMENDED_AGE_FREQUENCY - drinkCount
+            }회</span> 덜 마셔요`;
+          } else {
+            frequencyMessageElement.textContent = "연령 적정 음주 빈도입니다.";
+          }
+        } else {
+          console.error("Failed to fetch data from the API:", data.message);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data from the API:", error);
+      });
+
+    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/average", {
+      method: "GET",
+      headers: {
+        accept: "*/*",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isSuccess && data.result) {
+          const { sojuAverage, wineAverage, beerAverage, makgeolliAverage } =
+            data.result;
+
+          const totalAverageAmount =
+            sojuAverage + wineAverage + beerAverage + makgeolliAverage;
+          const averageAmountDifference =
+            totalAverageAmount - RECOMMENDED_AGE_AMOUNT;
+
+          const amountMessageElement = document.querySelector(
+            ".amount-age-comparison"
+          );
+          if (averageAmountDifference > 0) {
+            amountMessageElement.innerHTML = `연령 적정 음주량보다 일주일에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
+              1
+            )}잔</span> 더 마셔요 (${(
+              averageAmountDifference * 50
+            ).toLocaleString()}ml)`;
+          } else if (averageAmountDifference < 0) {
+            amountMessageElement.innerHTML = `연령 적정 음주량보다 일주일에 <span class="text-wrapper-17">${Math.abs(
+              averageAmountDifference.toFixed(1)
+            )}잔</span> 덜 마셔요 (${(Math.abs(averageAmountDifference) * 50)
+              .toFixed(1)
+              .toLocaleString()}ml)`;
+          } else {
+            amountMessageElement.textContent = "연령 적정 음주량입니다.";
+          }
+
+          const myDrinkAmountElements =
+            document.querySelectorAll(".my-drink-amount");
+          myDrinkAmountElements.forEach((element) => {
+            element.textContent = `${totalAverageAmount.toFixed(1)}잔`;
+          });
+
+          const recommendDrinkAmountElements = document.querySelectorAll(
+            ".recommend-drink-amount"
+          );
+          recommendDrinkAmountElements.forEach((element) => {
+            element.textContent = `${RECOMMENDED_AGE_AMOUNT}잔`;
+          });
+
+          // Update the height of the rectangles based on average amounts
+          const sojuHeight = (sojuAverage / totalAverageAmount) * 100;
+          const beerHeight = (beerAverage / totalAverageAmount) * 100;
+          const wineHeight = (wineAverage / totalAverageAmount) * 100;
+          const makgeolliHeight = (makgeolliAverage / totalAverageAmount) * 100;
+
+          document.querySelector(
+            ".rectangle-7"
+          ).style.height = `${sojuHeight}px`;
+          document.querySelector(
+            ".rectangle-8"
+          ).style.height = `${beerHeight}px`;
+          document.querySelector(
+            ".rectangle-9"
+          ).style.height = `${wineHeight}px`;
+          document.querySelector(
+            ".rectangle-10"
           ).style.height = `${makgeolliHeight}px`;
         } else {
           console.error("Failed to fetch data from the API:", data.message);
@@ -503,3 +759,4 @@ updateDrinkDifferences();
 updateAverageDrinkAmounts();
 updateWeeklyDrinkFrequency();
 updateGenderBasedStats();
+updateAgeBasedStats();
