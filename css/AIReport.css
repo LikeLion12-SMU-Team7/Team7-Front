@@ -72,6 +72,10 @@
 .text-frame2 {
   padding-left: 40px;
   padding-top: 30px;
+  width: 1164px;
+  height: 220px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 .frame4 {
   padding-left: 65px;
