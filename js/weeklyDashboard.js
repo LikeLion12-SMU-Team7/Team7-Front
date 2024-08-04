@@ -413,6 +413,24 @@ function updateGenderBasedStats() {
         if (data.isSuccess && data.result) {
           const { drinkCount } = data.result;
 
+          // Update the height of the rectangle-11
+          let heights = drinkCount * 25;
+          if (heights > 100) {
+            heights = 100;
+          }
+          const rectangle11 = document.querySelector(".rectangle-11");
+          rectangle11.style.height = `${heights}px`;
+
+          // Update the height of the drink-frequency-rectangle
+          let height = drinkCount * 25;
+          if (height > 100) {
+            height = 100;
+          }
+          const drinkFrequencyRectangle = document.querySelector(
+            ".drink-frequency-rectangle"
+          );
+          drinkFrequencyRectangle.style.height = `${height}px`;
+
           const frequencyMessageElement = document.querySelector(
             ".frequency-comparison"
           );
@@ -420,22 +438,27 @@ function updateGenderBasedStats() {
             frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 일주일에 <span class="text-wrapper-15">${
               drinkCount - recommendedFrequency
             }회</span> 더 마셔요`;
+
+            // Change color to red
+            rectangle11.style.backgroundColor = "var(--point-red)";
+            drinkFrequencyRectangle.style.backgroundColor = "var(--point-red)";
           } else if (drinkCount < recommendedFrequency) {
             frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 일주일에 <span class="text-wrapper-17">${
               recommendedFrequency - drinkCount
             }회</span> 덜 마셔요`;
+
+            // Change color to green
+            rectangle11.style.backgroundColor = "var(--main-green-2)";
+            drinkFrequencyRectangle.style.backgroundColor =
+              "var(--main-green-2)";
           } else {
             frequencyMessageElement.textContent = "성별 적정 음주 빈도입니다.";
-          }
 
-          // Update the height of the rectangle
-          let height = drinkCount * 25;
-          if (height > 100) {
-            height = 100;
+            // Change color to green
+            rectangle11.style.backgroundColor = "var(--main-green-2)";
+            drinkFrequencyRectangle.style.backgroundColor =
+              "var(--main-green-2)";
           }
-          document.querySelector(
-            ".drink-frequency-rectangle"
-          ).style.height = `${height}px`;
         } else {
           console.error("Failed to fetch data from the API:", data.message);
         }
@@ -521,9 +544,139 @@ function updateGenderBasedStats() {
   });
 }
 
+function updateAgeBasedStats() {
+  const accessToken = getCookie("accessToken");
+
+  if (!accessToken) {
+    console.error("Access token not found in cookies");
+    return;
+  }
+
+  // Assuming you have the age information in the userData
+  fetchUserData().then((userData) => {
+    if (!userData) return;
+
+    const { age } = userData;
+
+    const RECOMMENDED_AGE_FREQUENCY = 2; // Replace with the actual recommended frequency for the age
+    const RECOMMENDED_AGE_AMOUNT = 28; // Replace with the actual recommended amount for the age
+
+    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
+      method: "GET",
+      headers: {
+        accept: "*/*",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isSuccess && data.result) {
+          const { drinkCount } = data.result;
+
+          const frequencyMessageElement = document.querySelector(
+            ".frequency-age-comparison"
+          );
+          if (drinkCount > RECOMMENDED_AGE_FREQUENCY) {
+            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 일주일에 <span class="text-wrapper-15">${
+              drinkCount - RECOMMENDED_AGE_FREQUENCY
+            }회</span> 더 마셔요`;
+          } else if (drinkCount < RECOMMENDED_AGE_FREQUENCY) {
+            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 일주일에 <span class="text-wrapper-17">${
+              RECOMMENDED_AGE_FREQUENCY - drinkCount
+            }회</span> 덜 마셔요`;
+          } else {
+            frequencyMessageElement.textContent = "연령 적정 음주 빈도입니다.";
+          }
+        } else {
+          console.error("Failed to fetch data from the API:", data.message);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data from the API:", error);
+      });
+
+    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/average", {
+      method: "GET",
+      headers: {
+        accept: "*/*",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isSuccess && data.result) {
+          const { sojuAverage, wineAverage, beerAverage, makgeolliAverage } =
+            data.result;
+
+          const totalAverageAmount =
+            sojuAverage + wineAverage + beerAverage + makgeolliAverage;
+          const averageAmountDifference =
+            totalAverageAmount - RECOMMENDED_AGE_AMOUNT;
+
+          const amountMessageElement = document.querySelector(
+            ".amount-age-comparison"
+          );
+          if (averageAmountDifference > 0) {
+            amountMessageElement.innerHTML = `연령 적정 음주량보다 일주일에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
+              1
+            )}잔</span> 더 마셔요 (${(
+              averageAmountDifference * 50
+            ).toLocaleString()}ml)`;
+          } else if (averageAmountDifference < 0) {
+            amountMessageElement.innerHTML = `연령 적정 음주량보다 일주일에 <span class="text-wrapper-17">${Math.abs(
+              averageAmountDifference.toFixed(1)
+            )}잔</span> 덜 마셔요 (${(Math.abs(averageAmountDifference) * 50)
+              .toFixed(1)
+              .toLocaleString()}ml)`;
+          } else {
+            amountMessageElement.textContent = "연령 적정 음주량입니다.";
+          }
+
+          const myDrinkAmountElements =
+            document.querySelectorAll(".my-drink-amount");
+          myDrinkAmountElements.forEach((element) => {
+            element.textContent = `${totalAverageAmount.toFixed(1)}잔`;
+          });
+
+          const recommendDrinkAmountElements = document.querySelectorAll(
+            ".recommend-drink-amount"
+          );
+          recommendDrinkAmountElements.forEach((element) => {
+            element.textContent = `${RECOMMENDED_AGE_AMOUNT}잔`;
+          });
+
+          // Update the height of the rectangles based on average amounts
+          const sojuHeight = (sojuAverage / totalAverageAmount) * 100;
+          const beerHeight = (beerAverage / totalAverageAmount) * 100;
+          const wineHeight = (wineAverage / totalAverageAmount) * 100;
+          const makgeolliHeight = (makgeolliAverage / totalAverageAmount) * 100;
+
+          document.querySelector(
+            ".rectangle-7"
+          ).style.height = `${sojuHeight}px`;
+          document.querySelector(
+            ".rectangle-8"
+          ).style.height = `${beerHeight}px`;
+          document.querySelector(
+            ".rectangle-9"
+          ).style.height = `${wineHeight}px`;
+          document.querySelector(
+            ".rectangle-10"
+          ).style.height = `${makgeolliHeight}px`;
+        } else {
+          console.error("Failed to fetch data from the API:", data.message);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data from the API:", error);
+      });
+  });
+}
+
 // Call the functions to update the statistics
 updateDrinkStatistics();
 updateDrinkDifferences();
 updateAverageDrinkAmounts();
 updateWeeklyDrinkFrequency();
 updateGenderBasedStats();
+updateAgeBasedStats();
