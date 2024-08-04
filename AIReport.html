@@ -17,7 +17,7 @@
         </div>
         <div class="navbar-list">
           <a href="./home.html" class="navbar-items">홈</a>
-          <a href="./weeklyDashboard.html"  class="navbar-items">음주 분석</a>
+          <a href="./weeklyDashboard.html" class="navbar-items">음주 분석</a>
           <a href="./drinkRecord.html" class="navbar-items">음주 기록</a>
           <a href="./setting.html" class="navbar-items">설정</a>
         </div>
@@ -26,7 +26,7 @@
     <div class="element">
       <div class="main-frame">
         <div class="text-frame1">
-          <span>(name)님의</span>
+          <span>님의</span>
           <p>음주 습관 분석</p>
         </div>
         <div class="frame-container">
@@ -37,13 +37,18 @@
             <span class="frame2">AI 분석</span>
           </div>
           <div class="button-frame">
-            <button type="button" class="btn" onclick="btnClick()">
+            <button
+              type="button"
+              class="btn"
+              id="purchaseBtn"
+              onclick="btnClick()"
+            >
               AI 분석 보고서 구매하기
             </button>
             <p class="p">🤖</p>
             <div class="frame3">
-              <div class="text-frame2">
-                <span>AI 분석 들어갈 자리</span>
+              <div class="text-frame2" id="aiReport">
+                <span id="reportContent"></span>
               </div>
             </div>
           </div>
@@ -71,7 +76,7 @@
     </div>
   </body>
   <script>
-    document.getElementById("logo").addEventListener("click", function() {
+    document.getElementById("logo").addEventListener("click", function () {
       window.location.href = "./home.html";
     });
   </script>
