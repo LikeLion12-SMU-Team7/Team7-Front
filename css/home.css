@@ -229,19 +229,17 @@ p{
   display: inline-flex;
   align-items: center;
   gap: 24px;
-   
   flex: 0 0 auto;
 }
 .screen .frame-11 {
   display: flex;
   width: 372px;
+  height: 239px;
   align-items: center;
   padding: 24px 72px;
    
   background-color: var(--white);
   border-radius: 12px;
-  border: 1px solid;
-  border-color: var(--n-200);
 }
 
 .screen .frame-11-1 {
@@ -261,7 +259,7 @@ p{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 12px;
   flex: 1 0 0;
 }
 .screen .frame-13 {
@@ -310,7 +308,7 @@ p{
   width: fit-content;
   font-family: "Pretendard-Bold", Helvetica;
   font-weight: 700;
-  color: var(--main-green-2);
+  color: var(--n-800);
   font-size: 20px;
   text-align: center;
   letter-spacing: 0;
@@ -414,6 +412,10 @@ p{
   font-size: 16px;
 }
 
+.screen .text-wrapper-12{
+  width: fit-content;
+}
+
 .screen .text-wrapper-12-1 { 
   align-self: stretch;
   font-family: "Pretendard-Regular", Helvetica;
@@ -423,7 +425,6 @@ p{
   text-align: center;
 }
 .screen .text-wrapper-13 {
-   
   align-self: stretch;
   font-family: "Pretendard-Bold", Helvetica;
   font-weight: 700;
@@ -432,6 +433,8 @@ p{
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
+  display: inline-flex;
+  gap: 4px;
 }
 .screen .frame-21 {
   display: inline-flex;
@@ -542,6 +545,7 @@ p{
   display: flex;
   flex-direction: column;
   width: 429px;
+  height: 253px;
   align-items: flex-start;
   padding: 24px;
    
@@ -878,6 +882,7 @@ p{
 }
 
 .food-container{
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -885,6 +890,20 @@ p{
 }
 
 .food-container img{
+  width: 48px;
+  height: 48px;
+}
+
+.food-count{
+  color: var(--main-green-2);
+}
+
+#emoji{
+  width: 48px;
+  height: 48px;
+}
+
+.emoji{
   width: 48px;
   height: 48px;
 }
