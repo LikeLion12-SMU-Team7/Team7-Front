@@ -13,6 +13,34 @@ document.addEventListener("DOMContentLoaded", () => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
+  function fetchUserData() {
+    const token = getCookie("accessToken");
+
+    return fetch("http://3.37.23.33:8080/api/v1/user", {
+      method: "GET",
+      headers: {
+        accept: "*/*",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isSuccess && data.result) {
+          return data.result.nickname;
+        } else {
+          console.error(
+            "Failed to fetch user data from the API:",
+            data.message
+          );
+          return "상천이삼촌";
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching user data from the API:", error);
+        return "상천이삼촌";
+      });
+  }
+
   function fetchDrinkRecord() {
     const date = currentDate.toISOString().split("T")[0];
     const token = getCookie("accessToken");
@@ -26,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        return data;
+        return data.result; // Adjust based on actual API response structure
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -175,15 +203,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  document
-    .querySelector('input[name="pop_out"]')
-    .addEventListener("input", function () {
+  document.querySelectorAll('input[name="pop_out"]').forEach((input) => {
+    input.addEventListener("input", function () {
       let inputValue = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
       if (inputValue === "") {
         inputValue = 0;
       }
       this.value = parseInt(inputValue) + "잔";
     });
+  });
 
   function updateDate() {
     const dayElement = document.querySelector(".day");
@@ -194,6 +222,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dayElement.textContent = `${formattedDate} 나의 음주 기록`;
   }
+
+  function updateNickname(nickname) {
+    const textWrapper = document.querySelector(".text-wrapper");
+    textWrapper.innerHTML = `${nickname}님,<br />오늘의 음주를 기록해주세요😎`;
+  }
+
+  fetchUserData().then(updateNickname);
 
   updateDate();
 
