@@ -121,10 +121,20 @@ function updateDrinkStatistics() {
           drinkCountDiffElement.textContent = "지난 주랑 비슷해요";
         } else if (drinkCountDiff > 0) {
           drinkCountDiffElement.innerHTML = `지난 주보다 <span class="text-wrapper-15">${drinkCountDiff}회</span> 더 마셨어요`;
+          drinkCountDiffElement.parentElement.parentElement.style.backgroundColor =
+            "var(--point-redw50)";
+          document
+            .querySelector(".drink-count-diff")
+            .parentElement.querySelector(".size48").src = "img/vomit.png";
         } else {
           drinkCountDiffElement.innerHTML = `지난 주보다 <span class="text-wrapper-17">${Math.abs(
             drinkCountDiff
           )}회</span> 덜 마셨어요`;
+          drinkCountDiffElement.parentElement.parentElement.style.backgroundColor =
+            "var(--point-greenw-50)";
+          document
+            .querySelector(".drink-count-diff")
+            .parentElement.querySelector(".size48").src = "img/starface.png";
         }
 
         // Update the total alcohol
@@ -144,10 +154,20 @@ function updateDrinkStatistics() {
           totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 주보다 <span class="text-wrapper-15">${totalAlcoholDiff.toFixed(
             1
           )}g</span> 더 마셨어요`;
+          totalAlcoholDiffElement.parentElement.parentElement.style.backgroundColor =
+            "var(--point-redw50)";
+          document
+            .querySelector(".total-alcohol-diff")
+            .parentElement.querySelector(".size48").src = "img/vomit.png";
         } else {
           totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 주보다 <span class="text-wrapper-17">${Math.abs(
             totalAlcoholDiff.toFixed(1)
           )}g</span> 덜 마셨어요`;
+          totalAlcoholDiffElement.parentElement.parentElement.style.backgroundColor =
+            "var(--point-greenw-50)";
+          document
+            .querySelector(".total-alcohol-diff")
+            .parentElement.querySelector(".size48").src = "img/starface.png";
         }
       } else {
         console.error("Failed to fetch data from the API:", data.message);
