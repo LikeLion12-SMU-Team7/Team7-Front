@@ -623,7 +623,7 @@ p {
   position: relative;
 }
 .div-wrapper .text-wrapper-22 {
-  width: 41px;
+  width: 50px;
   margin-top: -1px;
   font-family: "Pretendard-Medium", Helvetica;
   font-weight: 500;
@@ -925,4 +925,29 @@ p {
   width: 32px;
   background-color: var(--main-green-2);
   border-radius: 4px;
+}
+
+.div-wrapper .rectangle-3 {
+  position: relative;
+  align-self: stretch;
+  background-color: var(--afua-XJ);
+  border-radius: 4px 4px;
+}
+.div-wrapper .rectangle-4 {
+  position: relative;
+  align-self: stretch;
+  background-color: var(--dzn-q-og);
+  border-radius: 4px 4px;
+}
+.div-wrapper .rectangle-5 {
+  position: relative;
+  align-self: stretch;
+  background-color: var(--zcu-6wx);
+  border-radius: 4px 4px;
+}
+.div-wrapper .rectangle-6 {
+  position: relative;
+  align-self: stretch;
+  background-color: var(--k-OO-cn-n);
+  border-radius: 4px 4px;
 }
