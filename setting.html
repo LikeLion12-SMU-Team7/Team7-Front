@@ -17,7 +17,7 @@
         </div>
         <div class="navbar-list">
           <a href="./home.html" class="navbar-items">홈</a>
-          <a href="./weeklyDashboard.html"  class="navbar-items">음주 분석</a>
+          <a href="./weeklyDashboard.html" class="navbar-items">음주 분석</a>
           <a href="./drinkRecord.html" class="navbar-items">음주 기록</a>
           <a href="./setting.html" class="navbar-items">설정</a>
         </div>
@@ -101,8 +101,13 @@
             >
           </div>
           <div class="drink-num">
-            <button type="button" class="minus" onclick="calCount('m', this);">
-              <p>-</p>
+            <button
+              type="button"
+              class="minus"
+              data-drink="soju"
+              onclick="calCount('m', this);"
+            >
+              <img src="./img/minusIcon.svg" alt="" />
             </button>
             <input
               type="text"
@@ -112,8 +117,13 @@
               readonly="readonly"
               style="text-align: center"
             />
-            <button type="button" class="plus" onclick="calCount('p',this);">
-              <p>+</p>
+            <button
+              type="button"
+              class="plus"
+              data-drink="soju"
+              onclick="calCount('p', this);"
+            >
+              <img src="./img/plusIcon.svg" alt="" />
             </button>
           </div>
         </div>
@@ -144,7 +154,7 @@
     </div>
   </body>
   <script>
-    document.getElementById("logo").addEventListener("click", function() {
+    document.getElementById("logo").addEventListener("click", function () {
       window.location.href = "./home.html";
     });
   </script>

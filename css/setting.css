@@ -13,9 +13,8 @@
   height: 700px;
   padding-left: 50px;
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  border: 1px;
+  border: 1px solid #e5e5e5;
   border-color: #e5e5e5;
 }
 .frame1 {
@@ -100,13 +99,29 @@
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-.drink-num button {
+.minus {
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   background-color: var(--main-green-2);
   border: 1px solid var(--main-green-2);
   color: white;
+  margin-right: 12px;
+}
+.plus {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: var(--main-green-2);
+  border: 1px solid var(--main-green-2);
+  color: white;
+  margin-left: 12px;
+}
+.drink-num img {
+  display: flex;
+  width: 12px;
+  height: 12px;
+  padding-right: 1px;
 }
 .logout-text {
   position: absolute;
