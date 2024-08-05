@@ -15,6 +15,8 @@ function validateForm(event) {
     headers: {
       Accept: "*/*",
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
     },
     body: JSON.stringify({
       email: id,
