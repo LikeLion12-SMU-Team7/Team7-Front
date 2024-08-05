@@ -66,7 +66,7 @@ function validateForm() {
 }
 
 function checkEmailUniqueness(email) {
-  const accessToken = "accessToken"; // 실제 토큰 값으로 대체
+  const accessToken = getCookie("accessToken"); // 쿠키에서 accessToken 가져오기
   console.log("accessToken: ", accessToken);
   return fetch(
     `http://3.37.23.33:8080/api/v1/auth/join/email-check/${encodeURIComponent(
@@ -94,4 +94,9 @@ function checkEmailUniqueness(email) {
         throw new Error(data.message || "Unknown error occurred");
       }
     });
+}
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
 }
