@@ -257,3 +257,14 @@
     background: linear-gradient(0deg, rgba(38, 38, 38, 0.10) 0%, rgba(38, 38, 38, 0.10) 100%), #1ABC9C;
     color: var(--white);
 }
+.text-title-wrapper{
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.text-title-wrapper img{
+    width: 28px;
+    height: 28px;
+    margin: 0;
+}
