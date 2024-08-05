@@ -1,26 +1,25 @@
 .screen {
-  background-color: #fafafa;
+  background-color: var(--n-50);
   display: flex;
-  flex-direction: row;
+  width: 100vw;
   justify-content: center;
-  width: 100%;
 }
 .screen .div {
-  background-color: var(--n-50);
-  width: 1536px;
-  height: 1280px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 1336px;
+  gap: 36px;
+  margin-top: 120px;
+  padding: 0;
 }
 .screen .text-wrapper {
-  position: absolute;
-  top: 119px;
-  left: 100px;
   font-family: "Pretendard-Bold", Helvetica;
   font-weight: 700;
   color: var(--n-800);
   font-size: 28px;
   letter-spacing: 0;
   line-height: normal;
+  white-space: none;
 }
 .screen .navigation {
   position: absolute;
@@ -79,12 +78,9 @@
 .screen .frame-2 {
   display: flex;
   flex-direction: column;
-  width: 1337px;
+  width: 1336px;
   align-items: center;
   gap: 24px;
-  position: absolute;
-  top: 234px;
-  left: 100px;
 }
 .screen .frame-3 {
   display: flex;
@@ -100,7 +96,6 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 40px;
-  position: relative;
   flex: 0 0 auto;
   background-color: var(--white);
   border-radius: 12px;
@@ -115,6 +110,7 @@
   gap: 48px;
   position: relative;
   flex: 0 0 auto;
+  width: 464px;
 }
 .screen .frame-4 {
   display: flex;
@@ -189,7 +185,21 @@
   position: relative;
   width: 38px;
   height: 48.36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Pretendard-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
 }
+
 .screen .element-wrapper {
   position: relative;
   width: 38px;
@@ -365,43 +375,57 @@
   width: 48px;
   height: 48px;
 }
-.red {
+
+.color-drink{
+  display: flex;
+  width: 238px;
+  align-items: center;
+  gap: 11px;
+}
+.color-text-wrap{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.color-drink span {
+  white-space: nowrap;
+  font-size: 15px;
+}
+.color-drink .red {
   display: inline-block;
   border-radius: 20%;
   border: 1px solid var(--point-red);
   background-color: var(--point-red);
   width: 15px;
   height: 15px;
-  margin-bottom: -2px;
 }
-.color-drink span {
-  font-size: 15px;
-}
-.yellow {
+.color-drink .yellow {
   display: inline-block;
   border-radius: 20%;
   border: 1px solid var(--point-yellow);
   background-color: var(--point-yellow);
   width: 15px;
   height: 15px;
-  margin-bottom: -2px;
-  margin-left: 2px;
 }
-.green {
+.color-drink .green {
   display: inline-block;
   border-radius: 20%;
   border: 1px solid var(--point-green);
   background-color: var(--point-green);
   width: 15px;
   height: 15px;
-  margin-bottom: -2px;
-  margin-left: 2px;
+}
+.drink-wrap{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
 }
 .drink-check {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
   padding: 10px 10px;
   border-radius: 15px;
   border: 1px solid #1abc9c;
@@ -409,8 +433,10 @@
   color: white;
   font-size: 15px;
   font-weight: 600;
-  margin-top: -36px;
-  margin-left: 260px;
+  cursor: pointer;
+}
+.drink-check :hover{
+  background: linear-gradient(0deg, rgba(38, 38, 38, 0.10)0%, rgba(38, 38, 38, 0.10)100%), #1ABC9C;
 }
 .day {
   font-size: 24px;
@@ -437,12 +463,15 @@
   box-sizing: border-box;
 }
 .drink-num button {
+  display: flex;
   border-radius: 50%;
   width: 32px;
   height: 32px;
   background-color: var(--main-green-2);
   border: 1px solid var(--main-green-2);
   color: white;
+  align-items: center;
+  justify-content: center;
 }
 .minus-text p {
   position: relative;
@@ -458,13 +487,9 @@
   right: 3px;
 }
 .standard-frame {
-  top: 757px;
-  left: 668px;
-  width: 769px;
-  height: 290.78px;
+  width: 100%;
   align-items: center;
   padding: 24px;
-  gap: 10px;
   position: relative;
   background-color: var(--white);
   border-radius: 12px;
@@ -472,14 +497,11 @@
   border-color: var(--n-200);
 }
 .trash-Mainframe {
-  position: absolute;
-  top: 848.82px;
-  left: 100px;
+  display: flex;
   width: 544px;
   height: 257px;
+  justify-content: center;
   align-items: center;
-  margin-top: 12px;
-  gap: 10px;
   background-color: var(--white);
   border-radius: 12px;
   border: 1px solid;
@@ -494,12 +516,9 @@
   font-weight: 400;
   font-size: 16px;
   font-family: "Pretendard-Regular", Helvetica;
-  padding-top: 8px;
 }
 .drinkData-frame {
-  width: 721px;
-  height: 182.78px;
-  padding-top: 12px;
+
 }
 .dataText-frame1 {
   position: relative;
@@ -515,10 +534,10 @@
 .dataText-frame1 span {
   display: flex;
   width: 70px;
-  height: 18px;
   font-size: 15px;
   font-weight: 500;
   font-family: "Pretendard-Regular", Helvetica;
+  justify-content: center;
 }
 
 .dataText-frame2 {
@@ -538,10 +557,7 @@
   font-size: 15px;
   font-weight: 500;
   font-family: "Pretendard-Regular", Helvetica;
-}
-.trash-Mainframe {
-  width: 544px;
-  height: 257px;
+  justify-content: center;
 }
 .trash-frame {
   position: relative;
@@ -591,7 +607,12 @@
   color: white;
   top: 51px;
   left: 188px;
+  cursor: pointer;
 }
+.trash-btn:hover {
+  background: linear-gradient(0deg, rgba(38, 38, 38, 0.10)0%, rgba(38, 38, 38, 0.10)100%), #1ABC9C;
+}
+
 .trash-btn span {
   font-size: 14px;
   font-weight: 600;
@@ -679,4 +700,33 @@
   font-size: 12px;
   font-weight: 600;
   text-align: center;
+}
+.record-left{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.record-right{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.frame-14{
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  gap: 12px;
+}
+.text-wrapper-14{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.month-btn{
+  width: 8px;
+  height: 16px;
+  fill: var(--n-600, #525252);
+  cursor: pointer;
 }
