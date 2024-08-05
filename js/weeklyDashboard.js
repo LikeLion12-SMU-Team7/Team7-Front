@@ -642,40 +642,40 @@ function updateAgeBasedStats() {
 
     if (age >= 20 && age <= 24) {
       recommendedFrequency = 1.6;
-      recommendedAmount = 1.3 * 360; // 1.3 병
+      recommendedAmount = 1.3 * 8; // 1.3 병
     } else if (age >= 25 && age <= 29) {
       recommendedFrequency = 1.6;
-      recommendedAmount = 1.1 * 360; // 1.1 병
+      recommendedAmount = 1.1 * 8; // 1.1 병
     } else if (age >= 30 && age <= 34) {
       recommendedFrequency = 1.6;
-      recommendedAmount = 0.9 * 360; // 0.9 병
+      recommendedAmount = 0.9 * 8; // 0.9 병
     } else if (age >= 35 && age <= 39) {
       recommendedFrequency = 1.6;
-      recommendedAmount = 0.8 * 360; // 0.8 병
+      recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 40 && age <= 44) {
       recommendedFrequency = 1.6;
-      recommendedAmount = 0.8 * 360; // 0.8 병
+      recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 45 && age <= 49) {
       recommendedFrequency = 1.6;
-      recommendedAmount = 0.8 * 360; // 0.8 병
+      recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 50 && age <= 54) {
       recommendedFrequency = 1.6;
-      recommendedAmount = 0.8 * 360; // 0.8 병
+      recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 55 && age <= 59) {
       recommendedFrequency = 1.7;
-      recommendedAmount = 0.8 * 360; // 0.8 병
+      recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 60 && age <= 64) {
       recommendedFrequency = 1.7;
-      recommendedAmount = 0.8 * 360; // 0.8 병
+      recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 65 && age <= 69) {
       recommendedFrequency = 1.7;
-      recommendedAmount = 0.7 * 360; // 0.7 병
+      recommendedAmount = 0.7 * 8; // 0.7 병
     } else if (age >= 70 && age <= 74) {
       recommendedFrequency = 1.8;
-      recommendedAmount = 0.7 * 360; // 0.7 병
+      recommendedAmount = 0.7 * 8; // 0.7 병
     } else {
       recommendedFrequency = 1.8;
-      recommendedAmount = 0.7 * 360; // 0.7 병
+      recommendedAmount = 0.7 * 8; // 0.7 병
     }
 
     fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
