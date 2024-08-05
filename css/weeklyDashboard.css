@@ -130,7 +130,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 48px;
-
+  justify-content: center;
   position: relative;
   flex: 0 0 auto;
 }
@@ -151,7 +151,7 @@ p {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 12px 24px;
+  padding: 13px 24px;
   position: absolute;
   top: 0;
   left: 0;
@@ -951,4 +951,10 @@ p {
   align-self: stretch;
   background-color: var(--k-OO-cn-n);
   border-radius: 4px 4px;
+}
+.monthly-dashboard {
+  cursor: pointer;
+}
+.ai-dashboard {
+  cursor: pointer;
 }

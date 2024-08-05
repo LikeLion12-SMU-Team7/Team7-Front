@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const formatDate = (date) => {
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    return `${month}월 ${day}일`;
+    return `${month}월`;
   };
 
   const startOfWeekFormatted = formatDate(startOfWeek);
@@ -21,10 +21,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // Update the date range in the HTML
   const dateRangeElement = document.querySelector(".weeks");
   if (dateRangeElement) {
-    dateRangeElement.textContent = `${startOfWeekFormatted} ~ ${endOfWeekFormatted}`;
+    dateRangeElement.textContent = `${startOfWeekFormatted}`;
   } else {
     console.error("Date range element not found");
   }
+
+  document
+    .getElementById("weekly-stats-button")
+    .addEventListener("click", function () {
+      window.location.href = "weeklyDashboard.html";
+    });
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -343,7 +349,7 @@ function updateAverageDrinkAmounts() {
     .then((data) => {
       if (data.isSuccess && data.result) {
         const {
-          averageFrequency,
+          averageCount,
           sojuAverage,
           wineAverage,
           beerAverage,
@@ -359,7 +365,7 @@ function updateAverageDrinkAmounts() {
         const averageFrequencyElements =
           document.querySelectorAll(".average-frequency");
         averageFrequencyElements.forEach((element) => {
-          element.textContent = `${averageFrequency.toFixed(2)} 회`;
+          element.textContent = `${averageCount.toFixed(2)} 회`;
         });
 
         // Update soju average
