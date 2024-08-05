@@ -83,6 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("reportContent").innerText =
             data.result.report;
           document.getElementById("purchaseBtn").style.display = "none";
+          document.getElementById("frame3").style.opacity = 1;
+          document.getElementById("p").style.opacity = 1;
         } else {
           alert("리포트 생성에 실패했습니다. 다시 시도해주세요.");
         }
