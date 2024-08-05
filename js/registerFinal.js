@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const nickname = localStorage.getItem("nickname");
+  document.getElementById("text-name").textContent = nickname + "님!";
+});
 document.getElementById("startButton").addEventListener("click", function () {
   const email = localStorage.getItem("email");
   const password = localStorage.getItem("password");
