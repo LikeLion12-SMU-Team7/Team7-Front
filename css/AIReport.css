@@ -119,6 +119,14 @@
 .button-frame.active .frame3 {
   opacity: 1;
 }
-.button-frame.hidden .btn {
+.button-frame.hidden {
   display: none;
+}
+
+.button-frame:not(.hidden) {
+  display: block;
+}
+
+.btn-frame:not(.hidden) {
+  display: block;
 }
