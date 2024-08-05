@@ -64,7 +64,7 @@ document
   .getElementById("logout-link")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    window.location.href = "/logout";
+    window.location.href = "/index.html";
   });
 
 // 체중 입력값 검증 함수
