@@ -66,17 +66,21 @@ function fetchGptReport() {
     .then((response) => response.json())
     .then((data) => {
       if (data.isSuccess) {
-        document.getElementById("reportContent").innerText = data.result.report;
-        document.getElementById("p").style.opacity = "1";
-        document.getElementById("frame3").style.opacity = "1";
-
-        if (data.result.status === "new") {
-          setCookie("purchased", "true", 7);
+        if (data.result.status === "previous") {
           console.log("이전 AI 분석 리포트:", data.result.report);
+          document.getElementById("reportContent").innerText =
+            data.result.report;
+          document.getElementById("p").style.opacity = "1";
+          document.getElementById("frame3").style.opacity = "1";
           document.getElementById("purchaseBtn").style.display = "none";
-        } else if (data.result.status === "previous") {
+        } else if (data.result.status === "new") {
+          setCookie("purchased", "true", 7);
           document.getElementById("purchaseBtn").style.display = "block"; // 버튼 표시
           console.log("새로운 AI 분석 리포트:", data.result.report);
+          document.getElementById("reportContent").innerText =
+            data.result.report;
+          document.getElementById("p").style.opacity = "1";
+          document.getElementById("frame3").style.opacity = "1";
         }
       } else {
         console.error("AI 분석 리포트 요청 실패:", data.message);

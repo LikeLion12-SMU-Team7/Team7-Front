@@ -1,4 +1,4 @@
-p{
+p {
   margin: 0;
 }
 
@@ -90,4 +90,9 @@ p{
   white-space: nowrap;
   text-align: center;
   line-height: normal;
+}
+.p {
+  span {
+    display: block;
+  }
 }
