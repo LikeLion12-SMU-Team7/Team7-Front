@@ -17,12 +17,13 @@
 }
 .index-sub-title {
   position: absolute;
+  font-family: "Pretendard-Medium", Helvetica;
   top: 120px;
   left: 218px;
   max-width: 358px;
   gap: 24px;
   color: white;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 22px;
   span {
     display: block;
@@ -45,8 +46,9 @@
   position: absolute;
   left: 218px;
   top: 210px;
+  font-family: "Pretendard-Medium", Helvetica;
   font-size: 50px;
-  font-weight: 300;
+  font-weight: 200;
   color: white;
 }
 #indexForm {
@@ -68,14 +70,19 @@
 }
 .login-id {
   font-weight: 600;
+  font-family: "Pretendard-Medium", Helvetica;
+  margin-bottom: -4px;
 }
 .login-pw {
   font-weight: 600;
-  margin-top: 15px;
+  margin-top: 26px;
+  font-family: "Pretendard-Medium", Helvetica;
+  margin-bottom: -4px;
 }
 .caution {
   margin-top: 30px;
   color: #e74c3c;
+  font-family: "Pretendard-Medium", Helvetica;
   visibility: hidden;
 }
 .caution i {
@@ -94,7 +101,8 @@
   margin-bottom: 15px;
   color: white;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: "Pretendard-Medium", Helvetica;
 }
 .register-btn {
   display: flex;
@@ -107,13 +115,16 @@
   background-color: #1abc9c;
   color: white;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: "Pretendard-Medium", Helvetica;
 }
 .frame-bottom {
   position: absolute;
   text-align: right;
   color: white;
   font-size: 20px;
+  font-family: "Pretendard-Medium", Helvetica;
+  font-weight: 400;
   width: 399px;
   height: 87px;
   top: 653px;
