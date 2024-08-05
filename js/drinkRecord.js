@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     makgeolliInput.value = `${record.makgeolliConsumption || 0}잔`;
   
     document.querySelector('.text-wrapper-8[data-drink="soju"]').textContent = `소주 ${record.sojuConsumption || 0}잔 (${(record.sojuConsumption || 0) * 45}ml)`;
-    document.querySelector('.text-wrapper-8[data-drink="beer"]').textContent = `맥주 ${record.beerConsumption || 0}잔 (${(record.beerConsumption || 0) * 167}ml)`;
+    document.querySelector('.text-wrapper-8[data-drink="beer"]').textContent = `맥주 ${record.beerConsumption || 0}잔 (${(record.beerConsumption || 0) * 500}ml)`;
     document.querySelector('.text-wrapper-8[data-drink="wine"]').textContent = `와인 ${record.wineConsumption || 0}잔 (${(record.wineConsumption || 0) * 150}ml)`;
     document.querySelector('.text-wrapper-8[data-drink="makgeolli"]').textContent = `막걸리 ${record.makgeolliConsumption || 0}잔 (${(record.makgeolliConsumption || 0) * 150}ml)`;
   }
