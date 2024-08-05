@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (name == cookiePair[0].trim()) {
         return decodeURIComponent(cookiePair[1]);
       }
+
     }
     return null;
   }
@@ -16,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const apiUrl = "http://3.37.23.33:8080/api/v1/user";
     const accessToken = getCookie("accessToken");
     console.log("accessToken:", accessToken); // 토큰 확인
-
     fetch(apiUrl, {
       method: "GET",
       headers: {
@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Fetch 에러:", error);
       });
   }
-
   // Function to fetch the recent report
   function fetchRecentReport() {
     fetch("http://3.37.23.33:8080/api/v1/report/recent", {

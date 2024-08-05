@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 type="button"
                 class="btn detail-btn"
                 data-date="${darkRecords[i].createdAt}">
-                더보기 👀
+                더보기
                 </button>
               </div>
             </div>

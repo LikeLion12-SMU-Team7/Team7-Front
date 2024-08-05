@@ -151,10 +151,10 @@ p {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 12px 24px;
+  padding: 13px 24px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 115px;
   background-color: var(--main-green-2);
   border-radius: 20px;
 }
@@ -951,4 +951,11 @@ p {
   align-self: stretch;
   background-color: var(--k-OO-cn-n);
   border-radius: 4px 4px;
+}
+
+#weekly-stats-button {
+  cursor: pointer;
+}
+.text-wrapper-4 {
+  cursor: pointer;
 }

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const formatDate = (date) => {
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    return `${month}월 ${day}일`;
+    return `${month}월`;
   };
 
   const startOfWeekFormatted = formatDate(startOfWeek);
@@ -21,10 +21,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // Update the date range in the HTML
   const dateRangeElement = document.querySelector(".weeks");
   if (dateRangeElement) {
-    dateRangeElement.textContent = `${startOfWeekFormatted} ~ ${endOfWeekFormatted}`;
+    dateRangeElement.textContent = `${startOfWeekFormatted}`;
   } else {
     console.error("Date range element not found");
   }
+
+  document
+    .getElementById("weekly-stats-button")
+    .addEventListener("click", function () {
+      window.location.href = "weeklyDashboard.html";
+    });
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -309,12 +315,12 @@ function updateDrinkDifferences() {
         const makgeolliHeight =
           ((monthlyMakgeolliCount * MAKGGEOLLI_VOLUME) / totalVolume) * 100;
 
-        // document.querySelector(".rectangle-3").style.height = `${sojuHeight}px`;
-        // document.querySelector(".rectangle-4").style.height = `${beerHeight}px`;
-        // document.querySelector(".rectangle-5").style.height = `${wineHeight}px`;
-        // document.querySelector(
-        //   ".rectangle-6"
-        // ).style.height = `${makgeolliHeight}px`;
+        document.querySelector(".rectangle-3").style.height = `${sojuHeight}px`;
+        document.querySelector(".rectangle-4").style.height = `${beerHeight}px`;
+        document.querySelector(".rectangle-5").style.height = `${wineHeight}px`;
+        document.querySelector(
+          ".rectangle-6"
+        ).style.height = `${makgeolliHeight}px`;
       } else {
         console.error("Failed to fetch data from the API:", data.message);
       }
@@ -343,7 +349,7 @@ function updateAverageDrinkAmounts() {
     .then((data) => {
       if (data.isSuccess && data.result) {
         const {
-          averageFrequency,
+          averageCount,
           sojuAverage,
           wineAverage,
           beerAverage,
@@ -359,7 +365,7 @@ function updateAverageDrinkAmounts() {
         const averageFrequencyElements =
           document.querySelectorAll(".average-frequency");
         averageFrequencyElements.forEach((element) => {
-          element.textContent = `${averageFrequency.toFixed(2)} 회`;
+          element.textContent = `${averageCount.toFixed(2)} 회`;
         });
 
         // Update soju average
@@ -639,8 +645,45 @@ function updateAgeBasedStats() {
 
     const { age } = userData;
 
-    const RECOMMENDED_AGE_FREQUENCY = 2; // Replace with the actual recommended frequency for the age
-    const RECOMMENDED_AGE_AMOUNT = 28; // Replace with the actual recommended amount for the age
+    let recommendedFrequency, recommendedAmount;
+
+    if (age >= 20 && age <= 24) {
+      recommendedFrequency = 6.4;
+      recommendedAmount = 1.3 * 8; // 1.3 병
+    } else if (age >= 25 && age <= 29) {
+      recommendedFrequency = 6.4;
+      recommendedAmount = 4.3 * 8; // 4.3 병
+    } else if (age >= 30 && age <= 34) {
+      recommendedFrequency = 6.4;
+      recommendedAmount = 3.7 * 8; // 3.7 병
+    } else if (age >= 35 && age <= 39) {
+      recommendedFrequency = 6.4;
+      recommendedAmount = 3.4 * 8; // 3.4 병
+    } else if (age >= 40 && age <= 44) {
+      recommendedFrequency = 6.4;
+      recommendedAmount = 0.8 * 8; // 0.8 병
+    } else if (age >= 45 && age <= 49) {
+      recommendedFrequency = 6.4;
+      recommendedAmount = 0.8 * 8; // 0.8 병
+    } else if (age >= 50 && age <= 54) {
+      recommendedFrequency = 6.4;
+      recommendedAmount = 0.8 * 8; // 0.8 병
+    } else if (age >= 55 && age <= 59) {
+      recommendedFrequency = 6.8;
+      recommendedAmount = 0.8 * 8; // 0.8 병
+    } else if (age >= 60 && age <= 64) {
+      recommendedFrequency = 6.8;
+      recommendedAmount = 0.8 * 8; // 0.8 병
+    } else if (age >= 65 && age <= 69) {
+      recommendedFrequency = 6.8;
+      recommendedAmount = 0.7 * 8; // 0.7 병
+    } else if (age >= 70 && age <= 74) {
+      recommendedFrequency = 7.2;
+      recommendedAmount = 0.7 * 8; // 0.7 병
+    } else {
+      recommendedFrequency = 7.2;
+      recommendedAmount = 0.7 * 8; // 0.7 병
+    }
 
     fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
       method: "GET",
@@ -657,13 +700,13 @@ function updateAgeBasedStats() {
           const frequencyMessageElement = document.querySelector(
             ".frequency-age-comparison"
           );
-          if (drinkCount > RECOMMENDED_AGE_FREQUENCY) {
+          if (drinkCount > recommendedFrequency) {
             frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 한 달에 <span class="text-wrapper-15">${
-              drinkCount - RECOMMENDED_AGE_FREQUENCY
+              drinkCount - recommendedFrequency
             }회</span> 더 마셔요`;
-          } else if (drinkCount < RECOMMENDED_AGE_FREQUENCY) {
+          } else if (drinkCount < recommendedFrequency) {
             frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 한 달에 <span class="text-wrapper-17">${
-              RECOMMENDED_AGE_FREQUENCY - drinkCount
+              recommendedFrequency - drinkCount
             }회</span> 덜 마셔요`;
           } else {
             frequencyMessageElement.textContent = "연령 적정 음주 빈도입니다.";
@@ -692,7 +735,7 @@ function updateAgeBasedStats() {
           const totalAverageAmount =
             sojuAverage + wineAverage + beerAverage + makgeolliAverage;
           const averageAmountDifference =
-            totalAverageAmount - RECOMMENDED_AGE_AMOUNT;
+            totalAverageAmount - recommendedAmount;
 
           const amountMessageElement = document.querySelector(
             ".amount-age-comparison"
@@ -701,12 +744,12 @@ function updateAgeBasedStats() {
             amountMessageElement.innerHTML = `연령 적정 음주량보다 한 달에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
               1
             )}잔</span> 더 마셔요 (${(
-              averageAmountDifference * 50
+              averageAmountDifference * 45
             ).toLocaleString()}ml)`;
           } else if (averageAmountDifference < 0) {
             amountMessageElement.innerHTML = `연령 적정 음주량보다 한 달에 <span class="text-wrapper-17">${Math.abs(
               averageAmountDifference.toFixed(1)
-            )}잔</span> 덜 마셔요 (${(Math.abs(averageAmountDifference) * 50)
+            )}잔</span> 덜 마셔요 (${(Math.abs(averageAmountDifference) * 45)
               .toFixed(1)
               .toLocaleString()}ml)`;
           } else {
@@ -723,7 +766,7 @@ function updateAgeBasedStats() {
             ".recommend-drink-amount"
           );
           recommendDrinkAmountElements.forEach((element) => {
-            element.textContent = `${RECOMMENDED_AGE_AMOUNT}잔`;
+            element.textContent = `${recommendedAmount.toFixed(1)}잔`;
           });
 
           // Update the height of the rectangles based on average amounts

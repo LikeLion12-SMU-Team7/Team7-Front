@@ -18,7 +18,7 @@
         </div>
         <div class="navbar-list">
           <a href="./home.html" class="navbar-items">홈</a>
-          <a href="./weeklyDashboard.html"  class="navbar-items">음주 분석</a>
+          <a href="./weeklyDashboard.html" class="navbar-items">음주 분석</a>
           <a href="./drinkRecord.html" class="navbar-items">음주 기록</a>
           <a href="./setting.html" class="navbar-items">설정</a>
         </div>
@@ -37,7 +37,7 @@
                     <div class="text-wrapper-4 monthly-dashboard">
                       월간 통계
                     </div>
-                    <div class="text-wrapper-4">AI 분석</div>
+                    <div class="text-wrapper-4 ai-dashboard">AI 분석</div>
                   </div>
                 </div>
                 <div class="frame-5">
@@ -446,19 +446,23 @@
                         <div class="frame-25">
                           <div class="frame-26">
                             <div class="text-wrapper-18">음주 빈도</div>
-                            <p class="element-2">
+                            <p class="element-2 frequency-age-comparison">
                               <span class="text-wrapper-19"
-                                >연령 적정 음주 빈도보다
-                              </span>
-                              <span class="text-wrapper-20">일주일에 </span>
-                              <span class="text-wrapper-32">100회</span>
+                                >연령 적정 음주 빈도보다</span
+                              >
+                              <span class="text-wrapper-20">일주일에</span>
+                              <span class="text-wrapper-21">1회</span>
                               <span class="text-wrapper-20"> 더 마셔요</span>
                             </p>
                           </div>
                           <div class="frame-27">
                             <div class="frame-28">
-                              <div class="text-wrapper-22">100회</div>
-                              <div class="rectangle-11"></div>
+                              <div class="text-wrapper-22 drink-count">
+                                100회
+                              </div>
+                              <div
+                                class="rectangle drink-frequency-rectangle"
+                              ></div>
                               <div class="text-wrapper-23">나의 음주 빈도</div>
                             </div>
                             <div class="frame-29">
@@ -471,27 +475,33 @@
                       </div>
                       <div class="frame-24">
                         <div class="group-3"></div>
-                        <div class="frame-30">
+                        <div class="frame-25">
                           <div class="frame-26">
                             <div class="text-wrapper-18">음주량</div>
-                            <p class="element-2">
+                            <p class="element-2 amount-age-comparison">
                               <span class="text-wrapper-19"
-                                >연령 적정 음주량보다
-                              </span>
-                              <span class="text-wrapper-20">일주일에 </span>
-                              <span class="text-wrapper-21">50잔</span>
-                              <span class="text-wrapper-20"> 덜 마셔요</span>
+                                >연령 적정 음주량보다</span
+                              >
+                              <span class="text-wrapper-20">일주일에</span>
+                              <span class="text-wrapper-32">50잔</span>
+                              <span class="text-wrapper-20"> 더 마셔요</span>
                               <span class="text-wrapper-19"> (3600ml)</span>
                             </p>
                           </div>
                           <div class="frame-27">
                             <div class="frame-28">
-                              <div class="text-wrapper-22">100잔</div>
-                              <div class="rectangle"></div>
+                              <div class="text-wrapper-22 my-drink-amount">
+                                100잔
+                              </div>
+                              <div class="rectangle-11"></div>
                               <div class="text-wrapper-23">나의 음주량</div>
                             </div>
                             <div class="frame-29">
-                              <div class="text-wrapper-24">10잔</div>
+                              <div
+                                class="text-wrapper-24 recommend-drink-amount"
+                              >
+                                30잔
+                              </div>
                               <div class="rectangle-2"></div>
                               <div class="text-wrapper-23">적정 음주량</div>
                             </div>
@@ -508,7 +518,7 @@
       </div>
     </div>
     <script>
-      document.getElementById("logo").addEventListener("click", function() {
+      document.getElementById("logo").addEventListener("click", function () {
         window.location.href = "./home.html";
       });
     </script>
