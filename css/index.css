@@ -1,11 +1,10 @@
 body {
-  background-color: var(--n-50);
+  background: #fafafa;
 }
 .element {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
+  align-items: center;
   width: 100%;
 }
 .background-img {
@@ -15,8 +14,13 @@ body {
   height: 720px;
   left: 146px;
   top: 70px;
-
+  margin-bottom: 48px;
   z-index: -1;
+  
+}
+
+.img-frame{
+  margin-bottom: 48px;
 }
 
 .index-sub-title {
