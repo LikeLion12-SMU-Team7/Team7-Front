@@ -8,7 +8,7 @@ body {
 }
 .main-frame {
   position: relative;
-  left: 100px;
+  margin: 0 auto;
 }
 .text-frame1 {
   position: absolute;
@@ -34,7 +34,7 @@ body {
   justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
-  width: 350px;
+  width: 360px;
   height: 45px;
   margin-left: auto;
   margin-right: auto;
@@ -130,6 +130,15 @@ body {
   left: 580px;
   z-index: 1;
   font-size: 15px;
+}
+.btn:hover {
+  background: linear-gradient(
+      0deg,
+      rgba(38, 38, 38, 0.1) 0%,
+      rgba(38, 38, 38, 0.1) 100%
+    ),
+    #1abc9c;
+  color: white;
 }
 .button-frame p,
 .button-frame .frame3 {
