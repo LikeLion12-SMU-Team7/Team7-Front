@@ -23,6 +23,5 @@ jobs:
           port: ${{ secrets.EC2_SSH_PORT }}
           timeout: 60s
           script: |
-            cd /var/www/alcoholfreeday/Team7-Front
-            sudo git fetch origin
-            sudo git pull origin main
+            cd /var/www/alcoholfreeday
+            ug
