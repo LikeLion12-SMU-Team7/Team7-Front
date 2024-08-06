@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/drinkRecord.css" />
     <link rel="stylesheet" href="css/color.css" />
     <link rel="stylesheet" href="css/navigation.css" />
-    <link rel="icon" href="/img/logo_square.png">
+    <link rel="icon" href="/img/logo_square.png" />
   </head>
   <body>
     <nav class="navigation">
@@ -19,15 +19,14 @@
         <div class="navbar-list">
           <a href="./home.html" class="navbar-items">홈</a>
           <a href="./drinkRecord.html" class="navbar-items">음주 기록</a>
-          <a href="./weeklyDashboard.html"  class="navbar-items">음주 분석</a>
+          <a href="./weeklyDashboard.html" class="navbar-items">음주 분석</a>
           <a href="./setting.html" class="navbar-items">설정</a>
         </div>
       </div>
     </nav>
     <div class="screen">
       <div class="div">
-        <p class="text-wrapper">
-        </p>
+        <p class="text-wrapper"></p>
         <div class="frame-2">
           <div class="frame-3">
             <div class="record-left">
@@ -35,9 +34,19 @@
                 <div class="div-wrapper">
                   <div class="frame-4">
                     <div class="frame-5">
-                      <img src="./img/leftChev.png" alt="leftChev" class="month-btn" id="pre-month">
+                      <img
+                        src="./img/leftChev.png"
+                        alt="leftChev"
+                        class="month-btn"
+                        id="pre-month"
+                      />
                       <div id="month-label" class="text-wrapper-4"></div>
-                      <img src="./img/rightChev.png" alt="rightChev" class="month-btn" id="next-month">
+                      <img
+                        src="./img/rightChev.png"
+                        alt="rightChev"
+                        class="month-btn"
+                        id="next-month"
+                      />
                     </div>
                     <div class="frame-6">
                       <div class="frame-7">
@@ -78,7 +87,9 @@
                   <div class="trash-img"><img src="/img/garbage.png" /></div>
                   <div class="trash-textFrame">
                     <div class="text1">어제의 흑역사, 오늘의 추억</div>
-                    <div class="text2">부끄러운 흑역사도 잊지 않고 기록하세요</div>
+                    <div class="text2">
+                      부끄러운 흑역사도 잊지 않고 기록하세요
+                    </div>
                   </div>
                   <div class="trashbtn-frame">
                     <div class="trash-btn" id="record-btn">
@@ -107,7 +118,7 @@
                               data-drink="soju"
                               onclick="calCount('m', this);"
                             >
-                               <img src="./img/minusIcon.svg" alt="">
+                              <img src="./img/minusIcon.svg" alt="" />
                             </button>
                             <input
                               type="text"
@@ -122,7 +133,7 @@
                               data-drink="soju"
                               onclick="calCount('p', this);"
                             >
-                            <img src="./img/plusIcon.svg" alt="">
+                              <img src="./img/plusIcon.svg" alt="" />
                             </button>
                           </div>
                         </div>
@@ -145,7 +156,7 @@
                               data-drink="beer"
                               onclick="calCount('m', this);"
                             >
-                            <img src="./img/minusIcon.svg" alt="">
+                              <img src="./img/minusIcon.svg" alt="" />
                             </button>
                             <input
                               type="text"
@@ -160,7 +171,7 @@
                               data-drink="beer"
                               onclick="calCount('p', this);"
                             >
-                            <img src="./img/plusIcon.svg" alt="">
+                              <img src="./img/plusIcon.svg" alt="" />
                             </button>
                           </div>
                         </div>
@@ -184,7 +195,7 @@
                               data-drink="wine"
                               onclick="calCount('m', this);"
                             >
-                            <img src="./img/minusIcon.svg" alt="">
+                              <img src="./img/minusIcon.svg" alt="" />
                             </button>
                             <input
                               type="text"
@@ -199,7 +210,7 @@
                               data-drink="wine"
                               onclick="calCount('p', this);"
                             >
-                            <img src="./img/plusIcon.svg" alt="">
+                              <img src="./img/plusIcon.svg" alt="" />
                             </button>
                           </div>
                         </div>
@@ -213,7 +224,10 @@
                           <img src="img/sake.png" class="sake" />
                         </div>
                         <div class="text-wrapper-7"></div>
-                        <div class="text-wrapper-8" data-drink="makgeolli"></div>
+                        <div
+                          class="text-wrapper-8"
+                          data-drink="makgeolli"
+                        ></div>
                         <div class="drink-num-wrap">
                           <div class="drink-num">
                             <button
@@ -222,7 +236,7 @@
                               data-drink="makgeolli"
                               onclick="calCount('m', this);"
                             >
-                            <img src="./img/minusIcon.svg" alt="">
+                              <img src="./img/minusIcon.svg" alt="" />
                             </button>
                             <input
                               type="text"
@@ -237,7 +251,7 @@
                               data-drink="makgeolli"
                               onclick="calCount('p', this);"
                             >
-                            <img src="./img/plusIcon.svg" alt="">
+                              <img src="./img/plusIcon.svg" alt="" />
                             </button>
                           </div>
                         </div>
@@ -295,11 +309,10 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
     <script>
-      document.getElementById("logo").addEventListener("click", function() {
+      document.getElementById("logo").addEventListener("click", function () {
         window.location.href = "./home.html";
       });
     </script>
