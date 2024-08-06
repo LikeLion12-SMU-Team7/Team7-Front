@@ -68,17 +68,12 @@ function validateForm() {
 function checkEmailUniqueness(email) {
   const accessToken = getCookie("accessToken"); // 쿠키에서 accessToken 가져오기
   console.log("accessToken: ", accessToken);
-  return fetch(
-    `http://3.37.23.33:8080/api/v1/auth/join/email-check/${encodeURIComponent(
-      email
-    )}`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
-  )
+  return fetch(`/api/v1/auth/join/email-check/${encodeURIComponent(email)}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  })
     .then((response) => {
       console.log("API Response Status:", response.status);
       if (!response.ok) {

@@ -21,46 +21,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const accessToken = getCookie("accessToken");
 
-  fetch(`http://3.37.23.33:8080/api/v1/memory`, {
+  fetch(`/api/v1/memory`, {
     method: "GET",
     headers: {
-      'Accept': "*/*",
-      'Authorization': `Bearer ${accessToken}`,
+      Accept: "*/*",
+      Authorization: `Bearer ${accessToken}`,
     },
   })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json(); 
-  })
-  .then(data => {
-    if (data.isSuccess) {
-      console.log(data.result);
-      const darkRecords = data.result;
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.isSuccess) {
+        console.log(data.result);
+        const darkRecords = data.result;
 
-      const cardContainer = document.getElementById('card-container');
-      const noContentContainer = document.querySelector('.no-content-container');
+        const cardContainer = document.getElementById("card-container");
+        const noContentContainer = document.querySelector(
+          ".no-content-container"
+        );
 
-      if (darkRecords.length === 0) {
-        noContentContainer.style.display = 'flex';
-        cardContainer.style.display = 'none';
-      } else {
-        noContentContainer.style.display = 'none';
-        cardContainer.style.display = 'flex';
+        if (darkRecords.length === 0) {
+          noContentContainer.style.display = "flex";
+          cardContainer.style.display = "none";
+        } else {
+          noContentContainer.style.display = "none";
+          cardContainer.style.display = "flex";
 
-        let row;
+          let row;
 
-        for (let i = 0; i < darkRecords.length; i++) {
-          if (i % 3 === 0) {
-            row = document.createElement('div');
-            row.className = 'row';
-            cardContainer.appendChild(row);
-          }
-          const col = document.createElement('div');
-          col.className = 'col';
-          const formattedDate = darkRecords[i].createdAt ? formatDate(darkRecords[i].createdAt) : '날짜 없음';
-          col.innerHTML = `
+          for (let i = 0; i < darkRecords.length; i++) {
+            if (i % 3 === 0) {
+              row = document.createElement("div");
+              row.className = "row";
+              cardContainer.appendChild(row);
+            }
+            const col = document.createElement("div");
+            col.className = "col";
+            const formattedDate = darkRecords[i].createdAt
+              ? formatDate(darkRecords[i].createdAt)
+              : "날짜 없음";
+            col.innerHTML = `
             <div class="card">
               <div class="card-body">
                 <div class="card-title-wrapper">
@@ -76,34 +80,34 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
             </div>
           `;
-          row.appendChild(col);
-        }
-
-        if (row && row.children.length < 3) {
-          while (row.children.length < 3) {
-            const emptyCol = document.createElement('div');
-            emptyCol.className = 'col';
-            row.appendChild(emptyCol);
+            row.appendChild(col);
           }
-        }
 
-        document.querySelectorAll('.detail-btn').forEach((button, index) => {
-          button.addEventListener('click', function() {
-            const memoryId = darkRecords[index].memoryId;
-            window.location.href = `/darkRecordDetail.html?memoryId=${memoryId}`;
+          if (row && row.children.length < 3) {
+            while (row.children.length < 3) {
+              const emptyCol = document.createElement("div");
+              emptyCol.className = "col";
+              row.appendChild(emptyCol);
+            }
+          }
+
+          document.querySelectorAll(".detail-btn").forEach((button, index) => {
+            button.addEventListener("click", function () {
+              const memoryId = darkRecords[index].memoryId;
+              window.location.href = `/darkRecordDetail.html?memoryId=${memoryId}`;
+            });
           });
-        });
+        }
+      } else {
+        console.error("사용자 정보를 가져오는 데 실패했습니다.");
       }
-    } else {
-      console.error("사용자 정보를 가져오는 데 실패했습니다.");
-    }
-  })
-  .catch(error => {
-    console.error('흑역사 정보를 가져오는 중 에러 발생:', error);
-  });
-  document.body.addEventListener('click', function(event) {
-    if (event.target.classList.contains('write-btn')) {
-      window.location.href = '/darkRecordWriting.html';
+    })
+    .catch((error) => {
+      console.error("흑역사 정보를 가져오는 중 에러 발생:", error);
+    });
+  document.body.addEventListener("click", function (event) {
+    if (event.target.classList.contains("write-btn")) {
+      window.location.href = "/darkRecordWriting.html";
     }
   });
 });

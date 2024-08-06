@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const accessToken = getCookie("accessToken");
   function fetchUserInfo() {
-    const apiUrl = "http://3.37.23.33:8080/api/v1/user";
+    const apiUrl = "/api/v1/user";
     const accessToken = getCookie("accessToken");
     console.log("accessToken:", accessToken); // 토큰 확인
     fetch(apiUrl, {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // Function to fetch the recent report
   function fetchRecentReport() {
-    fetch("http://3.37.23.33:8080/api/v1/report/recent", {
+    fetch("/api/v1/report/recent", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to purchase the report
   function purchaseReport() {
-    fetch("http://3.37.23.33:8080/api/v1/gpt/", {
+    fetch("/api/v1/gpt/", {
       method: "POST",
       headers: {
         accept: "*/*",

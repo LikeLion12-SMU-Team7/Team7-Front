@@ -56,7 +56,7 @@ function fetchUserData() {
   const accessToken = getCookie("accessToken");
   console.log(accessToken);
 
-  fetch("http://3.37.23.33:8080/api/v1/user", {
+  fetch("/api/v1/user", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -81,7 +81,7 @@ function fetchUserData() {
       console.error("Error fetching user data from the API:", error);
     });
 
-  return fetch("http://3.37.23.33:8080/api/v1/user", {
+  return fetch("/api/v1/user", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -113,7 +113,7 @@ function updateDrinkStatistics() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
+  fetch("/api/v1/monthly-statistics/count", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -204,7 +204,7 @@ function updateDrinkDifferences() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/compared", {
+  fetch("/api/v1/monthly-statistics/compared", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -338,7 +338,7 @@ function updateAverageDrinkAmounts() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/average", {
+  fetch("/api/v1/monthly-statistics/average", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -417,7 +417,7 @@ function updatemonthlyDrinkFrequency() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
+  fetch("/api/v1/monthly-statistics/count", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -488,7 +488,7 @@ function updateGenderBasedStats() {
       gender === "MALE" ? MALE_FREQUENCY : FEMALE_FREQUENCY;
     const recommendedAmount = gender === "MALE" ? MALE_AMOUNT : FEMALE_AMOUNT;
 
-    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
+    fetch("/api/v1/monthly-statistics/count", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -554,7 +554,7 @@ function updateGenderBasedStats() {
         console.error("Error fetching data from the API:", error);
       });
 
-    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/average", {
+    fetch("/api/v1/monthly-statistics/average", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -685,7 +685,7 @@ function updateAgeBasedStats() {
       recommendedAmount = 0.7 * 8; // 0.7 병
     }
 
-    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
+    fetch("/api/v1/monthly-statistics/count", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -719,7 +719,7 @@ function updateAgeBasedStats() {
         console.error("Error fetching data from the API:", error);
       });
 
-    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/average", {
+    fetch("/api/v1/monthly-statistics/average", {
       method: "GET",
       headers: {
         accept: "*/*",
