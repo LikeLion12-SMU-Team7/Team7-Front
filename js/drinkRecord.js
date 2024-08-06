@@ -79,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const month = new Date(date).getMonth() + 1; // 월을 1부터 12까지로 맞추기 위해 +1
 
     return fetch(`/api/v1/history?month=${month}`, {
-      // date를 month로 변경
       method: "GET",
       headers: {
         accept: "*/*",
@@ -280,8 +279,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data.isSuccess) {
           return data.result.calendarList;
         } else {
-          throw new Error("Failed to fetch calendar data");
+          return []; // 캘린더 데이터가 없으면 빈 배열 반환
         }
+      })
+      .catch((error) => {
+        console.error("Error fetching calendar data:", error);
+        return []; // 에러가 발생하면 빈 배열 반환
       });
   }
 
@@ -308,6 +311,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetchCalendarData(month, year)
       .then((calendarList) => {
+        if (calendarList.length === 0) {
+          // 데이터가 없는 경우 2024년 1월 달력 표시
+          month = 0;
+          year = 2024;
+          monthLabel.textContent = monthNames[month];
+        }
+
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const userSojujan = userSojuAmount * 8;
