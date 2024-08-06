@@ -29,7 +29,7 @@ document.getElementById("startButton").addEventListener("click", function () {
     sojuAmount: sojuAmount,
   };
 
-  fetch("http://3.37.23.33:8080/api/v1/auth/join", {
+  fetch("/api/v1/auth/join", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
