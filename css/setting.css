@@ -1,9 +1,13 @@
+body {
+  background: var(--n-50, #fafafa);
+}
 .element {
   display: flex;
   justify-content: center;
   align-items: start;
   height: 100vh;
   width: 100%;
+  background: var(--n-50, #fafafa);
 }
 .main-frame {
   position: absolute;
@@ -12,19 +16,19 @@
   width: 543px;
   height: 700px;
   padding-left: 50px;
-  background-color: #ffffff;
+  background: var(--white, #fff);
   border-radius: 8px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--n-200, #e5e5e5);
   border-color: #e5e5e5;
 }
 .frame1 {
-  padding-top: 30px;
+  padding-top: 40px;
   font-family: "Pretendard-Regular", Helvetica;
   font-weight: 700;
+  font-size: 18px;
 }
 
 .frame-wrap1 p {
-  padding-top: 20px;
   margin-bottom: 7px;
   font-family: "Pretendard-Regular", Helvetica;
 }
@@ -56,6 +60,8 @@
   border: 1px solid var(--n-300);
   box-sizing: border-box;
   font-family: "Pretendard-Regular", Helvetica;
+  margin-right: 40px;
+  width: 100%;
 }
 .text-wrap1 {
   padding-right: 10px;
@@ -63,28 +69,34 @@
   padding-left: 3px;
 }
 .frame7 button {
-  display: flex;
   box-sizing: border-box;
-  border-radius: 8px;
-  padding: 6px 10px;
+  border-radius: 12px;
+  padding: 12px 16px;
   border: 1px solid var(--main-green-2);
   background-color: var(--main-green-2);
   color: white;
 }
 .fix-frame button {
   box-sizing: border-box;
-  border-radius: 8px;
-  padding: 6px 10px;
-  border: 1px solid var(--n-300);
-  background-color: var(--n-300);
-  color: black;
-  margin-bottom: 30px;
+  border-radius: 12px;
+  border: 1px solid var(--n-200, #e5e5e5);
+  background: var(--n-100, #f5f5f5);
+  display: flex;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px;
+  margin-top: 40px;
+  margin-bottom: -5px;
+  font-size: 14px;
+  font-family: "Pretendard", Helvetica;
 }
-.frame7,
-.fix-frame {
-  margin-left: 375px;
-  font-size: 15px;
-  margin-top: -30px;
+.frame7 {
+  position: absolute;
+  display: flex;
+  top: 40px;
+  margin-left: 393px;
+  font-size: 14px;
   font-family: "Pretendard-Regular", Helvetica;
 }
 .drink-wrap {
@@ -167,4 +179,11 @@
 }
 .drink-num p {
   margin-top: -3px;
+}
+.frame-setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+  padding-bottom: 42px;
 }

@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("frame3").style.opacity = 1;
           document.getElementById("p").style.opacity = 1;
         } else {
-          alert("리포트 생성에 실패했습니다. 다시 시도해주세요.");
+          alert("생성할 리포트가 존재하지 않습니다.");
         }
       })
       .catch((error) => {

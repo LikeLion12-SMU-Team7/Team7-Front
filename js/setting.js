@@ -179,6 +179,7 @@ function saveChanges() {
         disableFields(); // 저장 후 필드 비활성화
         document.querySelector(".setting-submit").style.display = "none"; // 저장 버튼 숨기기
         document.querySelector(".fix-submit").style.display = "inline-block"; // 수정 버튼 보이기
+        alert("개인 정보가 저장되었습니다!");
       } else {
         console.error("정보 저장에 실패했습니다: ", data.message);
       }
