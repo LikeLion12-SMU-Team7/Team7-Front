@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  fetch(`http://3.37.23.33:8080/api/v1/user`, {
+  fetch(`/api/v1/user`, {
     method: "GET",
     headers: {
       Accept: "*/*",
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // 홈 대시보드 조회
-  fetch(`http://3.37.23.33:8080/api/v1/home?month=${currentMonth}`, {
+  fetch(`/api/v1/home?month=${currentMonth}`, {
     method: "GET",
     headers: {
       Accept: "*/*",
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
       updateCalendar(0, 2024); // 0은 1월을 의미
     });
 
-  fetch(`http://3.37.23.33:8080/api/v1/monthly-statistics/count`, {
+  fetch(`/api/v1/monthly-statistics/count`, {
     method: "GET",
     headers: {
       Accept: "*/*",
@@ -307,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const today = new Date();
     const formattedDate = today.toISOString().split("T")[0]; // YYYY-MM-DD 형식으로 변환
 
-    fetch("http://3.37.23.33:8080/api/v1/history/none-drink", {
+    fetch("/api/v1/history/none-drink", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
