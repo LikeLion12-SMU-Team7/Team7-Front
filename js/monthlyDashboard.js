@@ -35,6 +35,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 document.addEventListener("DOMContentLoaded", (event) => {
   const monthlyStatsElement = document.querySelector(".monthly-dashboard");
+  const AIElement = document.querySelector(".AIDashboard");
+  if (AIElement) {
+    AIElement.addEventListener("click", () => {
+      window.location.href = "/AIReport.html";
+    });
+  }
   if (monthlyStatsElement) {
     monthlyStatsElement.addEventListener("click", () => {
       window.location.href = "/monthlyDashboard.html";
