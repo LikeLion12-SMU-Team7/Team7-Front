@@ -18,8 +18,78 @@ document.addEventListener("DOMContentLoaded", function () {
   // 현재 날짜를 기준으로 month 파라미터 설정
   const currentMonth = new Date().getMonth() + 1; // 월은 0부터 시작하므로 +1
 
-  // 유저 프로필 조회
-  fetch(`/api/v1/user`, {
+  // 캘린더 업데이트 함수 정의
+  function updateCalendar(month, year, calendarList = []) {
+    const monthLabel = document.getElementById("month-label");
+    const calendarDays = document.getElementById("calendar-days");
+    const monthNames = [
+      "1월",
+      "2월",
+      "3월",
+      "4월",
+      "5월",
+      "6월",
+      "7월",
+      "8월",
+      "9월",
+      "10월",
+      "11월",
+      "12월",
+    ];
+    monthLabel.textContent = monthNames[month];
+    calendarDays.innerHTML = "";
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const userSojujan = userSojuAmount * 8;
+
+    let day = 1;
+    for (let i = 0; i < 6; i++) {
+      const row = document.createElement("div");
+      row.className = "frame-8";
+      let rowHasDay = false; // Track if the row contains any valid day of the month
+
+      for (let j = 0; j < 7; j++) {
+        const cell = document.createElement("div");
+        cell.className = "group";
+
+        if (i === 0 && j < firstDay) {
+          cell.classList.add("disabled-water-drop");
+        } else if (day > daysInMonth) {
+          cell.classList.add("disabled-water-drop");
+        } else {
+          rowHasDay = true;
+          const currentDateStr = `${year}-${String(month + 1).padStart(
+            2,
+            "0"
+          )}-${String(day).padStart(2, "0")}`;
+          const currentDayData = calendarList.find(
+            (item) => item.date === currentDateStr
+          );
+          if (currentDayData) {
+            if (userSojujan > currentDayData.totalConsumption) {
+              cell.classList.add("green-water-drop");
+            } else if (userSojujan === currentDayData.totalConsumption) {
+              cell.classList.add("yellow-water-drop");
+            } else {
+              cell.classList.add("red-water-drop");
+            }
+          } else {
+            cell.classList.add("gray-water-drop");
+          }
+          cell.innerHTML = `<div class="text-wrapper-6">${day}</div>`;
+          day++;
+        }
+        row.appendChild(cell);
+      }
+
+      if (rowHasDay) {
+        calendarDays.appendChild(row);
+      }
+    }
+  }
+
+  fetch(`http://3.37.23.33:8080/api/v1/user`, {
     method: "GET",
     headers: {
       Accept: "*/*",
@@ -45,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // 홈 대시보드 조회
-  fetch(`/api/v1/home?month=${currentMonth}`, {
+  fetch(`http://3.37.23.33:8080/api/v1/home?month=${currentMonth}`, {
     method: "GET",
     headers: {
       Accept: "*/*",
@@ -60,12 +130,13 @@ document.addEventListener("DOMContentLoaded", function () {
       return response.json();
     })
     .then((data) => {
+      const calendarList = data.isSuccess ? data.result.calendarList : [];
+      const alcoholFreeDay = data.result.alcoholFreeDay;
+      const continuousRecordDay = data.result.continuousRecordDay;
+      const info = data.result.info;
+
       if (data.isSuccess) {
         console.log(data.result);
-        const calendarList = data.result.calendarList;
-        const alcoholFreeDay = data.result.alcoholFreeDay;
-        const continuousRecordDay = data.result.continuousRecordDay;
-        const info = data.result.info;
 
         // 연속 기록
         const userContinuousRecordDayElement = document.getElementById(
@@ -163,93 +234,24 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
 
-        // 캘린더
-        const monthLabel = document.getElementById("month-label");
-        const calendarDays = document.getElementById("calendar-days");
-        const currentDate = new Date();
-        let currentMonth = currentDate.getMonth();
-        let currentYear = currentDate.getFullYear();
-
-        function updateCalendar(month, year) {
-          const monthNames = [
-            "1월",
-            "2월",
-            "3월",
-            "4월",
-            "5월",
-            "6월",
-            "7월",
-            "8월",
-            "9월",
-            "10월",
-            "11월",
-            "12월",
-          ];
-          monthLabel.textContent = monthNames[month];
-          calendarDays.innerHTML = "";
-
-          const firstDay = new Date(year, month, 1).getDay();
-          const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-          const userSojujan = userSojuAmount * 8;
-
-          let day = 1;
-          for (let i = 0; i < 6; i++) {
-            const row = document.createElement("div");
-            row.className = "frame-8";
-            let rowHasDay = false; // Track if the row contains any valid day of the month
-
-            for (let j = 0; j < 7; j++) {
-              const cell = document.createElement("div");
-              cell.className = "group";
-
-              if (i === 0 && j < firstDay) {
-                cell.classList.add("disabled-water-drop");
-              } else if (day > daysInMonth) {
-                cell.classList.add("disabled-water-drop");
-              } else {
-                console.log(userSojujan);
-                rowHasDay = true;
-                const currentDateStr = `${year}-${String(month + 1).padStart(
-                  2,
-                  "0"
-                )}-${String(day).padStart(2, "0")}`;
-                const currentDayData = calendarList.find(
-                  (item) => item.date === currentDateStr
-                );
-                if (currentDayData) {
-                  if (userSojujan > currentDayData.totalConsumption) {
-                    cell.classList.add("green-water-drop");
-                  } else if (userSojujan === currentDayData.totalConsumption) {
-                    cell.classList.add("yellow-water-drop");
-                  } else {
-                    cell.classList.add("red-water-drop");
-                  }
-                } else {
-                  cell.classList.add("gray-water-drop");
-                }
-                cell.innerHTML = `<div class="text-wrapper-6">${day}</div>`;
-                day++;
-              }
-              row.appendChild(cell);
-            }
-
-            if (rowHasDay) {
-              calendarDays.appendChild(row);
-            }
-          }
-        }
-
-        updateCalendar(currentMonth, currentYear);
+        // 캘린더 업데이트 호출
+        updateCalendar(
+          currentDate.getMonth(),
+          currentDate.getFullYear(),
+          calendarList
+        );
       } else {
+        // 기본 달력 표시 (2024년 1월)
         console.error("사용자 정보를 가져오는 데 실패했습니다.");
+        updateCalendar(0, 2024);
       }
     })
     .catch((error) => {
       console.error("홈 정보를 가져오는 중 에러 발생:", error);
+      updateCalendar(0, 2024); // 0은 1월을 의미
     });
 
-  fetch(`/api/v1/monthly-statistics/count`, {
+  fetch(`http://3.37.23.33:8080/api/v1/monthly-statistics/count`, {
     method: "GET",
     headers: {
       Accept: "*/*",
@@ -300,13 +302,12 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("월간 대시보드 정보를 가져오는 중 에러 발생:", error);
     });
 
-  // 오늘도 안 마셨어요 버튼
   const noDrinkButton = document.getElementById("no-drink-button");
   noDrinkButton.addEventListener("click", () => {
     const today = new Date();
     const formattedDate = today.toISOString().split("T")[0]; // YYYY-MM-DD 형식으로 변환
 
-    fetch("/api/v1/history/none-drink", {
+    fetch("http://3.37.23.33:8080/api/v1/history/none-drink", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
