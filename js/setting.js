@@ -7,7 +7,7 @@ function loadUserInfo() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/user", {
+  fetch("/api/v1/user", {
     method: "GET",
     headers: {
       Accept: "*/*",
@@ -156,7 +156,7 @@ function saveChanges() {
   };
 
   // 변경 사항 저장을 위한 API 요청
-  fetch("http://3.37.23.33:8080/api/v1/user", {
+  fetch("/api/v1/user", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
