@@ -93,6 +93,9 @@ body {
   overflow-y: auto;
   overflow-x: auto;
 }
+.text-frame2::-webkit-scrollbar {
+  display: none;
+}
 .frame4 {
   padding-left: 65px;
 }
@@ -111,6 +114,7 @@ body {
   text-align: right;
   padding-right: 65px;
   padding-top: 30px;
+  padding-bottom: 40px;
   color: #1abc9c;
   span {
     display: block;
