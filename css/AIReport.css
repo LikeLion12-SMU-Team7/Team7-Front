@@ -24,7 +24,6 @@ body {
   height: 680px;
   margin-bottom: 140px;
   margin-top: 244px;
-
   border-radius: 12px;
   border: 1px solid var(--n-200, #e5e5e5);
   background: var(--white, #fff);
@@ -118,7 +117,9 @@ body {
     display: block;
   }
 }
-
+.text-frame4:nth-child(2) {
+  padding-bottom: 100px;
+}
 .btn {
   background-color: #1abc9c;
   color: white;
