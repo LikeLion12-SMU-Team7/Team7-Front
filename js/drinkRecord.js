@@ -1,9 +1,7 @@
-// 사용자 주량
 let userSojuAmount = 0;
 let formattedDate = ""; // formattedDate 변수를 전역으로 선언
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetchTodayDrinkRecord();
   // 현재 날짜를 기준으로 month 파라미터 설정
   let currentMonth = new Date().getMonth();
   let currentYear = new Date().getFullYear();
@@ -91,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        console.log(data.result);
+        return data.result || {};
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -104,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const memory = records.find((record) => record.createdAt === date);
       if (memory) {
         console.log(`Memory content for ${date}: ${memory.content}`);
-        // 여기서 memory.content를 원하는 방식으로 처리합니다.
       } else {
         console.log(`No memory record found for ${date}`);
       }
@@ -167,7 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
             wineConsumption: data.result.todayWineConsumption,
             makgeolliConsumption: data.result.todayMakgeolliConsumption,
           });
-          console.log(data.result);
         } else {
           console.error("Failed to fetch drink record:", data.message);
         }
@@ -176,11 +172,12 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error:", error);
       });
   }
+
   function calCount(action, element) {
     const inputField = element.parentElement.querySelector(
       'input[name="pop_out"]'
     );
-    let currentValue = parseInt(inputField.value);
+    let currentValue = parseInt(inputField.value.replace("잔", ""));
     if (isNaN(currentValue)) {
       currentValue = 0;
     }
@@ -190,29 +187,34 @@ document.addEventListener("DOMContentLoaded", () => {
       currentValue -= 1;
     }
     inputField.value = currentValue + "잔";
+
+    console.log(element.dataset.drink);
+    console.log(currentValue);
+
     updateDrinkRecord(element.dataset.drink, currentValue);
-    updateDrinkRecordDisplay(getCurrentDrinkCounts());
   }
 
   function getCurrentDrinkCounts() {
-    const sojuInput = document.querySelector('input[data-drink="soju"]');
-    const beerInput = document.querySelector('input[data-drink="beer"]');
-    const wineInput = document.querySelector('input[data-drink="wine"]');
-    const makgeolliInput = document.querySelector(
-      'input[data-drink="makgeolli"]'
-    );
+    const sojuCount = parseInt(sojuInput.value.replace("잔", "")) || 0;
+    const beerCount = parseInt(beerInput.value.replace("잔", "")) || 0;
+    const wineCount = parseInt(wineInput.value.replace("잔", "")) || 0;
+    const makgeolliCount =
+      parseInt(makgeolliInput.value.replace("잔", "")) || 0;
 
     return {
-      soju: parseInt(sojuInput.value) || 0,
-      beer: parseInt(beerInput.value) || 0,
-      wine: parseInt(wineInput.value) || 0,
-      makgeolli: parseInt(makgeolliInput.value) || 0,
+      soju: sojuCount,
+      beer: beerCount,
+      wine: wineCount,
+      makgeolli: makgeolliCount,
     };
   }
 
   function updateDrinkRecord(drinkType, count) {
     const date = formattedDate || currentDate.toISOString().split("T")[0];
     const token = getCookie("accessToken");
+
+    console.log(drinkType);
+    console.log(count);
 
     const currentCounts = getCurrentDrinkCounts();
 
@@ -239,7 +241,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        updateCalendar(currentMonth, currentYear);
+        updateCalendar(currentMonth, currentYear); // 캘린더 업데이트
+        fetchTodayDrinkRecord(date); // 실시간으로 기록 업데이트
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -253,6 +256,8 @@ document.addEventListener("DOMContentLoaded", () => {
         inputValue = 0;
       }
       this.value = parseInt(inputValue) + "잔";
+      const drinkType = this.dataset.drink;
+      updateDrinkRecord(drinkType, parseInt(inputValue));
     });
   });
 
@@ -434,7 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCalendar(currentMonth, currentYear);
   });
 
-  fetchDrinkRecord(todayDate).then(updateDrinkRecordDisplay);
+  fetchTodayDrinkRecord(todayDate); // 초기 로딩 시 당일 정보를 가져옴
 
   window.calCount = calCount;
 });

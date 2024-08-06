@@ -1,3 +1,6 @@
+body {
+  background-color: var(--n-50);
+}
 .element {
   display: flex;
   justify-content: center;
@@ -15,6 +18,7 @@
 
   z-index: -1;
 }
+
 .index-sub-title {
   position: absolute;
   font-family: "Pretendard-Medium", Helvetica;
@@ -29,18 +33,11 @@
     display: block;
   }
 }
-.index-main-title i {
-  position: absolute;
-  color: red;
-  z-index: 1;
-  padding-top: 40px;
-}
+
 .drink-img {
   position: relative;
   margin-right: 10px;
   margin-bottom: 11px;
-  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 white);
-  filter: brightness(0) invert(1);
 }
 .index-main-title {
   position: absolute;
