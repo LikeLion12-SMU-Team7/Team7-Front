@@ -35,6 +35,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 document.addEventListener("DOMContentLoaded", (event) => {
   const monthlyStatsElement = document.querySelector(".monthly-dashboard");
+  const AIElement = document.querySelector(".AIDashboard");
+  if (AIElement) {
+    AIElement.addEventListener("click", () => {
+      window.location.href = "/AIReport.html";
+    });
+  }
   if (monthlyStatsElement) {
     monthlyStatsElement.addEventListener("click", () => {
       window.location.href = "/monthlyDashboard.html";
@@ -67,6 +73,8 @@ function fetchUserData() {
     .then((data) => {
       if (data.isSuccess && data.result) {
         const { nickname } = data.result;
+        const userNameElements = document.querySelector(".user-name");
+        userNameElements.textContent = `${nickname}  님이 한 달에 평균적으로 마시는 양`;
         const textWrapperElement = document.querySelector(".text-wrapper");
         if (textWrapperElement) {
           textWrapperElement.innerHTML = `${nickname}님의<br />음주 습관 분석`;
