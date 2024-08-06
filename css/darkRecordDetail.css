@@ -1,3 +1,7 @@
+body{
+    background-color: var(--n-50);
+}
+
 .element .div{
     width: 1046px;
     margin-bottom: 64px;

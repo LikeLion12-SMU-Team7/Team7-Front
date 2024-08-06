@@ -1,3 +1,7 @@
+body{
+    background-color: var(--n-50);
+}
+
 * {
     font-family: Pretendard;
     margin: 0;
