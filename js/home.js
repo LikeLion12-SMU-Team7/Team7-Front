@@ -84,20 +84,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // 칼로리
       const calorieElement = document.getElementById("user-calorie");
-      calorieElement.textContent = `${info.monthlyCalorie.toLocaleString()}kcal`;
+      calorieElement.textContent = `${info.monthlyCalorie.toFixed(1).toLocaleString()}kcal`;
 
       // 예상 음주 지출
       const expectedCostElement = document.getElementById("user-expectedCost");
-      expectedCostElement.textContent = `${info.expectedCost.toLocaleString()}원`;
-
+      expectedCostElement.textContent = `${info.expectedCost.toFixed(1).toLocaleString()}원`;
+      
       // 예상 음주 지출을 각 food의 가격으로 나누기
       const tanghuluPrice = 5000;
       const gukbapPrice = 10000;
       const chickenPrice = 20000;
 
-      const tanghuluCount = Math.floor(info.expectedCost / tanghuluPrice);
-      const gukbapCount = Math.floor(info.expectedCost / gukbapPrice);
-      const chickenCount = Math.floor(info.expectedCost / chickenPrice);
+      const tanghuluCount = (info.expectedCost / tanghuluPrice).toFixed(1);
+      const gukbapCount = (info.expectedCost / gukbapPrice).toFixed(1);
+      const chickenCount = (info.expectedCost / chickenPrice).toFixed(1);
 
     // 음식 가격에 따라 개수 산출
     function updateFoodCount(food, count) {
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return response.json(); 
   })
   .then(data => {
-    if (data.isSuccess) {
+    if (data.isSuccess && data.result) {
       const monthlyDrinkCount = data.result.drinkCount;
       const monthlyDrinkCountDifference = data.result.drinkCountDiff;
 
@@ -256,17 +256,17 @@ document.addEventListener("DOMContentLoaded", function () {
       const emoji = document.getElementById("emoji");
       const monthlyDrinkContainer = document.querySelector(".frame-11");
     
-      if (monthlyDrinkCount > monthlyDrinkCountDifference) {
+      if (monthlyDrinkCountDifference === 0) {
+        emoji.innerHTML = `<img src="img/weekSmile.png" alt="weekSmile" class="emoji">`;
+        monthlyDrinkCountDifferenceElement.textContent = `${monthlyDrinkCountDifference}회로 지난 달과 비슷해요`;
+        monthlyDrinkContainer.style.backgroundColor = "#F8E187";
+      } else if (monthlyDrinkCountDifference > 0) {
         emoji.innerHTML = `<img src="img/vomit.png" alt="vomit" class="emoji">`;
         monthlyDrinkCountDifferenceElement.textContent = `지난 달 보다 ${monthlyDrinkCountDifference}회 더 마셨어요`;
         monthlyDrinkContainer.style.backgroundColor = "#F3A59E";
-      } else if (monthlyDrinkCount === monthlyDrinkCountDifference) {
-        emoji.innerHTML = `<img src="img/weekSmile.png" alt="weekSmile" class="emoji">`;
-        monthlyDrinkCountDifferenceElement.textContent = `${monthlyDrinkCountDifference}회로 지난 달 음주 빈도와 같습니다`;
-        monthlyDrinkContainer.style.backgroundColor = "#F8E187";
       } else {
-        emoji.innerHTML = `<img src="img/star.png" alt="star" class="emoji">`;
-        monthlyDrinkCountDifferenceElement.textContent = `지난 달 보다 ${monthlyDrinkCountDifference}회 덜 마셨어요`;
+        emoji.innerHTML = `<img src="img/starface.png" alt="star" class="emoji">`;
+        monthlyDrinkCountDifferenceElement.textContent = `지난 달 보다 ${Math.abs(monthlyDrinkCountDifference)}회 덜 마셨어요`;
         monthlyDrinkContainer.style.backgroundColor = "#93D6B0";
       }
     }

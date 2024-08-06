@@ -30,9 +30,10 @@ function loadUserInfo() {
         document.querySelector(
           `input[name="gender"][value="${userInfo.gender.toLowerCase()}"]`
         ).checked = true;
-        document.getElementById("sojuAmount").value = userInfo.sojuAmount;
+        document.getElementById("sojuAmount").value =
+          userInfo.sojuAmount + "병";
         document.getElementById("birth").value = userInfo.birthDate;
-        document.getElementById("weight").value = userInfo.weight;
+        document.getElementById("weight").value = userInfo.weight + "kg";
       } else {
         console.error("사용자 정보를 가져오는 데 실패했습니다.");
       }
@@ -64,7 +65,7 @@ document
   .getElementById("logout-link")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    window.location.href = "/logout";
+    window.location.href = "/index.html";
   });
 
 // 체중 입력값 검증 함수
@@ -74,7 +75,7 @@ function validateWeightInput(input) {
     value = value.slice(0, 3);
   }
 
-  input.value = value;
+  input.value = value + "kg";
 }
 
 // 주량 증가 및 감소 함수

@@ -39,7 +39,7 @@
   border: 1px solid #e5e5e5;
   top: 47px;
   overflow: hidden;
-  z-index: -1;
+  z-index: 1;
 }
 .frame2 {
   position: absolute;
@@ -72,6 +72,10 @@
 .text-frame2 {
   padding-left: 40px;
   padding-top: 30px;
+  width: 1164px;
+  height: 220px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 .frame4 {
   padding-left: 65px;
@@ -115,6 +119,14 @@
 .button-frame.active .frame3 {
   opacity: 1;
 }
-.button-frame.hidden .btn {
+.button-frame.hidden {
   display: none;
+}
+
+.button-frame:not(.hidden) {
+  display: block;
+}
+
+.btn-frame:not(.hidden) {
+  display: block;
 }

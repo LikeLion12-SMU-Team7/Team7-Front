@@ -13,25 +13,29 @@
   height: 700px;
   padding-left: 50px;
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  border: 1px;
+  border: 1px solid #e5e5e5;
   border-color: #e5e5e5;
 }
 .frame1 {
   padding-top: 30px;
+  font-family: "Pretendard-Regular", Helvetica;
+  font-weight: 700;
 }
 
 .frame-wrap1 p {
   padding-top: 20px;
   margin-bottom: 7px;
+  font-family: "Pretendard-Regular", Helvetica;
 }
 .frame-wrap2 p,
 .frame-wrap4 p,
 .frame-wrap3 p,
 .frame-wrap5 p {
   margin-bottom: 7px;
+  font-family: "Pretendard-Regular", Helvetica;
 }
+
 .frame2,
 .frame3,
 .frame5,
@@ -51,9 +55,12 @@
   border-radius: 8px;
   border: 1px solid var(--n-300);
   box-sizing: border-box;
+  font-family: "Pretendard-Regular", Helvetica;
 }
 .text-wrap1 {
   padding-right: 10px;
+  font-family: "Pretendard-Regular", Helvetica;
+  padding-left: 3px;
 }
 .frame7 button {
   display: flex;
@@ -78,6 +85,7 @@
   margin-left: 375px;
   font-size: 15px;
   margin-top: -30px;
+  font-family: "Pretendard-Regular", Helvetica;
 }
 .drink-wrap {
   margin-bottom: 10px;
@@ -99,19 +107,37 @@
   border-radius: 8px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  font-family: "Pretendard-Regular", Helvetica;
 }
-.drink-num button {
+.minus {
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   background-color: var(--main-green-2);
   border: 1px solid var(--main-green-2);
   color: white;
+  margin-right: 12px;
+}
+.plus {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: var(--main-green-2);
+  border: 1px solid var(--main-green-2);
+  color: white;
+  margin-left: 12px;
+}
+.drink-num img {
+  display: flex;
+  width: 12px;
+  height: 12px;
+  padding-right: 1px;
 }
 .logout-text {
   position: absolute;
   top: 900px;
   left: 321.5px;
+  font-family: "Pretendard-Regular", Helvetica;
 }
 #logout-link {
   color: black;
@@ -134,9 +160,9 @@
 }
 .frame-4-1 p {
   position: absolute;
-  margin-top: -24px;
-  margin-left: 2px;
-  font-size: 13px;
+  margin-top: -25px;
+  margin-left: 3px;
+  font-size: 16px;
   color: white;
 }
 .drink-num p {

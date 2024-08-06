@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const formatDate = (date) => {
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    return `${month}월 ${day}일`;
+    return `${month}월`;
   };
 
   const startOfWeekFormatted = formatDate(startOfWeek);
@@ -21,10 +21,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // Update the date range in the HTML
   const dateRangeElement = document.querySelector(".weeks");
   if (dateRangeElement) {
-    dateRangeElement.textContent = `${startOfWeekFormatted} ~ ${endOfWeekFormatted}`;
+    dateRangeElement.textContent = `${startOfWeekFormatted}`;
   } else {
     console.error("Date range element not found");
   }
+
+  document
+    .getElementById("weekly-stats-button")
+    .addEventListener("click", function () {
+      window.location.href = "weeklyDashboard.html";
+    });
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -48,6 +54,7 @@ function getCookie(name) {
 // Fetch user data to get gender
 function fetchUserData() {
   const accessToken = getCookie("accessToken");
+  console.log(accessToken);
 
   fetch("http://3.37.23.33:8080/api/v1/user", {
     method: "GET",
@@ -106,7 +113,7 @@ function updateDrinkStatistics() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
+  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -129,16 +136,16 @@ function updateDrinkStatistics() {
         const drinkCountDiffElement =
           document.querySelector(".drink-count-diff");
         if (drinkCountDiff === 0) {
-          drinkCountDiffElement.textContent = "지난 주랑 비슷해요";
+          drinkCountDiffElement.textContent = "지난 달과 비슷해요";
         } else if (drinkCountDiff > 0) {
-          drinkCountDiffElement.innerHTML = `지난 주보다 <span class="text-wrapper-15">${drinkCountDiff}회</span> 더 마셨어요`;
+          drinkCountDiffElement.innerHTML = `지난 달보다 <span class="text-wrapper-15">${drinkCountDiff}회</span> 더 마셨어요`;
           drinkCountDiffElement.parentElement.parentElement.style.backgroundColor =
             "var(--point-redw50)";
           document
             .querySelector(".drink-count-diff")
             .parentElement.querySelector(".size48").src = "img/vomit.png";
         } else {
-          drinkCountDiffElement.innerHTML = `지난 주보다 <span class="text-wrapper-17">${Math.abs(
+          drinkCountDiffElement.innerHTML = `지난 달보다 <span class="text-wrapper-17">${Math.abs(
             drinkCountDiff
           )}회</span> 덜 마셨어요`;
           drinkCountDiffElement.parentElement.parentElement.style.backgroundColor =
@@ -160,9 +167,9 @@ function updateDrinkStatistics() {
           ".total-alcohol-diff"
         );
         if (totalAlcoholDiff === 0) {
-          totalAlcoholDiffElement.textContent = "지난 주랑 비슷해요";
+          totalAlcoholDiffElement.textContent = "지난 달과 비슷해요";
         } else if (totalAlcoholDiff > 0) {
-          totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 주보다 <span class="text-wrapper-15">${totalAlcoholDiff.toFixed(
+          totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 달보다 <span class="text-wrapper-15">${totalAlcoholDiff.toFixed(
             1
           )}g</span> 더 마셨어요`;
           totalAlcoholDiffElement.parentElement.parentElement.style.backgroundColor =
@@ -171,7 +178,7 @@ function updateDrinkStatistics() {
             .querySelector(".total-alcohol-diff")
             .parentElement.querySelector(".size48").src = "img/vomit.png";
         } else {
-          totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 주보다 <span class="text-wrapper-17">${Math.abs(
+          totalAlcoholDiffElement.innerHTML = `총 알콜(g) 기준, 지난 달보다 <span class="text-wrapper-17">${Math.abs(
             totalAlcoholDiff.toFixed(1)
           )}g</span> 덜 마셨어요`;
           totalAlcoholDiffElement.parentElement.parentElement.style.backgroundColor =
@@ -197,7 +204,7 @@ function updateDrinkDifferences() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/compared", {
+  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/compared", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -208,10 +215,10 @@ function updateDrinkDifferences() {
     .then((data) => {
       if (data.isSuccess && data.result) {
         const {
-          weeklySojuCount,
-          weeklyWineCount,
-          weeklyBeerCount,
-          weeklyMakgeolliCount,
+          monthlySojuCount,
+          monthlyWineCount,
+          monthlyBeerCount,
+          monthlyMakgeolliCount,
           sojuDifference,
           wineDifference,
           beerDifference,
@@ -224,96 +231,96 @@ function updateDrinkDifferences() {
         const WINE_VOLUME = 750;
         const MAKGGEOLLI_VOLUME = 750;
 
-        // Update soju weekly count and difference
-        const sojuCountElement = document.querySelector(".soju-weekly");
-        sojuCountElement.textContent = `${weeklySojuCount}병 (${(
-          weeklySojuCount * SOJU_VOLUME
+        // Update soju monthly count and difference
+        const sojuCountElement = document.querySelector(".soju-monthly");
+        sojuCountElement.textContent = `${monthlySojuCount}병 (${(
+          monthlySojuCount * SOJU_VOLUME
         ).toLocaleString()}ml)`;
         const sojuDiffElement = document.querySelector(".soju-difference");
         if (sojuDifference === 0) {
-          sojuDiffElement.textContent = "지난 주랑 비슷해요";
+          sojuDiffElement.textContent = "지난 달과 비슷해요";
         } else if (sojuDifference > 0) {
-          sojuDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-15">${sojuDifference}병</span> 만큼 더 마셨어요`;
+          sojuDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-15">${sojuDifference}병</span> 만큼 더 마셨어요`;
         } else {
-          sojuDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-17">${Math.abs(
+          sojuDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-17">${Math.abs(
             sojuDifference
           )}병</span> 만큼 덜 마셨어요`;
         }
 
-        // Update wine weekly count and difference
-        const wineCountElement = document.querySelector(".wine-weekly");
-        wineCountElement.textContent = `${weeklyWineCount}병 (${(
-          weeklyWineCount * WINE_VOLUME
+        // Update wine monthly count and difference
+        const wineCountElement = document.querySelector(".wine-monthly");
+        wineCountElement.textContent = `${monthlyWineCount}병 (${(
+          monthlyWineCount * WINE_VOLUME
         ).toLocaleString()}ml)`;
         const wineDiffElement = document.querySelector(".wine-difference");
         if (wineDifference === 0) {
-          wineDiffElement.textContent = "지난 주랑 비슷해요";
+          wineDiffElement.textContent = "지난 달과 비슷해요";
         } else if (wineDifference > 0) {
-          wineDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-15">${wineDifference}병</span> 만큼 더 마셨어요`;
+          wineDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-15">${wineDifference}병</span> 만큼 더 마셨어요`;
         } else {
-          wineDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-17">${Math.abs(
+          wineDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-17">${Math.abs(
             wineDifference
           )}병</span> 만큼 덜 마셨어요`;
         }
 
-        // Update beer weekly count and difference
-        const beerCountElement = document.querySelector(".beer-weekly");
-        beerCountElement.textContent = `${weeklyBeerCount}병 (${(
-          weeklyBeerCount * BEER_VOLUME
+        // Update beer monthly count and difference
+        const beerCountElement = document.querySelector(".beer-monthly");
+        beerCountElement.textContent = `${monthlyBeerCount}병 (${(
+          monthlyBeerCount * BEER_VOLUME
         ).toLocaleString()}ml)`;
         const beerDiffElement = document.querySelector(".beer-difference");
         if (beerDifference === 0) {
-          beerDiffElement.textContent = "지난 주랑 비슷해요";
+          beerDiffElement.textContent = "지난 달과 비슷해요";
         } else if (beerDifference > 0) {
-          beerDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-15">${beerDifference}병</span> 만큼 더 마셨어요`;
+          beerDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-15">${beerDifference}병</span> 만큼 더 마셨어요`;
         } else {
-          beerDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-17">${Math.abs(
+          beerDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-17">${Math.abs(
             beerDifference
           )}병</span> 만큼 덜 마셨어요`;
         }
 
-        // Update makgeolli weekly count and difference
+        // Update makgeolli monthly count and difference
         const makgeolliCountElement =
-          document.querySelector(".makgeolli-weekly");
-        makgeolliCountElement.textContent = `${weeklyMakgeolliCount}병 (${(
-          weeklyMakgeolliCount * MAKGGEOLLI_VOLUME
+          document.querySelector(".makgeolli-monthly");
+        makgeolliCountElement.textContent = `${monthlyMakgeolliCount}병 (${(
+          monthlyMakgeolliCount * MAKGGEOLLI_VOLUME
         ).toLocaleString()}ml)`;
         const makgeolliDiffElement = document.querySelector(
           ".makgeolli-difference"
         );
         if (makgeolliDifference === 0) {
-          makgeolliDiffElement.textContent = "지난 주랑 비슷해요";
+          makgeolliDiffElement.textContent = "지난 달과 비슷해요";
         } else if (makgeolliDifference > 0) {
-          makgeolliDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-15">${makgeolliDifference}병</span> 만큼 더 마셨어요`;
+          makgeolliDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-15">${makgeolliDifference}병</span> 만큼 더 마셨어요`;
         } else {
-          makgeolliDiffElement.innerHTML = `지난주보다 <span class="text-wrapper-17">${Math.abs(
+          makgeolliDiffElement.innerHTML = `지난달보다 <span class="text-wrapper-17">${Math.abs(
             makgeolliDifference
           )}병</span> 만큼 덜 마셨어요`;
         }
 
         // Calculate the total volume
         const totalVolume =
-          weeklySojuCount * SOJU_VOLUME +
-          weeklyBeerCount * BEER_VOLUME +
-          weeklyWineCount * WINE_VOLUME +
-          weeklyMakgeolliCount * MAKGGEOLLI_VOLUME;
+          monthlySojuCount * SOJU_VOLUME +
+          monthlyBeerCount * BEER_VOLUME +
+          monthlyWineCount * WINE_VOLUME +
+          monthlyMakgeolliCount * MAKGGEOLLI_VOLUME;
 
         // Update the heights of the rectangles
         const sojuHeight =
-          ((weeklySojuCount * SOJU_VOLUME) / totalVolume) * 100;
+          ((monthlySojuCount * SOJU_VOLUME) / totalVolume) * 100;
         const beerHeight =
-          ((weeklyBeerCount * BEER_VOLUME) / totalVolume) * 100;
+          ((monthlyBeerCount * BEER_VOLUME) / totalVolume) * 100;
         const wineHeight =
-          ((weeklyWineCount * WINE_VOLUME) / totalVolume) * 100;
+          ((monthlyWineCount * WINE_VOLUME) / totalVolume) * 100;
         const makgeolliHeight =
-          ((weeklyMakgeolliCount * MAKGGEOLLI_VOLUME) / totalVolume) * 100;
+          ((monthlyMakgeolliCount * MAKGGEOLLI_VOLUME) / totalVolume) * 100;
 
-        // document.querySelector(".rectangle-3").style.height = `${sojuHeight}px`;
-        // document.querySelector(".rectangle-4").style.height = `${beerHeight}px`;
-        // document.querySelector(".rectangle-5").style.height = `${wineHeight}px`;
-        // document.querySelector(
-        //   ".rectangle-6"
-        // ).style.height = `${makgeolliHeight}px`;
+        document.querySelector(".rectangle-3").style.height = `${sojuHeight}px`;
+        document.querySelector(".rectangle-4").style.height = `${beerHeight}px`;
+        document.querySelector(".rectangle-5").style.height = `${wineHeight}px`;
+        document.querySelector(
+          ".rectangle-6"
+        ).style.height = `${makgeolliHeight}px`;
       } else {
         console.error("Failed to fetch data from the API:", data.message);
       }
@@ -331,7 +338,7 @@ function updateAverageDrinkAmounts() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/average", {
+  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/average", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -342,7 +349,7 @@ function updateAverageDrinkAmounts() {
     .then((data) => {
       if (data.isSuccess && data.result) {
         const {
-          averageFrequency,
+          averageCount,
           sojuAverage,
           wineAverage,
           beerAverage,
@@ -358,7 +365,7 @@ function updateAverageDrinkAmounts() {
         const averageFrequencyElements =
           document.querySelectorAll(".average-frequency");
         averageFrequencyElements.forEach((element) => {
-          element.textContent = `${averageFrequency.toFixed(2)} 회`;
+          element.textContent = `${averageCount.toFixed(2)} 회`;
         });
 
         // Update soju average
@@ -402,7 +409,7 @@ function updateAverageDrinkAmounts() {
     });
 }
 
-function updateWeeklyDrinkFrequency() {
+function updatemonthlyDrinkFrequency() {
   const accessToken = getCookie("accessToken");
 
   if (!accessToken) {
@@ -410,7 +417,7 @@ function updateWeeklyDrinkFrequency() {
     return;
   }
 
-  fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
+  fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
     method: "GET",
     headers: {
       accept: "*/*",
@@ -433,11 +440,11 @@ function updateWeeklyDrinkFrequency() {
 
         // Update the message based on drink frequency
         if (drinkCount > 2) {
-          messageElement.innerHTML = `적정 음주 빈도보다 일주일에 <span class="text-wrapper-15">${
+          messageElement.innerHTML = `적정 음주 빈도보다 한 달에 <span class="text-wrapper-15">${
             drinkCount - 2
           }회</span> 더 마셔요`;
         } else if (drinkCount < 2) {
-          messageElement.innerHTML = `적정 음주 빈도보다 일주일에 <span class="text-wrapper-17">${
+          messageElement.innerHTML = `적정 음주 빈도보다 한 달에 <span class="text-wrapper-17">${
             2 - drinkCount
           }회</span> 덜 마셔요`;
         } else {
@@ -481,7 +488,7 @@ function updateGenderBasedStats() {
       gender === "MALE" ? MALE_FREQUENCY : FEMALE_FREQUENCY;
     const recommendedAmount = gender === "MALE" ? MALE_AMOUNT : FEMALE_AMOUNT;
 
-    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
+    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -515,7 +522,7 @@ function updateGenderBasedStats() {
             ".frequency-comparison"
           );
           if (drinkCount > recommendedFrequency) {
-            frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 일주일에 <span class="text-wrapper-15">${
+            frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 한 달에 <span class="text-wrapper-15">${
               drinkCount - recommendedFrequency
             }회</span> 더 마셔요`;
 
@@ -523,7 +530,7 @@ function updateGenderBasedStats() {
             rectangle11.style.backgroundColor = "var(--point-red)";
             drinkFrequencyRectangle.style.backgroundColor = "var(--point-red)";
           } else if (drinkCount < recommendedFrequency) {
-            frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 일주일에 <span class="text-wrapper-17">${
+            frequencyMessageElement.innerHTML = `성별 적정 음주 빈도보다 한 달에 <span class="text-wrapper-17">${
               recommendedFrequency - drinkCount
             }회</span> 덜 마셔요`;
 
@@ -547,7 +554,7 @@ function updateGenderBasedStats() {
         console.error("Error fetching data from the API:", error);
       });
 
-    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/average", {
+    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/average", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -568,13 +575,13 @@ function updateGenderBasedStats() {
           const amountMessageElement =
             document.querySelector(".amount-comparison");
           if (averageAmountDifference > 0) {
-            amountMessageElement.innerHTML = `성별 적정 음주량보다 일주일에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
+            amountMessageElement.innerHTML = `성별 적정 음주량보다 한 달에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
               1
             )}잔</span> 더 마셔요 (${(
               averageAmountDifference * 50
             ).toLocaleString()}ml)`;
           } else if (averageAmountDifference < 0) {
-            amountMessageElement.innerHTML = `성별 적정 음주량보다 일주일에 <span class="text-wrapper-17">${Math.abs(
+            amountMessageElement.innerHTML = `성별 적정 음주량보다 한 달에 <span class="text-wrapper-17">${Math.abs(
               averageAmountDifference.toFixed(1)
             )}잔</span> 덜 마셔요 (${(Math.abs(averageAmountDifference) * 50)
               .toFixed(1)
@@ -641,44 +648,44 @@ function updateAgeBasedStats() {
     let recommendedFrequency, recommendedAmount;
 
     if (age >= 20 && age <= 24) {
-      recommendedFrequency = 1.6;
+      recommendedFrequency = 6.4;
       recommendedAmount = 1.3 * 8; // 1.3 병
     } else if (age >= 25 && age <= 29) {
-      recommendedFrequency = 1.6;
-      recommendedAmount = 1.1 * 8; // 1.1 병
+      recommendedFrequency = 6.4;
+      recommendedAmount = 4.3 * 8; // 4.3 병
     } else if (age >= 30 && age <= 34) {
-      recommendedFrequency = 1.6;
-      recommendedAmount = 0.9 * 8; // 0.9 병
+      recommendedFrequency = 6.4;
+      recommendedAmount = 3.7 * 8; // 3.7 병
     } else if (age >= 35 && age <= 39) {
-      recommendedFrequency = 1.6;
-      recommendedAmount = 0.8 * 8; // 0.8 병
+      recommendedFrequency = 6.4;
+      recommendedAmount = 3.4 * 8; // 3.4 병
     } else if (age >= 40 && age <= 44) {
-      recommendedFrequency = 1.6;
+      recommendedFrequency = 6.4;
       recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 45 && age <= 49) {
-      recommendedFrequency = 1.6;
+      recommendedFrequency = 6.4;
       recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 50 && age <= 54) {
-      recommendedFrequency = 1.6;
+      recommendedFrequency = 6.4;
       recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 55 && age <= 59) {
-      recommendedFrequency = 1.7;
+      recommendedFrequency = 6.8;
       recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 60 && age <= 64) {
-      recommendedFrequency = 1.7;
+      recommendedFrequency = 6.8;
       recommendedAmount = 0.8 * 8; // 0.8 병
     } else if (age >= 65 && age <= 69) {
-      recommendedFrequency = 1.7;
+      recommendedFrequency = 6.8;
       recommendedAmount = 0.7 * 8; // 0.7 병
     } else if (age >= 70 && age <= 74) {
-      recommendedFrequency = 1.8;
+      recommendedFrequency = 7.2;
       recommendedAmount = 0.7 * 8; // 0.7 병
     } else {
-      recommendedFrequency = 1.8;
+      recommendedFrequency = 7.2;
       recommendedAmount = 0.7 * 8; // 0.7 병
     }
 
-    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/count", {
+    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/count", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -694,11 +701,11 @@ function updateAgeBasedStats() {
             ".frequency-age-comparison"
           );
           if (drinkCount > recommendedFrequency) {
-            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 일주일에 <span class="text-wrapper-15">${
+            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 한 달에 <span class="text-wrapper-15">${
               drinkCount - recommendedFrequency
             }회</span> 더 마셔요`;
           } else if (drinkCount < recommendedFrequency) {
-            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 일주일에 <span class="text-wrapper-17">${
+            frequencyMessageElement.innerHTML = `연령 적정 음주 빈도보다 한 달에 <span class="text-wrapper-17">${
               recommendedFrequency - drinkCount
             }회</span> 덜 마셔요`;
           } else {
@@ -712,7 +719,7 @@ function updateAgeBasedStats() {
         console.error("Error fetching data from the API:", error);
       });
 
-    fetch("http://3.37.23.33:8080/api/v1/weekly-statistics/average", {
+    fetch("http://3.37.23.33:8080/api/v1/monthly-statistics/average", {
       method: "GET",
       headers: {
         accept: "*/*",
@@ -734,13 +741,13 @@ function updateAgeBasedStats() {
             ".amount-age-comparison"
           );
           if (averageAmountDifference > 0) {
-            amountMessageElement.innerHTML = `연령 적정 음주량보다 일주일에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
+            amountMessageElement.innerHTML = `연령 적정 음주량보다 한 달에 <span class="text-wrapper-15">${averageAmountDifference.toFixed(
               1
             )}잔</span> 더 마셔요 (${(
               averageAmountDifference * 45
             ).toLocaleString()}ml)`;
           } else if (averageAmountDifference < 0) {
-            amountMessageElement.innerHTML = `연령 적정 음주량보다 일주일에 <span class="text-wrapper-17">${Math.abs(
+            amountMessageElement.innerHTML = `연령 적정 음주량보다 한 달에 <span class="text-wrapper-17">${Math.abs(
               averageAmountDifference.toFixed(1)
             )}잔</span> 덜 마셔요 (${(Math.abs(averageAmountDifference) * 45)
               .toFixed(1)
@@ -759,7 +766,7 @@ function updateAgeBasedStats() {
             ".recommend-drink-amount"
           );
           recommendDrinkAmountElements.forEach((element) => {
-            element.textContent = `${(recommendedAmount / 45).toFixed(1)}잔`;
+            element.textContent = `${recommendedAmount.toFixed(1)}잔`;
           });
 
           // Update the height of the rectangles based on average amounts
@@ -794,6 +801,6 @@ function updateAgeBasedStats() {
 updateDrinkStatistics();
 updateDrinkDifferences();
 updateAverageDrinkAmounts();
-updateWeeklyDrinkFrequency();
+updatemonthlyDrinkFrequency();
 updateGenderBasedStats();
 updateAgeBasedStats();
