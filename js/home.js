@@ -84,12 +84,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // 칼로리
       const calorieElement = document.getElementById("user-calorie");
-      calorieElement.textContent = `${info.monthlyCalorie.toLocaleString()}kcal`;
+      calorieElement.textContent = `${info.monthlyCalorie.toFixed(1).toLocaleString()}kcal`;
 
       // 예상 음주 지출
       const expectedCostElement = document.getElementById("user-expectedCost");
-      expectedCostElement.textContent = `${info.expectedCost.toLocaleString()}원`;
-
+      expectedCostElement.textContent = `${info.expectedCost.toFixed(1).toLocaleString()}원`;
+      
       // 예상 음주 지출을 각 food의 가격으로 나누기
       const tanghuluPrice = 5000;
       const gukbapPrice = 10000;
