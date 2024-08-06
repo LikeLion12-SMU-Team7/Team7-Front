@@ -10,7 +10,7 @@ function validateForm(event) {
   }
 
   caution.style.visibility = "hidden";
-  fetch("http://3.37.23.33:8080/api/v1/auth/login", {
+  fetch("/api/v1/auth/login", {
     method: "POST",
     headers: {
       Accept: "*/*",
@@ -70,7 +70,7 @@ function refreshToken() {
   }
 
   // 서버에 리프레시 토큰 요청 보내기
-  fetch("http://3.37.23.33:8080/api/v1/auth/refresh-token", {
+  fetch("/api/v1/auth/refresh-token", {
     method: "POST",
     headers: {
       Accept: "*/*",
