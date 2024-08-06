@@ -2,7 +2,7 @@ name: CI/CD to Amazon ECS
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: ["deploy"]
 
 jobs:
   deploy:
@@ -11,18 +11,18 @@ jobs:
     environment: production
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: AWS EC2 Connection
-      uses: appleboy/ssh-action@v0.1.6
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USERNAME }}
-        password: ${{ secrets.EC2_PASSWORD }}
-        port: ${{ secrets.EC2_SSH_PORT }}
-        timeout: 60s
-        script: |
-          cd /var/www/alcoholfreeday/Team7-Front
-          sudo git fetch origin
-          sudo git pull origin main
+      - name: AWS EC2 Connection
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          password: ${{ secrets.EC2_PASSWORD }}
+          port: ${{ secrets.EC2_SSH_PORT }}
+          timeout: 60s
+          script: |
+            cd /var/www/alcoholfreeday/Team7-Front
+            sudo git fetch origin
+            sudo git pull origin main
