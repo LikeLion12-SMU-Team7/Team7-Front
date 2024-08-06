@@ -131,6 +131,15 @@ body {
   z-index: 1;
   font-size: 15px;
 }
+.btn:hover {
+  background: linear-gradient(
+      0deg,
+      rgba(38, 38, 38, 0.1) 0%,
+      rgba(38, 38, 38, 0.1) 100%
+    ),
+    #1abc9c;
+  color: white;
+}
 .button-frame p,
 .button-frame .frame3 {
   opacity: 0.2;
